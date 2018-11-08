@@ -1,26 +1,26 @@
 ﻿#include "FactoryAV.h"
 #include <random>
 #include <math.h>
-
-Acheteurs* FactoryAV::createAcheteurs() {
+template <class T>
+Acheteurs<T>* FactoryAV::createAcheteurs() {
 
 	int alea = round((4 * rand() / RAND_MAX) + 1);
 	switch (alea)
 	{
 	case 1:
-		return new Acheteurs(500, TypeAcheteur::AGRESSIF);
+		return new Acheteurs<Art>(500, TypeAcheteur::AGRESSIF);
 		break;
 	case 2:
-		return new Acheteurs(1000, TypeAcheteur::PATIENT);
+		return new Acheteurs<Antiquite>(1000, TypeAcheteur::PATIENT);
 		break;
 	case 3:
-		return new Acheteurs(1500, TypeAcheteur::LENT);
+		return new Acheteurs<Service>(1500, TypeAcheteur::LENT);
 		break;
 	case 4:
-		return new Acheteurs(100, TypeAcheteur::RAPIDE);
+		return new Acheteurs<Art>(100, TypeAcheteur::RAPIDE);
 		break;
 	case 5:
-		return new Acheteurs(250, TypeAcheteur::MODERE);
+		return new Acheteurs<Service>(250, TypeAcheteur::MODERE);
 		break;
 	default:
 		printf("Erreur dans la génération du nombre aléatoire");

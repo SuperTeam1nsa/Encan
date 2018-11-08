@@ -5,7 +5,8 @@ class FactoryAV
 {
 public:
 	//ou en template aussi les acheteurs
-	static Acheteurs* createAcheteurs();
+	template <class T>
+	static Acheteurs<T>* createAcheteurs();
 	template <class T>
 	static Vendeurs<T>* createVendeurs();
 };

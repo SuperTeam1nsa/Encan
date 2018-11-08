@@ -1,11 +1,16 @@
 ﻿#pragma once
 //en enum #MEF
 typedef enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT };
+
+//on part sur un template #plus lisible
+//typedef enum ObjetInteresse{ ART, ANTIQUITE,};
+template<class T>
 class Acheteurs
 {
 public:
 	Acheteurs(int budgetAchat, EtatAcheteur t) { budget = budgetAchat; type = t; }
 	~Acheteurs() {};
+	//void acheter(ObjectEncan const& object){ if T::ToString()==objet.ToString()}
 	//void setState(EtatAcheteur etat);
 
 private:
