@@ -151,16 +151,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Acheteurs.h" />
+    <ClInclude Include="Antiquite.h" />
+    <ClInclude Include="FactoryAV.h" />
+    <ClInclude Include="FactoryObjetEncan.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Vendeurs.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Acheteurs.cpp" />
+    <ClCompile Include="Antiquite.cpp" />
     <ClCompile Include="Encan.cpp" />
+    <ClCompile Include="FactoryAV.cpp" />
+    <ClCompile Include="FactoryObjetEncan.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Vendeurs.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

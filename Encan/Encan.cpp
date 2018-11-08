@@ -2,10 +2,13 @@
 //
 
 #include "pch.h"
+#include <random>
+#include <time.h>
 #include <iostream>
 
 int main()
 {
+	srand(time(NULL));
 	std::cout << "Hello World!\n";
 }
 
