@@ -3,3 +3,11 @@
 ################################################################################
 
 /.vs
+/Debug
+/Encan/Debug/Encan.tlog
+/Encan/Debug/vc141.pdb
+/Encan/Debug/vc141.idb
+/Encan/Debug/pch.obj
+/Encan/Debug/Encan.pch
+/Encan/Debug/Encan.obj
+/Encan/Debug/Encan.log
