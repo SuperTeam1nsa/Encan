@@ -4,10 +4,11 @@
 struct Interet
 {
 private:
-	int description;  //ou avec des strings
+	Description description;  //ou avec des strings
 	int prix;
 public:
-	Interet(int d, int price) :prix(price), description(d) {};
+	Interet() { description = Description::ANTIQUITE; prix = 300; }
+	Interet(Description d, int price) :prix(price), description(d) {};
 	bool operator()(int a)//ObjetEncan
 	{
 		return true;

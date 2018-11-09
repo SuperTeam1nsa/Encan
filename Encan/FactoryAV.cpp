@@ -16,23 +16,25 @@ auto FactoryAV::createAcheteurs() {
 	switch (alea)
 	{
 	case 1:
-		return new Acheteurs<Interet>(500, Interet(3, 3), EtatAcheteur::AGRESSIF);
+		return new Acheteurs<Interet>(500, EtatAcheteur::AGRESSIF, Interet(Description::ART, 200));
 		//return new Acheteurs(500, new Interet(Description::ART, 300), EtatAcheteur::AGRESSIF);
 		//return new Acheteurs(500, std::ref(*(new Interet(Description::ART, 300))), EtatAcheteur::AGRESSIF);
 		//return new Acheteurs(500, (new Interet(Description::ART, 300))->operator(), EtatAcheteur::AGRESSIF);
 		//return new Acheteurs<Art>(500, TypeAcheteur::AGRESSIF);
 		break;
 	case 2:
-		return new Acheteurs<Interet>(1000, Interet(Description::ANTIQUITE, 300), EtatAcheteur::PATIENT);
+		//intérêt par défaut #foncteur pur
+		return new Acheteurs<Interet>(1000, EtatAcheteur::PATIENT);
+		//return new Acheteurs<Interet>(1000, Interet(Description::ANTIQUITE, 300), EtatAcheteur::PATIENT);
 		break;
 	case 3:
-		return new Acheteurs<Interet>(1500, Interet(Description::SERVICE, 100), EtatAcheteur::LENT);
+		return new Acheteurs<Interet>(1500, EtatAcheteur::LENT, Interet(Description::SERVICE, 100));
 		break;
 	case 4:
-		return new Acheteurs<Interet>(100, Interet(Description::ART, 50), EtatAcheteur::RAPIDE);
+		return new Acheteurs<Interet>(100, EtatAcheteur::RAPIDE, Interet(Description::ART, 50));
 		break;
 	case 5:
-		return new Acheteurs<Interet>(250, Interet(Description::SERVICE, 300), EtatAcheteur::MODERE);
+		return new Acheteurs<Interet>(250, EtatAcheteur::MODERE, Interet(Description::SERVICE, 300));
 		break;
 	default:
 		printf("Erreur dans la génération du nombre aléatoire");

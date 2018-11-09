@@ -12,8 +12,10 @@ class Acheteurs
 {
 public:
 
-	Acheteurs(int budgetAchat, T interessant, EtatAcheteur t) {
-		budget = budgetAchat; type = t;
+	Acheteurs(int budgetAchat, EtatAcheteur t, T interet = nullptr) {
+		budget = budgetAchat;
+		if (interet != nullptr)
+			interessant = interet;
 	}
 	~Acheteurs() {};
 	//return un string, un chifre nevermind ^^
@@ -26,7 +28,8 @@ private:
 	int budget;
 	EtatAcheteur type;
 	//Interet* interessant;
-	T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless)
+	T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless ou pas
+	// => argument optionnel )
 	//std::function<bool(int)> interessant; //ok mais cycle de vie des foncteurs casse le game => struct
 	//ou pourvoir filer une réf sur le foncteur, pas conçu pour initialement #templates yes !
 	//rq: https://h-deb.clg.qc.ca/Sujets/TrucsScouts/intro_std_function.html
