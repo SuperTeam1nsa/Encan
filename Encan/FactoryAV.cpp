@@ -10,13 +10,14 @@ enum Description
 
 
 auto FactoryAV::createAcheteurs() {
-	Acheteurs<Interet>* type[5] = {
-	new Acheteurs<Interet>(500, EtatAcheteur::AGRESSIF, Interet(Description::ART, 200)),
-	new Acheteurs<Interet>(1000, EtatAcheteur::PATIENT),
-	new Acheteurs<Interet>(1500, EtatAcheteur::LENT, Interet(Description::SERVICE, 100)),
-	new Acheteurs<Interet>(100, EtatAcheteur::RAPIDE, Interet(Description::ART, 50)) ,
-	new Acheteurs<Interet>(250, EtatAcheteur::MODERE, Interet(Description::SERVICE, 300)) };
-	return type[static_cast<int>(round(4 * rand() / RAND_MAX))];//(b-a)*[0-1] +a
+	//Acheteurs<Interet>* type[5];
+	std::unique_ptr<Acheteurs<Interet>> type[5] = {
+	std::make_unique<Acheteurs<Interet>>(500, EtatAcheteur::AGRESSIF, Interet(Description::ART, 200)),
+	std::make_unique<Acheteurs<Interet>>(1000, EtatAcheteur::PATIENT),
+	std::make_unique<Acheteurs<Interet>>(1500, EtatAcheteur::LENT, Interet(Description::SERVICE, 100)),
+	std::make_unique<Acheteurs<Interet>>(100, EtatAcheteur::RAPIDE, Interet(Description::ART, 50)) ,
+	std::make_unique<Acheteurs<Interet>>(250, EtatAcheteur::MODERE, Interet(Description::SERVICE, 300)) };
+	return std::move(type[static_cast<int>(round(4 * rand() / RAND_MAX))]);//(b-a)*[0-1] +a
 
 		//return new Acheteurs(500, new Interet(Description::ART, 300), EtatAcheteur::AGRESSIF);
 		//return new Acheteurs(500, std::ref(*(new Interet(Description::ART, 300))), EtatAcheteur::AGRESSIF);

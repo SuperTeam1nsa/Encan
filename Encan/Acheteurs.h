@@ -19,8 +19,8 @@ public:
 	}
 	~Acheteurs() {};
 	//return un string, un chifre nevermind ^^
-	void acheter(int const& object) {
-		if (interessant())
+	void acheter(ObjetEncan const& object) {
+		if (interessant(object))
 			//if ((*interessant)(object))//etc
 	}//if T::categorie() == objet.categorie() }
 	//void setState(EtatAcheteur etat);

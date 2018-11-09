@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <string>
 
 class Antiquite
@@ -7,20 +7,20 @@ public:
 	~Antiquite();
 
 private:
-    Antiquite(std::string description, Etat etat, Periode periode, int valeur)
-    {
-        setDescription(description);
-        setEtat(etat);
-        setPeriode(periode);
-        setValeur(valeur);
-    }
-    Antiquite(Periode periode, int valeur)
-    {
-        Antiquite("Inconnue", NEUF, periode, valeur);
-    }
+	Antiquite(std::string description, Etat etat, Periode periode, int valeur)
+	{
+		setDescription(description);
+		setEtat(etat);
+		setPeriode(periode);
+		setValeur(valeur);
+	}
+	Antiquite(Periode periode, int valeur)
+	{
+		Antiquite("Inconnue", NEUF, periode, valeur);
+	}
 	Antiquite()
 	{
-	    Antiquite("Inconnue", NEUF, INCONNUE, 50);
+		Antiquite("Inconnue", NEUF, INCONNUE, 50);
 	}
 
 	enum Periode
@@ -40,6 +40,7 @@ private:
 	Periode periode;
 	int valeur;
 
+	friend class FactoryObjetEncan;
 	void setDescription(std::string description) { this->description = description; }
 	void setEtat(Etat etat) { this->etat = etat; };
 	void setPeriode(Periode periode) { this->periode = periode; }
