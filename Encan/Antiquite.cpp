@@ -1,12 +1,1 @@
-#include "Antiquite.h"
-
-
-
-Antiquite::Antiquite()
-{
-}
-
-
-Antiquite::~Antiquite()
-{
-}
+﻿#include "pch.h"

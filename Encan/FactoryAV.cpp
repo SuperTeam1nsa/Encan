@@ -1,35 +1,38 @@
 ﻿#include "FactoryAV.h"
+#include "pch.h"
 #include <random>
 #include <math.h>
 
-typedef enum Description
+enum Description
 {
 	ART, ANTIQUITE, SERVICE
 };
-#include"Interet.h"
 
-Acheteurs* FactoryAV::createAcheteurs() {
+
+auto FactoryAV::createAcheteurs() {
 
 	int alea = round((4 * rand() / RAND_MAX) + 1);
+	alea = 1;
 	switch (alea)
 	{
 	case 1:
-		return new Acheteurs(500, new Interet(Description::ART, 300), EtatAcheteur::AGRESSIF);
+		return new Acheteurs<Interet>(500, Interet(3, 3), EtatAcheteur::AGRESSIF);
+		//return new Acheteurs(500, new Interet(Description::ART, 300), EtatAcheteur::AGRESSIF);
 		//return new Acheteurs(500, std::ref(*(new Interet(Description::ART, 300))), EtatAcheteur::AGRESSIF);
 		//return new Acheteurs(500, (new Interet(Description::ART, 300))->operator(), EtatAcheteur::AGRESSIF);
 		//return new Acheteurs<Art>(500, TypeAcheteur::AGRESSIF);
 		break;
 	case 2:
-		return new Acheteurs(1000, new Interet(Description::ANTIQUITE, 300), EtatAcheteur::PATIENT);
+		return new Acheteurs<Interet>(1000, Interet(Description::ANTIQUITE, 300), EtatAcheteur::PATIENT);
 		break;
 	case 3:
-		return new Acheteurs(1500, new Interet(Description::SERVICE, 100), EtatAcheteur::LENT);
+		return new Acheteurs<Interet>(1500, Interet(Description::SERVICE, 100), EtatAcheteur::LENT);
 		break;
 	case 4:
-		return new Acheteurs(100, new Interet(Description::ART, 50), EtatAcheteur::RAPIDE);
+		return new Acheteurs<Interet>(100, Interet(Description::ART, 50), EtatAcheteur::RAPIDE);
 		break;
 	case 5:
-		return new Acheteurs(250, new Interet(Description::SERVICE, 300), EtatAcheteur::MODERE);
+		return new Acheteurs<Interet>(250, Interet(Description::SERVICE, 300), EtatAcheteur::MODERE);
 		break;
 	default:
 		printf("Erreur dans la génération du nombre aléatoire");

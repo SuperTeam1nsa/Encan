@@ -1,31 +1,32 @@
 ﻿#pragma once
 //#include <functional>
-#include "Interet.h"
+//#include "Interet.h"
 //en enum #MEF
 typedef enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT };
 
 //on part sur un template #plus lisible
 //typedef enum ObjetInteresse{ ART, ANTIQUITE,};
-//template <class T>
+
+template <typename T>
 class Acheteurs
 {
 public:
 
-	Acheteurs(int budgetAchat, Interet* interet, EtatAcheteur t) {
-		interessant = interet;
+	Acheteurs(int budgetAchat, T interessant, EtatAcheteur t) {
 		budget = budgetAchat; type = t;
 	}
 	~Acheteurs() {};
 	//return un string, un chifre nevermind ^^
 	void acheter(int const& object) {
-		if ((*interessant)(object))//etc
+		if (interessant())
+			//if ((*interessant)(object))//etc
 	}//if T::categorie() == objet.categorie() }
 	//void setState(EtatAcheteur etat);
 private:
 	int budget;
 	EtatAcheteur type;
-	Interet* interessant;
-	//T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless)
+	//Interet* interessant;
+	T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless)
 	//std::function<bool(int)> interessant; //ok mais cycle de vie des foncteurs casse le game => struct
 	//ou pourvoir filer une réf sur le foncteur, pas conçu pour initialement #templates yes !
 	//rq: https://h-deb.clg.qc.ca/Sujets/TrucsScouts/intro_std_function.html

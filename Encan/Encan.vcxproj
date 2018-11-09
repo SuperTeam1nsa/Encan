@@ -160,7 +160,6 @@
     <ClInclude Include="Vendeurs.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Acheteurs.cpp" />
     <ClCompile Include="Antiquite.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="FactoryAV.cpp" />

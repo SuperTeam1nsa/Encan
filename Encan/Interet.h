@@ -1,14 +1,16 @@
 ﻿#pragma once
 //foncteur évolué /#cycle de vie à gérér => semi foncteur ^^ 
 //#présence d'un constructeur
-class Interet
+struct Interet
 {
-	Description description;  //ou avec des strings
+private:
+	int description;  //ou avec des strings
 	int prix;
 public:
-	Interet(Description d, int price) :prix(price), description(d) {};
-	bool operator()(ObjetEncan a)
+	Interet(int d, int price) :prix(price), description(d) {};
+	bool operator()(int a)//ObjetEncan
 	{
+		return true;
 		//return description == a.getDescription() || prix <= a.getPrice();
 	}
 

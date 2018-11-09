@@ -1,4 +1,5 @@
-#include "FactoryObjetEncan.h"
+﻿#include "FactoryObjetEncan.h"
+#include "pch.h"
 
 
 
