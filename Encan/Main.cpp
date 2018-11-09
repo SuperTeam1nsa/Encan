@@ -5,20 +5,12 @@
 #include <random>
 #include <time.h>
 #include <iostream>
-#include <typeinfo.h>
-class Test
-{
-public:
-	Test() {};
-	static std::string toString() { return "Hola !"; }
-};
 
 int main()
 {
 	srand(time(NULL));
 	std::cout << "Hello World!\n";
-	Test a;
-	a.toString();
+
 
 }
 

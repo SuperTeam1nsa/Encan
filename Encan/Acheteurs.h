@@ -1,21 +1,34 @@
 ﻿#pragma once
+//#include <functional>
+#include "Interet.h"
 //en enum #MEF
 typedef enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT };
 
 //on part sur un template #plus lisible
 //typedef enum ObjetInteresse{ ART, ANTIQUITE,};
-template<class T>
+//template <class T>
 class Acheteurs
 {
 public:
-	Acheteurs(int budgetAchat, EtatAcheteur t) { budget = budgetAchat; type = t; }
-	~Acheteurs() {};
-	//void acheter(ObjectEncan const& object){ if T::ToString()==objet.ToString()}
-	//void setState(EtatAcheteur etat);
 
+	Acheteurs(int budgetAchat, Interet* interet, EtatAcheteur t) {
+		interessant = interet;
+		budget = budgetAchat; type = t;
+	}
+	~Acheteurs() {};
+	//return un string, un chifre nevermind ^^
+	void acheter(int const& object) {
+		if ((*interessant)(object))//etc
+	}//if T::categorie() == objet.categorie() }
+	//void setState(EtatAcheteur etat);
 private:
 	int budget;
 	EtatAcheteur type;
+	Interet* interessant;
+	//T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless)
+	//std::function<bool(int)> interessant; //ok mais cycle de vie des foncteurs casse le game => struct
+	//ou pourvoir filer une réf sur le foncteur, pas conçu pour initialement #templates yes !
+	//rq: https://h-deb.clg.qc.ca/Sujets/TrucsScouts/intro_std_function.html
 	//T type;
 	//type.acheterOuPas(); // ok
 };
@@ -92,5 +105,20 @@ GenericStateMachine::GenericStateMachine ()
 			{ptrFuncTransition31, ptrFuncTransition32, ptrFuncTransition33},
 			}
 	etc...
+}
+
+int f() {
+   return 3;
+}
+int g() {
+   return 4;
+}
+#include <iostream>
+int main() {
+   using namespace std;
+   int (*pf)() = f;
+   cout << pf() << endl;
+   pf = g;
+   cout << pf() << endl;
 }
 */
