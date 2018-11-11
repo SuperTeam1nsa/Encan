@@ -153,10 +153,13 @@
   <ItemGroup>
     <ClInclude Include="Acheteurs.h" />
     <ClInclude Include="Antiquite.h" />
+    <ClInclude Include="Art.h" />
     <ClInclude Include="FactoryAV.h" />
     <ClInclude Include="FactoryObjetEncan.h" />
     <ClInclude Include="Interet.h" />
+    <ClInclude Include="ObjetEncan.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Service.h" />
     <ClInclude Include="Vendeurs.h" />
   </ItemGroup>
   <ItemGroup>

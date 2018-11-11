@@ -1,5 +1,6 @@
 ﻿#pragma once
-//#include <functional>
+#include "ObjetEncan.h"
+#include <functional>
 //#include "Interet.h"
 //en enum #MEF= new EtatPatient etc 
 enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT, nb };
@@ -7,28 +8,32 @@ enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT, nb };
 //on part sur un template #plus lisible
 //typedef enum ObjetInteresse{ ART, ANTIQUITE,};
 
-template <typename T>
+//template <class T>
 class Acheteurs
 {
 public:
 
-	Acheteurs(int budgetAchat, EtatAcheteur t, T interet = nullptr) {
+	Acheteurs(int budgetAchat, EtatAcheteur t, std::function<bool(ObjetEncan)>interet) {
 		budget = budgetAchat;
-		if (interet != nullptr)
-			interessant = interet;
+		interessant = interet;
+		type = t;
+		/*if (interet != nullptr)
+			interessant = interet;*/
 	}
 	~Acheteurs() {};
 	//return un string, un chifre nevermind ^^
 	void acheter(ObjetEncan const& object) {
 		if (interessant(object))
-			//if ((*interessant)(object))//etc
+			return;//end of fonction :p 
+		//if ((*interessant)(object))//etc
 	}//if T::categorie() == objet.categorie() }
 	//void setState(EtatAcheteur etat);
 private:
 	int budget;
 	EtatAcheteur type;
+	std::function<bool(ObjetEncan)> interessant;
 	//Interet* interessant;
-	T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless ou pas
+	//T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless ou pas
 	// => argument optionnel )
 	//std::function<bool(int)> interessant; //ok mais cycle de vie des foncteurs casse le game => struct
 	//ou pourvoir filer une réf sur le foncteur, pas conçu pour initialement #templates yes !
@@ -53,7 +58,7 @@ public:
 	Etat* stateToGo(){return StateToGo;}
 	private:
 	Etat* StateToGo;
-	std::function<> test;//bool(*ptrTestFunction) ();
+	std::function<bool(int,int)> test;//bool(*ptrTestFunction) ();
 	//bool(*ptrExitFnIfTransitionOK)();
 }
 class Acheteurs{

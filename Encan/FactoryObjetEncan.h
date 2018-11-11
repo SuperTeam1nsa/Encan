@@ -1,5 +1,4 @@
-#pragma once
-#include <string>
+﻿#pragma once
 #include "Antiquite.h"
 #include "Art.h"
 #include "Service.h"
@@ -7,13 +6,12 @@
 class FactoryObjetEncan
 {
 public:
-	FactoryObjetEncan();
-	~FactoryObjetEncan();
+	FactoryObjetEncan() {};
+	~FactoryObjetEncan() {};
 
-    static Antiquite createAntiquite();
-    
-    static Art createArt();
-    
-    static Service createService();
+	static Antiquite* createAntiquite() { return new Antiquite(); };
+
+	static Art* createArt() { return new Art(); };
+
+	static Service* createService() { return new Service(); };
 };
-
