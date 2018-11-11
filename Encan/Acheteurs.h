@@ -1,8 +1,8 @@
 ﻿#pragma once
 //#include <functional>
 //#include "Interet.h"
-//en enum #MEF
-typedef enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT };
+//en enum #MEF= new EtatPatient etc 
+enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT, nb };
 
 //on part sur un template #plus lisible
 //typedef enum ObjetInteresse{ ART, ANTIQUITE,};
@@ -38,9 +38,67 @@ private:
 };
 //Acheteur<Agressif>();
 /*
-class State
+Les états sont dans des
+classes
+•Héritage d’un état abstrait
+•C’est extrêmement claire et facile d’utilisation
+•Désavantages
+•Création de plusieurs petits objets
+
+class Transition
 {
 public:
+	int StateToLeave;//inclut dans la map
+	bool testTransitionOk(int temps, int nbEchecs){return test(temps,nbEchecs);}
+	Etat* stateToGo(){return StateToGo;}
+	private:
+	Etat* StateToGo;
+	std::function<> test;//bool(*ptrTestFunction) ();
+	//bool(*ptrExitFnIfTransitionOK)();
+}
+class Acheteurs{
+//contient un objet contexte qui lui permet de définir son currentEtat;
+=> contenu dans acheteurs
+cstr(){trans hardcode}
+
+private:
+std::unique_ptr<Etat> currentEtat;
+//=> on actualise en mode curentEtat=ctx.getNewState(currentEtat,NbEchecs,getDeltaTime)
+}
+class ctx{
+//std::vector<,Transition*> trans; //+que d'états en G
+//etat acheteur = enum;
+std::map<EtatAcheteur,transition[]>
+===std::map<int,std::vector<transition*>> t;
+ex: t[EtatAcheteur::Modere].pushback(new Transition(new EtatEnerve(),[](int n,int t) { return n < temps;} }//nouvel etat+condition
+//ou lambada: [](int n,int t) { return n < temps;}//ou fonction //ou foncteurs ModereToEnerve
+//en mettant une variable locale temps mis à jour à l'appel de getNewState avec les params passés
+
+Etat* getNewState(Etat*currentEtat,int n,int ti);
+return t[currentEtat.getEtatID].testTransitionOK(n,ti))?t[currentEtat.getEtatID].stateToGo() :currentEtat;
+
+}
+
+//dans son .h définit l'énum d'état (qui sera inclut dans à travers les états dans contexte)
+=> abstract class Etat{
+public:
+virtual void makeTheStateAction()=0;//ex acheteOuPas();
+virtual int getEtatID()=0;
+//static int getNbEtat(){return EtatListe::nb;}
+protected:
+EtatAcheteteur etat;
+}
+class EtatPatient{
+()eta=EtatListe::Patient;
+void makeTheStateAction(){//etc};//ou float getProbabiliteAchat();
+
+}
+
+
+
+Hum plutôt C
+struct State
+{
 	int State_ID;
 	bool(*ptrFnToExecuteWhenEnteringState)();
 }
