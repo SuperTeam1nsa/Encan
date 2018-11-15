@@ -9,9 +9,7 @@ public:
 	FactoryBetS() {};
 	~FactoryBetS() {};
 
-	static Antiquite* createAntiquite() { return new Antiquite(); };
-
-	static Art* createArt() { return new Art(); };
-
-	static Service* createService() { return new Service(); };
+	static auto createArt();
+	static auto createAntiquite();
+	static auto createService();
 };
