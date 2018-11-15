@@ -1,10 +1,9 @@
 #pragma once
+#include <string>
+
 class ObjetGenerique
 {
 public:
-	ObjetGenerique();
-	~ObjetGenerique();
-
 	enum Etat
 	{
 		NEUF, USE, BRISE
@@ -45,5 +44,32 @@ public:
 		TypeSer type;
 		int xp;
 	};
+
+	ObjetGenerique(CaracAnt myCarac);
+	ObjetGenerique(CaracArt myCarac);
+	ObjetGenerique(CaracSer myCarac);
+	~ObjetGenerique();
+
+private:
+	struct CaracG
+	{
+		std::string description;
+		Etat etat;
+		Periode periode;
+		int valeur;
+
+		int renomee;
+		int valeur;
+		int volume;
+		TypeArt type;
+		std::string description;
+
+		int frais;
+		int tarif;
+		TypeSer type;
+		int xp;
+	};
+
+	CaracG myCarac;
 };
 
