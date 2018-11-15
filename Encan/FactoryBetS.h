@@ -3,11 +3,11 @@
 #include "Art.h"
 #include "Service.h"
 
-class FactoryObjetEncan
+class FactoryBetS
 {
 public:
-	FactoryObjetEncan() {};
-	~FactoryObjetEncan() {};
+	FactoryBetS() {};
+	~FactoryBetS() {};
 
 	static Antiquite* createAntiquite() { return new Antiquite(); };
 

@@ -1,34 +1,30 @@
 ﻿#pragma once
 #include <string>
-
+#include "ObjetEncan.h"
 class Art
 {
 public:
-	~Art() {};
+	~Art() { delete objEnc; };
 
 	int getRenomee() const { return myCarac.renomee; }
 	int getValeur() const { return myCarac.valeur; }
 	int getVolume() const { return myCarac.volume; }
 	ObjetGenerique::TypeArt getType() const { return myCarac.type; }
 	std::string getDescription() const { return myCarac.description; }
-	std::shared_ptr<ObjetEncan> getAdapter() {
-		return adapter;
-	}
 
 private:
-	Art(int renomee, int valeur, int volume, ObjetGenerique::TypeArt type, std::string description)
+	Art(int renomee, int valeur, int volume, ObjetGenerique::TypeArt type, std::string description, ObjetEncan* obj)
 	{
 		myCarac = { renomee, valeur, volume, type, description };
-
-		adapter = std::make_shared<ObjetEncan>();
+		objEnc = obj;
 	};
-	std::shared_ptr<ObjetEncan> adapter;
+	ObjetEncan* objEnc;
 
-	Art(ObjetGenerique::TypeArt type) : Art(1, 100, 10, type, "Inconnu") {}
-	Art() : Art(1, 100, 10, ObjetGenerique::TypeArt::INCONNU, "Inconnu") {}
+	Art(ObjetGenerique::TypeArt type, ObjetEncan* obj) : Art(1, 100, 10, type, "Inconnu", obj) {}
+	//Art() : Art(1, 100, 10, ObjetGenerique::TypeArt::INCONNU, "Inconnu",new ObjetEncan() {}
 
-	friend class FactoryObjetEncan;
+	friend class FactoryBetS;
 
-	
+
 	ObjetGenerique::CaracArt myCarac;
 };
