@@ -2,7 +2,6 @@
 #include "Acheteurs.h"
 #include "Vendeurs.h"
 #include "Interet.h"
-#include "FactoryObjetEncan.h"
 #include "FactoryAV.h"
 #include <random>
 #include <math.h>
@@ -20,7 +19,7 @@ std::make_unique<Acheteurs>(1500, EtatAcheteur::AGRESSIF, std::bind(Interet(),De
 std::make_unique<Acheteurs>(100, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Marie"),
 std::make_unique<Acheteurs>(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Judith"),
 	};
-	return std::move(type[static_cast<int>(round(4 * rand() / RAND_MAX))]);//(b-a)*[0-1] +a
+	return std::move(type[static_cast<int>(floor(5 * rand() / RAND_MAX))]);//(b-a)*[0-1] +a
 
 	/*
 	//Acheteurs<Interet>* type[5];

@@ -167,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Antiquite.cpp" />
+    <ClCompile Include="FactoryBetS.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="FactoryAV.cpp" />
     <ClCompile Include="ObjetGenerique.cpp" />
