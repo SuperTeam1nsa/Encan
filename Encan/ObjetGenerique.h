@@ -1,6 +1,7 @@
-#pragma once
+﻿#pragma once
 #include <string>
 
+//ADAPTER
 class ObjetGenerique
 {
 public:
@@ -72,4 +73,3 @@ private:
 
 	CaracG myCarac;
 };
-
