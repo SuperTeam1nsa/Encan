@@ -3,35 +3,20 @@ class Service
 {
 public:
 	~Service() {}
-	enum Type
-	{
-		LIVRAISON, VOYAGE, MENAGE, CUISINE, COURS, INCONNU
-	};
 
-	int getFrais() const { return frais; }
-	int getTarif() const { return tarif; }
-	Type getType() const { return type; }
-	int getXp() const { return xp; }
+	int getFrais() const { return myCarac.frais; }
+	int getTarif() const { return myCarac.tarif; }
+	ObjetGenerique::TypeSer getType() const { return myCarac.type; }
+	int getXp() const { return myCarac.xp; }
 
 private:
-	Service(int frais, int tarif, Type type, int xp)
+	Service(int frais, int tarif, ObjetGenerique::TypeSer type, int xp)
 	{
-		setFrais(frais);
-		setTarif(tarif);
-		setType(type);
-		setXp(xp);
+		myCarac = { frais, tarif, type, xp };
 	}
-	Service(Type type) : Service(10, 100, type, 50) {}
-	Service() : Service(10, 100, INCONNU, 50) {}
-
-	int frais;
-	int tarif;
-	Type type;
-	int xp;
+	Service(ObjetGenerique::TypeSer type) : Service(10, 100, type, 50) {}
+	Service() : Service(10, 100, ObjetGenerique::TypeSer::INCONNU, 50) {}
 
 
-	void setFrais(int frais) { this->frais = frais; }
-	void setTarif(int tarif) { this->tarif = tarif; }
-	void setType(Type type) { this->type = type; }
-	void setXp(int xp) { this->xp = xp; }
+	ObjetGenerique::CaracSer myCarac;
 };
