@@ -1,4 +1,6 @@
 #pragma once
+#include "ObjetGenerique.h"
+
 class Encan
 {
 public:
@@ -13,7 +15,8 @@ public:
 	}
 
 private:
-	int nbObjetsMax;
+	static int const nbObjetsMax=10;
+	ObjetGenerique* listeObjets[nbObjetsMax];
 
 	Encan() {}
 	Encan* instance;
