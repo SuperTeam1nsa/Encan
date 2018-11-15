@@ -17,10 +17,12 @@ public:
 		budget = budgetAchat;
 		interessant = interet;
 		type = t;
+
 		/*if (interet != nullptr)
 			interessant = interet;*/
 	}
 	~Acheteurs() {};
+
 	//return un string, un chifre nevermind ^^
 	void acheter(ObjetEncan const& object) {
 		if (interessant(object))
