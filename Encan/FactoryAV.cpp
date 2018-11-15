@@ -61,7 +61,7 @@ auto FactoryAV::createVendeurs() //Vendeurs<T>*
 		return new Vendeurs<Art>(FactoryObjetEncan::createArt());
 		break;
 	case 2:
-		return new Vendeurs<ObjetEncan<Antiquite>*>(FactoryObjetEncan::createAntiquite());
+		return new Vendeurs<Antiquite>(FactoryObjetEncan::createAntiquite());
 		break;
 	case 3:
 		return new Vendeurs<Service>(FactoryObjetEncan::createService());

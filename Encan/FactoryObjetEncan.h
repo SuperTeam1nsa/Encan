@@ -9,7 +9,7 @@ public:
 	FactoryObjetEncan() {};
 	~FactoryObjetEncan() {};
 
-	static ObjetEncan<Antiquite>* createAntiquite() { return new ObjetEncan<Antiquite>(new Antiquite()); };
+	static Antiquite* createAntiquite() { return new Antiquite(); };
 
 	static Art* createArt() { return new Art(); };
 
