@@ -159,6 +159,7 @@
     <ClInclude Include="FactoryObjetEncan.h" />
     <ClInclude Include="Interet.h" />
     <ClInclude Include="ObjetEncan.h" />
+    <ClInclude Include="ObjetEnchere.h" />
     <ClInclude Include="ObjetGenerique.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Service.h" />

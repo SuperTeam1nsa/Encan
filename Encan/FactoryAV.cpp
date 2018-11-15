@@ -14,11 +14,11 @@ bool test(int a) { return true; }
 auto FactoryAV::createAcheteurs() {
 
 	std::unique_ptr<Acheteurs> type[5] = {
-		 std::make_unique<Acheteurs>(500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1)),
-		 std::make_unique<Acheteurs>(1000, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::SERVICE, 200,std::placeholders::_1)),
-std::make_unique<Acheteurs>(1500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1)),
-std::make_unique<Acheteurs>(100, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1)),
-std::make_unique<Acheteurs>(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1)),
+		 std::make_unique<Acheteurs>(500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Luisa"),
+		 std::make_unique<Acheteurs>(1000, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::SERVICE, 200,std::placeholders::_1),"Madeleine"),
+std::make_unique<Acheteurs>(1500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Esperanza"),
+std::make_unique<Acheteurs>(100, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Marie"),
+std::make_unique<Acheteurs>(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Judith"),
 	};
 	return std::move(type[static_cast<int>(round(4 * rand() / RAND_MAX))]);//(b-a)*[0-1] +a
 
@@ -58,13 +58,13 @@ auto FactoryAV::createVendeurs() //Vendeurs<T>*
 	switch (alea)
 	{
 	case 1:
-		return new Vendeurs<Art>(FactoryObjetEncan::createArt());
+		return new Vendeurs<Art>(FactoryObjetEncan::createArt(), "Martin");
 		break;
 	case 2:
-		return new Vendeurs<Antiquite>(FactoryObjetEncan::createAntiquite());
+		return new Vendeurs<Antiquite>(FactoryObjetEncan::createAntiquite(), "Pierre");
 		break;
 	case 3:
-		return new Vendeurs<Service>(FactoryObjetEncan::createService());
+		return new Vendeurs<Service>(FactoryObjetEncan::createService(), "Jean");
 		break;
 	}
 }

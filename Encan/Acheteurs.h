@@ -13,16 +13,16 @@ class Acheteurs
 {
 public:
 
-	Acheteurs(int budgetAchat, EtatAcheteur t, std::function<bool(ObjetEncan)>interet) {
+	Acheteurs(int budgetAchat, EtatAcheteur t, std::function<bool(ObjetEncan)>interet, std::string nom_acheteur) {
 		budget = budgetAchat;
 		interessant = interet;
 		type = t;
-
+		nom = nom_acheteur;
 		/*if (interet != nullptr)
 			interessant = interet;*/
 	}
 	~Acheteurs() {};
-
+	std::string getNom() { return nom; }
 	//return un string, un chifre nevermind ^^
 	void acheter(ObjetEncan const& object) {
 		if (interessant(object))
@@ -34,6 +34,7 @@ private:
 	int budget;
 	EtatAcheteur type;
 	std::function<bool(ObjetEncan)> interessant;
+	std::string nom;
 	//Interet* interessant;
 	//T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless ou pas
 	// => argument optionnel )
