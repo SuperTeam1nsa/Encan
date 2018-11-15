@@ -7,7 +7,7 @@ public:
 	~Antiquite() {};
 	enum Etat
 	{
-		NEUF, USE, BRISE
+		NEUF, USE, BRISE 
 	};
 	enum Periode
 	{
