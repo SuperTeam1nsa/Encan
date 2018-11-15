@@ -154,6 +154,7 @@
     <ClInclude Include="Acheteurs.h" />
     <ClInclude Include="Antiquite.h" />
     <ClInclude Include="Art.h" />
+    <ClInclude Include="Encan.h" />
     <ClInclude Include="FactoryAV.h" />
     <ClInclude Include="FactoryObjetEncan.h" />
     <ClInclude Include="Interet.h" />
