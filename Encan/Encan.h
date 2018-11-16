@@ -20,8 +20,12 @@ public:
 		return instance;
 	}
 	void start() {
-
-		FactoryAV::createVendeurs<Art>();
+		int const NB_VENDEURS_INI = 5;
+		int const NB_ACHETEURS_INI = 5;
+		for (int i = 0; i < NB_VENDEURS_INI; i++)
+			listeVendeurs.push_back(FactoryAV::createVendeurs());
+		for (int i = 0; i < NB_ACHETEURS_INI; i++)
+			listeAcheteurs.push_back(FactoryAV::createAcheteurs());
 	}
 	void pushObjet(std::shared_ptr<ObjetGenerique> o)
 	{
@@ -37,9 +41,7 @@ private:
 	//static int const nbObjetsMax = 10;
 	std::list<std::shared_ptr<ObjetGenerique>> listeObjets;
 	std::list<std::shared_ptr<Acheteurs>> listeAcheteurs;
-	std::list<std::shared_ptr<Vendeurs<Art>>> listeVendeursArt;
-	std::list<std::shared_ptr<Vendeurs<Antiquite>>> listeVendeursAntiquite;
-	std::list<std::shared_ptr<Vendeurs<Service>>> listeVendeursService;
+	std::list<std::shared_ptr<Vendeurs>> listeVendeurs;
 
 
 

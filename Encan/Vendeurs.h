@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-template <class T>
+//template <class T>
 class Vendeurs
 {
 public:
-	Vendeurs(T objet, std::string nom_vendeur) { avendre = objet; name = nom_vendeur; }
+	Vendeurs(std::shared_ptr<ObjetGenerique> objet, std::string nom_vendeur) { this->objet = objet; nom = nom_vendeur; }
 	~Vendeurs() {};
 	void mettreAuxEnchères()
 	{
@@ -13,7 +13,7 @@ public:
 	}
 	std::string getNom() { return nom; }
 private:
-	T avendre;
+	std::shared_ptr<ObjetGenerique> objet;
 	std::string nom;
 
 };

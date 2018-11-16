@@ -3,6 +3,7 @@
 #include "Vendeurs.h"
 #include "Interet.h"
 #include "FactoryAV.h"
+#include "FactoryBetS.h"
 #include <random>
 #include <math.h>
 #include <functional>
@@ -17,9 +18,10 @@ std::make_unique<Acheteurs>(1500, EtatAcheteur::AGRESSIF, std::bind(Interet(),De
 std::make_unique<Acheteurs>(100, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Marie"),
 std::make_unique<Acheteurs>(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Judith"),
 	};
-	return std::move(type[static_cast<int>(4 * rand() / RAND_MAX)]);//(b-a)*[0-1] +a
+	return std::move(type[static_cast<int>(5 * rand() - 1 / RAND_MAX)]);//(b-a)*[0-1] +a
 
 	/*
+	//ou auto a=std::unique_ptr<Acheteur>(new Acheteur()); #si on veut new ^^ make_unique condense
 	//Acheteurs<Interet>* type[5];
 	std::unique_ptr<Acheteurs<Interet>> type[5] = {
 	std::make_unique<Acheteurs<Interet>>(500, EtatAcheteur::AGRESSIF, Interet(Description::ART, 200)),
@@ -48,10 +50,11 @@ std::make_unique<Acheteurs>(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Des
 	//return new Acheteurs(500, (new Interet(Description::ART, 300))->operator(), EtatAcheteur::AGRESSIF);
 	//return new Acheteurs<Art>(500, TypeAcheteur::AGRESSIF);
 }
-/*template<class T>
+//template<class T>
 auto FactoryAV::createVendeurs() //Vendeurs<T>*
 {
-	int alea = round((2 * rand() / RAND_MAX) + 1);
+	return std::make_shared<Vendeurs>(FactoryBetS::createBouS());
+	/*int alea = round((2 * rand() / RAND_MAX) + 1);
 	//choisi un nom au hasard pour notre venderu
 	switch (alea)
 	{
@@ -64,5 +67,5 @@ auto FactoryAV::createVendeurs() //Vendeurs<T>*
 	case 3:
 		return new Vendeurs<T>(T.callFactory(), "Jean");
 		break;
-	}
+	}*/
 }*/
