@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Acheteurs.h" />
+    <ClInclude Include="Affichage_Info.h" />
     <ClInclude Include="Antiquite.h" />
     <ClInclude Include="Art.h" />
     <ClInclude Include="Encan.h" />

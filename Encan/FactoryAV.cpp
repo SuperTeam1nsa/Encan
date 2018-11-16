@@ -51,7 +51,7 @@ std::make_unique<Acheteurs>(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Des
 	//return new Acheteurs<Art>(500, TypeAcheteur::AGRESSIF);
 }
 //template<class T>
-auto FactoryAV::createVendeurs() //Vendeurs<T>*
+std::shared_ptr<Vendeurs> FactoryAV::createVendeurs() //Vendeurs<T>*
 {
 	return std::make_shared<Vendeurs>(FactoryBetS::createBouS());
 	/*int alea = round((2 * rand() / RAND_MAX) + 1);

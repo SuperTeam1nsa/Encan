@@ -45,7 +45,10 @@ public:
 		TypeSer type;
 		int xp;
 	};
-
+	//à compléter affichage des structs notamment
+	std::string getInfoArt() { return myCarac.descriptionArt == "" ? (myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.valeurArt)) : ""; }
+	std::string getInfoAntiquite() { return myCarac.description == "" ? (myCarac.description + " valeur : " + std::to_string(myCarac.valeur)) : ""; }
+	std::string getInfoService() { return myCarac.xp == -1 ? ("tarifs : " + std::to_string(myCarac.tarif) + " xp : " + std::to_string(myCarac.xp)) : ""; }
 	ObjetGenerique(CaracAnt myCarac);
 	ObjetGenerique(CaracArt myCarac);
 	ObjetGenerique(CaracSer myCarac);
@@ -60,10 +63,10 @@ private:
 		int valeur;
 
 		int renomee;
-		int valeur;
+		int valeurArt;
 		int volume;
 		TypeArt type;
-		std::string description;
+		std::string descriptionArt;
 
 		int frais;
 		int tarif;

@@ -12,7 +12,7 @@ public:
 	ObjetGenerique::TypeArt getType() const { return myCarac.type; }
 	std::string getDescription() const { return myCarac.description; }
 	std::shared_ptr<ObjetGenerique> getObjectGenerique() { return std::make_shared<ObjetGenerique>(myCarac, objEnc); }
-
+	static std::string getInfo(ObjetGenerique* objG) { return objG->getInfoArt(); }
 private:
 	Art(int renomee, int valeur, int volume, ObjetGenerique::TypeArt type, std::string description, std::shared_ptr<ObjetEncan> obj)
 	{

@@ -7,6 +7,7 @@
 #include "Antiquite.h"
 #include "Service.h"
 #include "FactoryAV.h"
+#include "Affichage_Info.h"
 class Encan
 {
 public:
@@ -26,6 +27,10 @@ public:
 			listeVendeurs.push_back(FactoryAV::createVendeurs());
 		for (int i = 0; i < NB_ACHETEURS_INI; i++)
 			listeAcheteurs.push_back(FactoryAV::createAcheteurs());
+
+		affArt(listeObjets);
+		affAntiquite(listeObjets);
+		affService(listeObjets);
 	}
 	void pushObjet(std::shared_ptr<ObjetGenerique> o)
 	{
@@ -42,7 +47,9 @@ private:
 	std::list<std::shared_ptr<ObjetGenerique>> listeObjets;
 	std::list<std::shared_ptr<Acheteurs>> listeAcheteurs;
 	std::list<std::shared_ptr<Vendeurs>> listeVendeurs;
-
+	Affichage_Info<Art> affArt;
+	Affichage_Info<Antiquite> affAntiquite;
+	Affichage_Info<Service> affService;
 
 
 	Encan() {}
