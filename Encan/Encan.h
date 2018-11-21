@@ -1,18 +1,16 @@
 ﻿#pragma once
 #include "ObjetGenerique.h"
 #include <list>
-#include "Acheteurs.h"
-#include "Vendeurs.h"
 #include "Art.h"
 #include "Antiquite.h"
 #include "Service.h"
-#include "FactoryAV.h"
 #include "Affichage_Info.h"
+
 class Encan
 {
 public:
 	~Encan() {}
-	std::shared_ptr<Encan> getInstance()
+	static std::shared_ptr<Encan> getInstance()
 	{
 		if (instance == nullptr)
 		{
@@ -20,7 +18,10 @@ public:
 		}
 		return instance;
 	}
-	void start() {
+	/*void start() {
+		Affichage_Info<Art> affArt;
+		Affichage_Info<Antiquite> affAntiquite;
+		Affichage_Info<Service> affService;
 		int const NB_VENDEURS_INI = 5;
 		int const NB_ACHETEURS_INI = 5;
 		for (int i = 0; i < NB_VENDEURS_INI; i++)
@@ -31,27 +32,32 @@ public:
 		affArt(listeObjets);
 		affAntiquite(listeObjets);
 		affService(listeObjets);
-	}
+	}*/
 	void pushObjet(std::shared_ptr<ObjetGenerique> o)
 	{
 		listeObjets.push_back(o);
 	}
-	auto getListeObjet(std::shared_ptr <ObjetGenerique> o)
+	auto getListeObjet()
 	{
 		return listeObjets;
+	}
+	void affiche_information() {
+		affArt(listeObjets);
+		affAntiquite(listeObjets);
+		affService(listeObjets);
 	}
 
 
 private:
 	//static int const nbObjetsMax = 10;
 	std::list<std::shared_ptr<ObjetGenerique>> listeObjets;
-	std::list<std::shared_ptr<Acheteurs>> listeAcheteurs;
-	std::list<std::shared_ptr<Vendeurs>> listeVendeurs;
+	//std::list<std::shared_ptr<Acheteurs>> listeAcheteurs;
+	//std::list<std::shared_ptr<Vendeurs>> listeVendeurs;
 	Affichage_Info<Art> affArt;
 	Affichage_Info<Antiquite> affAntiquite;
 	Affichage_Info<Service> affService;
 
 
 	Encan() {}
-	std::shared_ptr <Encan> instance;
+	static std::shared_ptr <Encan> instance;
 };
