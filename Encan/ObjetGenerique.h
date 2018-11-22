@@ -47,9 +47,9 @@ public:
 		int xp;
 	};
 	//à compléter affichage des structs notamment
-	std::string getInfoArt() { return myCarac.descriptionArt == "" ? (myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.valeurArt)) : ""; }
-	std::string getInfoAntiquite() { return myCarac.description == "" ? (myCarac.description + " valeur : " + std::to_string(myCarac.valeur)) : ""; }
-	std::string getInfoService() { return myCarac.xp == -1 ? ("tarifs : " + std::to_string(myCarac.tarif) + " xp : " + std::to_string(myCarac.xp)) : ""; }
+	std::string getInfoArt() { return  myCarac.typeObjet == Description::ART ? (myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.valeurArt)) : ""; }
+	std::string getInfoAntiquite() { return myCarac.typeObjet == Description::ANTIQUITE ? (myCarac.description + " valeur : " + std::to_string(myCarac.valeur)) : ""; }
+	std::string getInfoService() { return myCarac.typeObjet == Description::SERVICE ? ("tarifs : " + std::to_string(myCarac.tarif) + " xp : " + std::to_string(myCarac.xp)) : ""; }
 	ObjetGenerique(CaracAnt myCarac);
 	ObjetGenerique(CaracArt myCarac);
 	ObjetGenerique(CaracSer myCarac);
