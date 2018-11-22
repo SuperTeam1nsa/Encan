@@ -1,9 +1,10 @@
 ﻿#pragma once
 #include "ObjetEncan.h"
 #include <functional>
+#include "Etat.h"
 //#include "Interet.h"
 //en enum #MEF= new EtatPatient etc 
-enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT, nb };
+//enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT, nb };
 
 //on part sur un template #plus lisible
 //typedef enum ObjetInteresse{ ART, ANTIQUITE,};
@@ -35,6 +36,7 @@ private:
 	EtatAcheteur type;
 	std::function<bool(ObjetGenerique&)> interessant;
 	std::string nom;
+	std::unique_ptr<Etat> currentEtat;
 	//Interet* interessant;
 	//T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless ou pas
 	// => argument optionnel )

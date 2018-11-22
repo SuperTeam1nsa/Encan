@@ -156,16 +156,19 @@
     <ClInclude Include="Antiquite.h" />
     <ClInclude Include="Art.h" />
     <ClInclude Include="Encan.h" />
+    <ClInclude Include="Etat.h" />
     <ClInclude Include="FactoryAV.h" />
     <ClInclude Include="FactoryBetS.h" />
     <ClInclude Include="GestionnaireTransaction.h" />
     <ClInclude Include="Interet.h" />
+    <ClInclude Include="MEF.h" />
     <ClInclude Include="ObjetEncan.h" />
     <ClInclude Include="ObjetEnchere.h" />
     <ClInclude Include="ObjetGenerique.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Service.h" />
     <ClInclude Include="Transaction.h" />
+    <ClInclude Include="transition.h" />
     <ClInclude Include="Vendeurs.h" />
   </ItemGroup>
   <ItemGroup>
