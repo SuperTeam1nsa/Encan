@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <string>
+#include "Encan.h"
 
 //ADAPTER
 class ObjetGenerique
@@ -57,6 +58,8 @@ public:
 private:
 	struct CaracG
 	{
+		Description typeObjet;
+
 		std::string description;
 		Etat etat;
 		Periode periode;
@@ -75,4 +78,7 @@ private:
 	};
 
 	CaracG myCarac;
+
+public:
+	CaracG getCaracG() const { return myCarac; }
 };
