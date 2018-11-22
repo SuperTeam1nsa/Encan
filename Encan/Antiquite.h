@@ -5,16 +5,18 @@
 class Antiquite
 {
 public:
-	~Antiquite() { delete objEnc; }
+	~Antiquite() {}
 
 	std::string getDescription() const { return myCarac.description; }
 	//int getDescription() const { return Description::ANTIQUITE; } //quand sera un objet encan
 	ObjetGenerique::Etat getEtat() const { return myCarac.etat; }
 	ObjetGenerique::Periode getPeriode() const { return myCarac.periode; }
+	std::shared_ptr<ObjetGenerique> getObjectGenerique() { return std::make_shared<ObjetGenerique>(myCarac, objEnc); }
 	int getValeur() const { return myCarac.valeur; }
-
+	static std::unique_ptr<Antiquite> callFactory();
+	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Pierre-Jean l'ancien"; }
 private:
-	Antiquite(std::string description, ObjetGenerique::Etat etat, ObjetGenerique::Periode periode, int valeur, ObjetEncan* obj)
+	Antiquite(std::string description, ObjetGenerique::Etat etat, ObjetGenerique::Periode periode, int valeur, std::shared_ptr<ObjetEncan> obj)
 	{
 		myCarac = { description, etat, periode, valeur };
 		objEnc = obj;
@@ -24,8 +26,9 @@ private:
 
 	//std::string Description[5] = { "Sculpture d'homme", "Armure rupestre", "Instrument de musique", "Coffre magique", "Inconnue" };
 
-	ObjetEncan* objEnc;
+	std::shared_ptr<ObjetEncan> objEnc;
 	friend class FactoryBetS;
 
 	ObjetGenerique::CaracAnt myCarac;
+
 };

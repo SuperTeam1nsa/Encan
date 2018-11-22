@@ -8,7 +8,7 @@ class FactoryBetS
 public:
 	FactoryBetS() {};
 	~FactoryBetS() {};
-
+	static std::shared_ptr<ObjetGenerique> createBouS();
 	static auto createArt();
 	static auto createAntiquite();
 	static auto createService();

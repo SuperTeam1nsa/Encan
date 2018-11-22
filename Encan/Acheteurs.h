@@ -13,7 +13,7 @@ class Acheteurs
 {
 public:
 
-	Acheteurs(int budgetAchat, EtatAcheteur t, std::function<bool(ObjetEncan)>interet, std::string nom_acheteur) {
+	Acheteurs(int budgetAchat, EtatAcheteur t, std::function<bool(ObjetGenerique&)>interet, std::string nom_acheteur) {
 		budget = budgetAchat;
 		interessant = interet;
 		type = t;
@@ -24,16 +24,16 @@ public:
 	~Acheteurs() {};
 	std::string getNom() { return nom; }
 	//return un string, un chifre nevermind ^^
-	void acheter(ObjetEncan const& object) {
-		if (interessant(object))
-			return;//end of fonction :p 
-		//if ((*interessant)(object))//etc
-	}//if T::categorie() == objet.categorie() }
-	//void setState(EtatAcheteur etat);
+	void acheter();
+	//if (interessant(object))
+		//return;//end of fonction :p 
+	//if ((*interessant)(object))//etc
+//}//if T::categorie() == objet.categorie() }
+//void setState(EtatAcheteur etat);
 private:
 	int budget;
 	EtatAcheteur type;
-	std::function<bool(ObjetEncan)> interessant;
+	std::function<bool(ObjetGenerique&)> interessant;
 	std::string nom;
 	//Interet* interessant;
 	//T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless ou pas

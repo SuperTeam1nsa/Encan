@@ -3,15 +3,23 @@
 #include "Vendeurs.h"
 #include "Interet.h"
 #include "FactoryAV.h"
+#include "FactoryBetS.h"
 #include <random>
 #include <math.h>
 #include <functional>
 
 
-bool test(int a) { return true; }
-
 auto FactoryAV::createAcheteurs() {
 
+	Acheteurs* type[5] = {
+new Acheteurs(500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Luisa") ,
+new Acheteurs(1000, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::SERVICE, 200,std::placeholders::_1),"Madeleine"),
+new Acheteurs(1500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Esperanza"),
+new Acheteurs(100, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Marie"),
+new Acheteurs(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Judith")
+	};
+	return type[static_cast<int>(5 * rand() - 1 / RAND_MAX)];
+	/*
 	std::unique_ptr<Acheteurs> type[5] = {
 		 std::make_unique<Acheteurs>(500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Luisa"),
 		 std::make_unique<Acheteurs>(1000, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::SERVICE, 200,std::placeholders::_1),"Madeleine"),
@@ -19,9 +27,10 @@ std::make_unique<Acheteurs>(1500, EtatAcheteur::AGRESSIF, std::bind(Interet(),De
 std::make_unique<Acheteurs>(100, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Marie"),
 std::make_unique<Acheteurs>(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Judith"),
 	};
-	return std::move(type[static_cast<int>(floor(5 * rand() / RAND_MAX))]);//(b-a)*[0-1] +a
-
+	return std::move(type[static_cast<int>(5 * rand() - 1 / RAND_MAX)]);//(b-a)*[0-1] +a
+	*/
 	/*
+	//ou auto a=std::unique_ptr<Acheteur>(new Acheteur()); #si on veut new ^^ make_unique condense
 	//Acheteurs<Interet>* type[5];
 	std::unique_ptr<Acheteurs<Interet>> type[5] = {
 	std::make_unique<Acheteurs<Interet>>(500, EtatAcheteur::AGRESSIF, Interet(Description::ART, 200)),
@@ -50,20 +59,28 @@ std::make_unique<Acheteurs>(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Des
 	//return new Acheteurs(500, (new Interet(Description::ART, 300))->operator(), EtatAcheteur::AGRESSIF);
 	//return new Acheteurs<Art>(500, TypeAcheteur::AGRESSIF);
 }
-template<class T>
-auto FactoryAV::createVendeurs() //Vendeurs<T>*
+
+VendeursAvecAdaptateur* FactoryAV::createVendeursAvecAdaptateur() //Vendeurs<T>*
 {
-	int alea = round((2 * rand() / RAND_MAX) + 1);
+	return new VendeursAvecAdaptateur(FactoryBetS::createBouS(), "No name");
+	/*int alea = round((2 * rand() / RAND_MAX) + 1);
+	//choisi un nom au hasard pour notre venderu
 	switch (alea)
 	{
 	case 1:
-		return new Vendeurs<Art>(FactoryObjetEncan::createArt(), "Martin");
+		return new Vendeurs<T>(T.callFactory(), "Martin");
 		break;
 	case 2:
-		return new Vendeurs<Antiquite>(FactoryObjetEncan::createAntiquite(), "Pierre");
+		return new Vendeurs<T>(T.callFactory(), "Pierre");
 		break;
 	case 3:
-		return new Vendeurs<Service>(FactoryObjetEncan::createService(), "Jean");
+		return new Vendeurs<T>(T.callFactory(), "Jean");
 		break;
-	}
+	}*/
+}
+template<class T>
+Vendeurs<T>* FactoryAV::createVendeurs()
+{
+	return new Vendeurs<T>(T.callFactory(), T.getNomDuProgrammeursAimantCeTypeDObjet());
+	//ou des cast pout T, callFactory appel FactoryBetS::create...
 }

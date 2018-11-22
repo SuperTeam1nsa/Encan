@@ -5,11 +5,43 @@
 #include <random>
 #include <time.h>
 #include <iostream>
+#include <thread>
+#include "Art.h"
+#include "Antiquite.h"
+#include "Service.h"
+#include "Acheteurs.h"
+#include "Vendeurs.h"
+#include "FactoryAV.h"
+
 
 int main()
 {
 	srand(time(NULL));
-	std::cout << "Hello World!\n";
+
+	//int const NB_VENDEURS_INI = 5;
+	//int const NB_ACHETEURS_INI = 5;
+	//no threads
+	/*for (int i = 0; i < NB_VENDEURS_INI; i++)
+		listeVendeurs.push_back(FactoryAV::createVendeurs());
+	for (int i = 0; i < NB_ACHETEURS_INI; i++)
+		listeAcheteurs.push_back(FactoryAV::createAcheteurs());*/
+
+		//threads: 
+		// pas un while(1) pour commencer :p 
+	for (int i = 0; i < 100; i++)
+	{
+		//attention pas de ptrs inteligents car sinon on tue l'objet à la fin de la ligne
+		//pas de souci de destruction car il y aura un delete this dans vendeurs #très propre tout ça LOL++
+		//#la version avec les pointeurs intelligents reviendrait à en passer un à l'objet => full stupid xD
+		//ok donc une fonction de create vendeur sera appellé souvent qqch comme check() 
+		//mutex only vis à vis des ressources patagées #encan
+		std::thread(FactoryAV::createVendeurs<Art>()->vendre);
+		std::thread(FactoryAV::createVendeursAvecAdaptateur()->vendre);
+		std::thread(FactoryAV::createAcheteurs()->acheter);
+		//wait un delay pour la boucle oo
+	}
+
+
 
 }
 

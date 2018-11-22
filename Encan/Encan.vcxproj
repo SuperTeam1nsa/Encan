@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Acheteurs.h" />
+    <ClInclude Include="Affichage_Info.h" />
     <ClInclude Include="Antiquite.h" />
     <ClInclude Include="Art.h" />
     <ClInclude Include="Encan.h" />
@@ -168,7 +169,9 @@
     <ClInclude Include="Vendeurs.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Acheteurs.cpp" />
     <ClCompile Include="Antiquite.cpp" />
+    <ClCompile Include="Art.cpp" />
     <ClCompile Include="FactoryBetS.cpp" />
     <ClCompile Include="GestionnaireTransaction.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -180,6 +183,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Service.cpp" />
     <ClCompile Include="Transaction.cpp" />
     <ClCompile Include="Vendeurs.cpp" />
   </ItemGroup>

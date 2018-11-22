@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "FactoryBetS.h"
 #include "ObjetGenerique.h"
 #include "Art.h"
@@ -14,7 +14,7 @@ auto FactoryBetS::createArt()
 		std::make_unique<Art>(60, 200, 20, ObjetGenerique::TypeArt::PEINTURE, "La Joconde"),
 		std::make_unique<Art>(50, 20, 100, ObjetGenerique::TypeArt::SCULPTURE, "La Tour Eiffel"),
 		std::make_unique<Art>(10, 50, 5, ObjetGenerique::TypeArt::LIVRE, "Les Fleurs du Mal")
-			};
+	};
 	return std::move(type[int(floor(5 * rand() / RAND_MAX))]);
 }
 
@@ -24,8 +24,8 @@ auto FactoryBetS::createAntiquite() {
 		std::make_unique<Antiquite>("Vase decoratif", ObjetGenerique::Etat::BRISE, ObjetGenerique::Periode::ANTIQUITE, 30),
 		std::make_unique<Antiquite>("Armure de chevalier", ObjetGenerique::Etat::USE, ObjetGenerique::Periode::MOYEN_AGE, 100),
 		std::make_unique<Antiquite>("Guillotine", ObjetGenerique::Etat::USE, ObjetGenerique::Periode::TEMPS_MODERNES, 80),
-		std::make_unique<Antiquite>("Sabre de cavalerie", ObjetGenerique::Etat::NEUF, ObjetGenerique::Periode::EPOQUE_CONTEMPORAINE, 50)
-			};
+		std::make_unique<Antiquite>("Ssabre de cavalerie", ObjetGenerique::Etat::NEUF, ObjetGenerique::Periode::EPOQUE_CONTEMPORAINE, 50)
+	};
 	return std::move(type[int(floor(5 * rand() / RAND_MAX))]);
 }
 
@@ -36,6 +36,23 @@ auto FactoryBetS::createService() {
 		std::make_unique<Service>(30, 30, ObjetGenerique::TypeSer::MENAGE, 60),
 		std::make_unique<Service>(40, 20, ObjetGenerique::TypeSer::CUISINE, 40),
 		std::make_unique<Service>(50, 10, ObjetGenerique::TypeSer::COURS, 20)
-			};
+	};
 	return std::move(type[int(floor(5 * rand() / RAND_MAX))]);
+}
+
+std::shared_ptr<ObjetGenerique> FactoryBetS::createBouS()
+{
+	//pas de fuite mémoire car ptr intelligents
+	switch (int(3 * rand() / RAND_MAX))
+	{
+	case 0:
+		return (createService().get())->getObjectGenerique();
+		break;
+	case 1:
+		return (createAntiquite().get())->getObjectGenerique();
+		break;
+	case 2:
+		return (createService().get())->getObjectGenerique();
+		break;
+	}
 }
