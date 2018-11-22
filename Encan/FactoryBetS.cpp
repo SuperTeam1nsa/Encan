@@ -24,7 +24,7 @@ auto FactoryBetS::createAntiquite() {
 		std::make_unique<Antiquite>("Vase decoratif", ObjetGenerique::Etat::BRISE, ObjetGenerique::Periode::ANTIQUITE, 30),
 		std::make_unique<Antiquite>("Armure de chevalier", ObjetGenerique::Etat::USE, ObjetGenerique::Periode::MOYEN_AGE, 100),
 		std::make_unique<Antiquite>("Guillotine", ObjetGenerique::Etat::USE, ObjetGenerique::Periode::TEMPS_MODERNES, 80),
-		std::make_unique<Antiquite>("Ssabre de cavalerie", ObjetGenerique::Etat::NEUF, ObjetGenerique::Periode::EPOQUE_CONTEMPORAINE, 50)
+		std::make_unique<Antiquite>("Sabre de cavalerie", ObjetGenerique::Etat::NEUF, ObjetGenerique::Periode::EPOQUE_CONTEMPORAINE, 50)
 			};
 	return std::move(type[int(floor(5 * rand() / RAND_MAX))]);
 }
