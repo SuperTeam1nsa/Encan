@@ -12,7 +12,13 @@ struct Interet
 		Interet(Description d, int price) :prix(price), description(d) {};*/
 	bool operator()(Description description, int prix, ObjetGenerique& a, int nb_refus = 3)//ObjetEncan
 	{
-		return true;
+		bool interesse = true;
+
+		interesse = (description == a.getCaracG().typeObjet);
+
+
+
+		return interesse;
 		//return description == a.getDescription() || prix <= a.getPrice();
 	}
 
