@@ -157,6 +157,7 @@
     <ClInclude Include="Art.h" />
     <ClInclude Include="Encan.h" />
     <ClInclude Include="Etat.h" />
+    <ClInclude Include="EtatAgressif.h" />
     <ClInclude Include="FactoryAV.h" />
     <ClInclude Include="FactoryBetS.h" />
     <ClInclude Include="GestionnaireTransaction.h" />

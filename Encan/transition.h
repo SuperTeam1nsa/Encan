@@ -4,11 +4,11 @@
 class Transition
 {
 public:
-	Transition(std::function<bool(int, int)> testTransition, ) { test = testTransition; }
+	Transition(Etat* state, std::function<bool(int, int)> testTransition) { stateToGo = state; test = testTransition; }
 	~Transition() {};
 	bool testTransitionOk(int temps, int nbEchecs) { return test(temps, nbEchecs); }
-	Etat* stateToGo() { return StateToGo; }
+	Etat* getStateToGo() { return stateToGo; }
 private:
-	Etat* StateToGo;
+	Etat* stateToGo;
 	std::function<bool(int, int)> test;
 };

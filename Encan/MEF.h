@@ -2,6 +2,7 @@
 #include <map>
 #include <vector>
 #include "Etat.h"
+#include 
 #include "transition.h"
 
 
@@ -11,11 +12,21 @@ class MEF {
 	//std::map<EtatAcheteur, transition[]>
 public:
 	MEF() {
-		t[EtatAcheteur::MODERE].push_back(new Transition(new EtatEnerve(), [](int n, int t) { return n < t}));
+		t[EtatAcheteur::NORMAL].push_back(new Transition(new EtatPassif(),
+			[](int prixMin, int budget, bool interet_objet) {
+			return !interet_objet; }));
+
+		t[EtatAcheteur::NORMAL].push_back(new Transition(new EtatAgressif(),
+			[](int prixMin, int budget, bool interet_objet) {
+			return budget > prixMin ? (prixMin >= 0.8*budget ? true : false) : false; }));
 	}
-	Etat* getNewState(Etat*currentEtat, int n, int ti)
+	//prixMin contenu dans l'objet Encan
+	Etat* getNewState(Etat*currentEtat, int prix_objet, int budget, bool interet_objet)
 	{
-		return t[currentEtat->getEtatID]->testTransitionOK(n, ti) ? t[currentEtat->getEtatID].stateToGo() : currentEtat;
+		for (auto i : t[currentEtat->getEtatID])
+			if (i->testTransitionOK(prix_objet, budget, interet_objet))
+				return i->stateToGo();
+		return currentEtat;
 	}
 	~MEF() {}
 private:

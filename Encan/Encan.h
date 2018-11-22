@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "ObjetGenerique.h"
+//#include "ObjetGenerique.h"
 #include <list>
 #include "Art.h"
 #include "Antiquite.h"
