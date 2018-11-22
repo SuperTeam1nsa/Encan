@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "ObjetGenerique.h"
 
+
 ObjetGenerique::ObjetGenerique(CaracAnt myCarac)
 {
 	this->myCarac = { Description::ANTIQUITE, myCarac.description, myCarac.etat, myCarac.periode, myCarac.valeur,
