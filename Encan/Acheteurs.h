@@ -2,6 +2,8 @@
 #include "ObjetEncan.h"
 #include <functional>
 #include "Etat.h"
+#include <thread>
+
 //#include "Interet.h"
 //en enum #MEF= new EtatPatient etc 
 //enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT, nb };
