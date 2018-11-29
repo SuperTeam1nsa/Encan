@@ -1,18 +1,14 @@
 ﻿#pragma once
-class EtatAgressif
+class EtatAgressif :public virtual Etat
 {
 public:
-	EtatAgressif();
-	virtual ~EtatAgressif();
+	EtatAgressif(int id) { this->id = id; };
+	float probabilite_achat() { return 1.0; };
+	int getEtatID() {
+		return id;
+	}
+	virtual ~EtatAgressif() {};
+private:
+	int id;
+
 };
-
-
-
-EtatAgressif::EtatAgressif()
-{
-}
-
-
-EtatAgressif::~EtatAgressif()
-{
-}

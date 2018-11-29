@@ -155,9 +155,12 @@
     <ClInclude Include="Affichage_Info.h" />
     <ClInclude Include="Antiquite.h" />
     <ClInclude Include="Art.h" />
+    <ClInclude Include="EtatConcentre.h" />
     <ClInclude Include="Encan.h" />
     <ClInclude Include="Etat.h" />
     <ClInclude Include="EtatAgressif.h" />
+    <ClInclude Include="EtatNormal.h" />
+    <ClInclude Include="EtatPassif.h" />
     <ClInclude Include="FactoryAV.h" />
     <ClInclude Include="FactoryBetS.h" />
     <ClInclude Include="GestionnaireTransaction.h" />
