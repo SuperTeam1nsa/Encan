@@ -20,21 +20,26 @@ class MEF {
 	//s'il est en état agressif il y reste
 public:
 	MEF() {
-		t[EtatAcheteur::PASSIF].push_back(new Transition(new EtatNormal(EtatAcheteur::NORMAL),
+		eN = new EtatNormal(EtatAcheteur::NORMAL);
+		eP = new EtatPassif(EtatAcheteur::PASSIF);
+		eC = new EtatConcentre(EtatAcheteur::CONCENTRE);
+		eA = new EtatAgressif(EtatAcheteur::AGRESSIF);
+
+		t[EtatAcheteur::PASSIF].push_back(new Transition(eN,
 			[](bool interet_objet) {
 			return interet_objet; }));
 
-		t[EtatAcheteur::NORMAL].push_back(new Transition(new EtatPassif(EtatAcheteur::PASSIF),
+		t[EtatAcheteur::NORMAL].push_back(new Transition(eP,
 			[](bool interet_objet) {
 			return !interet_objet; }));
 
-		t[EtatAcheteur::NORMAL].push_back(new Transition(new EtatConcentre(EtatAcheteur::CONCENTRE), [](bool interet_objet) {
+		t[EtatAcheteur::NORMAL].push_back(new Transition(eC, [](bool interet_objet) {
 			return interet_objet; }
 		));
-		t[EtatAcheteur::CONCENTRE].push_back(new Transition(new EtatNormal(EtatAcheteur::NORMAL), [](bool interet_objet) {
+		t[EtatAcheteur::CONCENTRE].push_back(new Transition(eN, [](bool interet_objet) {
 			return !interet_objet; }
 		));
-		t[EtatAcheteur::CONCENTRE].push_back(new Transition(new EtatAgressif(EtatAcheteur::AGRESSIF), [](bool interet_objet) {
+		t[EtatAcheteur::CONCENTRE].push_back(new Transition(eA, [](bool interet_objet) {
 			return !interet_objet; }
 		));
 	}
@@ -56,9 +61,17 @@ public:
 		}
 		t.clear();
 	}
+	Etat* getEtatInitial()
+	{
+		return eN;
+	}
 private:
 	std::map<int, std::vector<Transition*>> t;
-
+	//pour garder un nombre fixe d'état pas dynamique //un choix //sinon delete this et on recrée les états on the go
+	EtatNormal* eN;
+	EtatAgressif* eA;
+	EtatPassif* eP;
+	EtatConcentre* eC;
 	//nouvel etat+condition
 	//ou lambada: [](int n,int t) { return n < temps;}//ou fonction //ou foncteurs ModereToEnerve
 	//en mettant une variable locale temps mis à jour à l'appel de getNewState avec les params passés
