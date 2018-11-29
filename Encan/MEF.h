@@ -48,7 +48,14 @@ public:
 				return i->stateToGo();
 		return currentEtat;
 	}
-	~MEF() {}
+	~MEF() {
+		for (auto i : t)
+		{
+			for (auto j : i.second)
+				delete j;
+		}
+		t.clear();
+	}
 private:
 	std::map<int, std::vector<Transition*>> t;
 
