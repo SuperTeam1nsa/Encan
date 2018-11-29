@@ -5,7 +5,7 @@ class Transition
 {
 public:
 	Transition(Etat* state, std::function<bool(bool)> testTransition) { stateToGo = state; test = testTransition; }
-	~Transition() {};
+	~Transition() { delete stateToGo; };
 	bool testTransitionOk(bool interet) { return test(interet); }
 	Etat* getStateToGo() { return stateToGo; }
 private:

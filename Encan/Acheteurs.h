@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "ObjetEncan.h"
 #include <functional>
-#include "Etat.h"
+#include "MEF.h"
 #include <thread>
 
 //#include "Interet.h"
@@ -39,6 +39,7 @@ private:
 	std::function<bool(ObjetGenerique&)> interessant;
 	std::string nom;
 	std::unique_ptr<Etat> currentEtat;
+	MEF mef;
 	//Interet* interessant;
 	//T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless ou pas
 	// => argument optionnel )
