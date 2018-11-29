@@ -155,6 +155,7 @@
     <ClInclude Include="Affichage_Info.h" />
     <ClInclude Include="Antiquite.h" />
     <ClInclude Include="Art.h" />
+    <ClInclude Include="Compteur.h" />
     <ClInclude Include="EtatConcentre.h" />
     <ClInclude Include="Encan.h" />
     <ClInclude Include="Etat.h" />
@@ -179,6 +180,7 @@
     <ClCompile Include="Acheteurs.cpp" />
     <ClCompile Include="Antiquite.cpp" />
     <ClCompile Include="Art.cpp" />
+    <ClCompile Include="Compteur.cpp" />
     <ClCompile Include="Encan.cpp" />
     <ClCompile Include="FactoryBetS.cpp" />
     <ClCompile Include="GestionnaireTransaction.cpp" />
