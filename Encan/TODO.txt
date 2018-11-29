@@ -1,0 +1,12 @@
+- Les différents états d'acheteurs :
+	- Hértiage virtuel
+	- Méthode virtuelle pure
+	- Classe abstraite
+	- Redéfinition de méthodes
+- Faire des exceptions
+- Les threads de Vendeur et Acheteur
+	- Gestionnaire de transcation
+	- Verification de transactions
+- UML
+- 25 classes
+- 

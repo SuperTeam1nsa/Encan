@@ -5,6 +5,9 @@
 #include "Antiquite.h"
 #include "Service.h"
 #include "Affichage_Info.h"
+#include <thread>
+#include <chrono>
+
 
 class Encan
 {
@@ -47,6 +50,9 @@ public:
 		affService(listeObjets);
 	}
 
+	static int getTemps() { return temps; }
+
+	static void passerTemps();
 
 private:
 	//static int const nbObjetsMax = 10;
@@ -58,6 +64,10 @@ private:
 	Affichage_Info<Service> affService;
 
 
-	Encan() {}
+	Encan();
 	static std::shared_ptr <Encan> instance;
+
+
+	static int temps;
 };
+
