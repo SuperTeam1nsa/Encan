@@ -10,8 +10,7 @@
 
 
 
-BUDGET TEMPS: __TOTAL__ : 12h + 5h bonus
-UML : 5h
+BUDGET TEMPS: __TOTAL__ : 7h + 5h bonus
 Exceptions : 1h
 Créer deux classes adaptateurs qui se servent de l'Encan
 	- EncanPourAcheteur 1h
