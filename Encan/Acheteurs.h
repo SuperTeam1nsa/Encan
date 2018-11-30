@@ -21,6 +21,7 @@ public:
 		interessant = interet;
 		type = t;
 		nom = nom_acheteur;
+		currentEtat = MEF::getInstance().getEtatInitial();
 		/*if (interet != nullptr)
 			interessant = interet;*/
 	}
@@ -38,8 +39,7 @@ private:
 	EtatAcheteur type;
 	std::function<bool(ObjetGenerique&)> interessant;
 	std::string nom;
-	std::unique_ptr<Etat> currentEtat;
-	MEF mef;
+	Etat *currentEtat;
 	//Interet* interessant;
 	//T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless ou pas
 	// => argument optionnel )

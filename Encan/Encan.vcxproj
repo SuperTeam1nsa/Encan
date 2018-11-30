@@ -152,7 +152,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Acheteurs.h" />
-    <ClInclude Include="Affichage_Info.h" />
     <ClInclude Include="Antiquite.h" />
     <ClInclude Include="Art.h" />
     <ClInclude Include="Compteur.h" />
@@ -164,7 +163,6 @@
     <ClInclude Include="EtatPassif.h" />
     <ClInclude Include="FactoryAV.h" />
     <ClInclude Include="FactoryBetS.h" />
-    <ClInclude Include="GestionnaireTransaction.h" />
     <ClInclude Include="Interet.h" />
     <ClInclude Include="MEF.h" />
     <ClInclude Include="ObjetEncan.h" />
@@ -172,7 +170,6 @@
     <ClInclude Include="ObjetGenerique.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Service.h" />
-    <ClInclude Include="Transaction.h" />
     <ClInclude Include="transition.h" />
     <ClInclude Include="Vendeurs.h" />
   </ItemGroup>

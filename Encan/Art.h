@@ -26,7 +26,6 @@ public:
 	ObjetGenerique::TypeArt getType() const { return myCarac.type; }
 	std::string getDescription() const { return myCarac.description; }
 	std::shared_ptr<ObjetGenerique> getObjectGenerique() { return std::make_shared<ObjetGenerique>(myCarac, objEnc); }
-	static std::string getInfo(ObjetGenerique* objG) { return objG->getInfoArt(); }
 	static std::unique_ptr<Art> callFactory();
 	//funny fonction pour débuggage savoir le type d'objet que contient le vendeur grâce à son nom
 	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Rémi l'artiste"; }

@@ -45,9 +45,8 @@ public:
 		return listeObjets;
 	}
 	void affiche_information() {
-		affArt(listeObjets);
-		affAntiquite(listeObjets);
-		affService(listeObjets);
+		for (auto i : listeObjets)
+			std::cout << i.get()->getInfo();
 	}
 
 	static int getTemps() { return temps; }
@@ -56,18 +55,17 @@ public:
 
 private:
 	//static int const nbObjetsMax = 10;
+
 	std::list<std::shared_ptr<ObjetGenerique>> listeObjets;
 	//std::list<std::shared_ptr<Acheteurs>> listeAcheteurs;
 	//std::list<std::shared_ptr<Vendeurs>> listeVendeurs;
-	Affichage_Info<Art> affArt;
-	Affichage_Info<Antiquite> affAntiquite;
-	Affichage_Info<Service> affService;
 
 
 	Encan();
+	//dans un premier temps en shared_ptr mais si perte de performance importante en pointeur nu 
+	//ou bien Meyer's Singleton
 	static std::shared_ptr <Encan> instance;
 
 
 	static int temps;
 };
-

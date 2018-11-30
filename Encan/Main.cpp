@@ -12,6 +12,7 @@
 #include "Acheteurs.h"
 #include "Vendeurs.h"
 #include "FactoryAV.h"
+#include "Encan.h"
 
 
 int main()
@@ -40,6 +41,10 @@ int main()
 		std::thread(FactoryAV::createAcheteurs()->acheter);
 		//wait un delay pour la boucle oo
 	}
+
+	//temps de check que les threads sont finis (on aurait utiliser join() sur des threads nommés)
+	std::this_thread::sleep_for(std::chrono::seconds(10));
+	//delete Encan::getInstance(); //ou shared_ptr sur l'instance de l'Encan mais perte de performances :\ 
 
 
 
