@@ -2,15 +2,37 @@
 - Les threads de Vendeur et Acheteur
 	- Gestionnaire de transcation
 	- Verification de transactions
+
 - UML
-- 25 classes
+- 25 classes (preeeeesque)
 - Exception dans ObjetEncan:
 	- Try/catch si nbMaxBid mais que bid < prixMinAchat
 
-- Interet (PJ)
-- 
--
 
 
-- MEF (Rémi)
--
+BUDGET TEMPS: __TOTAL__ : 12h + 5h bonus
+UML : 5h
+Exceptions : 1h
+Créer deux classes adaptateurs qui se servent de l'Encan
+	- EncanPourAcheteur 1h
+	- EncanPourVendeur 1h
+
+Threads 4h 
+	- Se servir de l'ObjetEncan qqpart
+	- Acheteurs 2h
+		- Faire l'achat
+		- Se delete
+	- Vendeurs 2h
+		- Mettre en vente
+		- Se delete
+		- Concevoir l'idée
+
+Faire le log + Compteur 2h
+
+Débogage 5h?
+Balancement 3h? 
+
+
+Vendredi 30/11 : UML
+du 1/12 au 12/12 : Exceptions, Adaptateurs et Threads
+du 13/12 au 16/12 : Débogage + Bonus
