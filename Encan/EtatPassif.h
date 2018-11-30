@@ -4,7 +4,7 @@ class EtatPassif :public Etat
 {
 public:
 	EtatPassif(int id) { this->id = id; };
-	float probabilite_achat() { return 0.6; };
+	float probabilite_achat() { return 0; };
 	int getEtatID() {
 		return id;
 	}

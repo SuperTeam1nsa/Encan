@@ -1,5 +1,5 @@
 ﻿#pragma once
-enum EtatAcheteur { AGRESSIF, CONCENTRE, NORMAL, PASSIF };
+enum EtatAcheteur { AGRESSIF, CONCENTRE, NORMAL, PASSIF, nb };
 class Etat
 {
 public:

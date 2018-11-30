@@ -54,15 +54,6 @@
     <ClInclude Include="FactoryBetS.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="GestionnaireTransaction.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Transaction.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Affichage_Info.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Etat.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
