@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\MEF">
+      <UniqueIdentifier>{6846befb-f585-40e6-aa5f-8087049c82c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -54,29 +57,29 @@
     <ClInclude Include="FactoryBetS.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Etat.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="MEF.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="transition.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="EtatAgressif.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="EtatPassif.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="EtatNormal.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="EtatConcentre.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Compteur.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Etat.h">
+      <Filter>Fichiers d%27en-tête\MEF</Filter>
+    </ClInclude>
+    <ClInclude Include="EtatAgressif.h">
+      <Filter>Fichiers d%27en-tête\MEF</Filter>
+    </ClInclude>
+    <ClInclude Include="EtatConcentre.h">
+      <Filter>Fichiers d%27en-tête\MEF</Filter>
+    </ClInclude>
+    <ClInclude Include="EtatNormal.h">
+      <Filter>Fichiers d%27en-tête\MEF</Filter>
+    </ClInclude>
+    <ClInclude Include="EtatPassif.h">
+      <Filter>Fichiers d%27en-tête\MEF</Filter>
+    </ClInclude>
+    <ClInclude Include="MEF.h">
+      <Filter>Fichiers d%27en-tête\MEF</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
