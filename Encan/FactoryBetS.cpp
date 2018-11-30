@@ -9,12 +9,12 @@
 auto FactoryBetS::createArt()
 {
 	std::unique_ptr<Art> type[5] = {
-		std::make_unique<Art>(99, 100, 10, ObjetGenerique::TypeArt::LIVRE, "La Bible"),
+		std::make_unique<Art>(99, 100, 10, ObjetGenerique::TypeArt::LIVRE, "La Bible",std::make_shared<ObjetEncan>(),
 		std::make_unique<Art>(80, 40, 40, ObjetGenerique::TypeArt::SCULPTURE, "Le Penseur"),
 		std::make_unique<Art>(60, 200, 20, ObjetGenerique::TypeArt::PEINTURE, "La Joconde"),
 		std::make_unique<Art>(50, 20, 100, ObjetGenerique::TypeArt::SCULPTURE, "La Tour Eiffel"),
 		std::make_unique<Art>(10, 50, 5, ObjetGenerique::TypeArt::LIVRE, "Les Fleurs du Mal")
-	};
+			};
 	return std::move(type[int(floor(5 * rand() / RAND_MAX))]);
 }
 
