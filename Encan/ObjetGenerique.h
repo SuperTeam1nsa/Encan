@@ -63,20 +63,18 @@ private:
 	struct CaracG
 	{
 		Description typeObjet;
+		int prix;
 
 		std::string description;
 		Etat etat;
 		Periode periode;
-		int valeur;
 
 		int renomee;
-		int valeurArt;
 		int volume;
 		TypeArt type;
 		std::string descriptionArt;
 
 		int frais;
-		int tarif;
 		TypeSer type;
 		int xp;
 		std::shared_ptr<ObjetEncan> objEnc;
