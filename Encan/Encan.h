@@ -48,6 +48,11 @@ public:
 		for (auto i : listeObjets)
 			std::cout << i.get()->getInfo();
 	}
+	bool encherir(ObjetGenerique* obj, int prix)
+	{
+		obj->getCaracG().objEnc.get()->addEnchere();
+		obj->getCaracG().objEnc.get()->
+	}
 
 	static int getTemps() { return temps; }
 

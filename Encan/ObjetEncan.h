@@ -12,6 +12,7 @@ class ObjetEncan
 public:
 	ObjetEncan(int prixIni, int prixMin, int minNbEnchere, int maxNbEnchere) {
 		this->prixIni = prixIni;
+		prixActuel = prixIni;
 		this->prixMin = prixMin;
 		this->minNbEnchere = minNbEnchere;
 		this->maxNbEnchere = maxNbEnchere;
@@ -24,12 +25,14 @@ public:
 	~ObjetEncan() {
 		encheres.clear();
 	}
+	int getPrixActuel() { return prixActuel; }
 	//T* getObjet() { return objet; }
 //:
 	//T* objet; //art, antiquite, services etc
 private:
 	int prixIni;
 	int prixMin;
+	int prixActuel;
 	int minNbEnchere;
 	int maxNbEnchere;
 	std::list<ObjetEnchere> encheres;

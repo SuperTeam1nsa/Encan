@@ -11,27 +11,24 @@ struct Interet
 	public:
 		Interet() { description = Description::ANTIQUITE; prix = 300; }
 		Interet(Description d, int price) :prix(price), description(d) {};*/
-	bool operator()(Description description, int prix, ObjetGenerique& a, int nb_refus = 3)//ObjetEncan
+	bool operator()(Description description, int budget, ObjetGenerique& a)//ObjetEncan
 	{
-		bool interesse = false;
 
-		if (description == a.getCaracG().typeObjet) 
+		/*int val;
+		switch (description)
 		{
-			int val;
-			switch (description)
-			{
-			case ART:
-				val = a.getCaracG().valeurArt;
-			case ANTIQUITE:
-				val = a.getCaracG().valeur;
-			case SERVICE:
-				val = a.getCaracG().tarif;
-			}
+		case ART:
+			val = a.getCaracG().valeurArt;
+		case ANTIQUITE:
+			val = a.getCaracG().valeur;
+		case SERVICE:
+			val = a.getCaracG().tarif;
+		}*/
+		//if (a.getCaracG().objEnc.get()->getPrixActuel()<= budget)
 
-			interesse = (prix / val) * 0.9 < ((RAND_MAX + rand()) / (2*RAND_MAX));
-		}
+			//interesse = (prix / val) * 0.9 < ((RAND_MAX + rand()) / (2*RAND_MAX));*/
 
-		return interesse;
+		return (description == a.getCaracG().typeObjet) && (a.getCaracG().objEnc.get()->getPrixActuel() <= budget);
 		//return description == a.getDescription() || prix <= a.getPrice();
 	}
 
