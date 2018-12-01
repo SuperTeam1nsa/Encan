@@ -26,7 +26,7 @@ Threads 4h
 	- Vendeurs 2h
 		- Mettre en vente
 		- Se delete
-		- Concevoir l'idée
+		- Appelle une fonction de l'Encan pour savoir si son objet est toujours dans la liste avec en paramètre son Objet.
 
 Faire le log + Compteur 2h
 
