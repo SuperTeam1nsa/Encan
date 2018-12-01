@@ -37,3 +37,7 @@ Balancement 3h?
 Vendredi 30/11 : UML
 du 1/12 au 12/12 : Exceptions, Adaptateurs et Threads
 du 13/12 au 16/12 : Débogage + Bonus
+
+Questions à demander :
+	- Threads : mutex qu'est qu'il lock ?
+	- UML correct ?
