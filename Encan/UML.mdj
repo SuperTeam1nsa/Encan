@@ -1032,7 +1032,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1024,
+									"left": 1152,
 									"top": -184,
 									"width": 10,
 									"height": 10
@@ -1048,7 +1048,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1024,
+									"left": 1152,
 									"top": -184,
 									"width": 10,
 									"height": 10
@@ -6908,9 +6908,9 @@
 										"$ref": "AAAAAAFnZtzMHWPP7Yw="
 									},
 									"font": "Arial;13;0",
-									"left": 856,
+									"left": 855,
 									"top": 187,
-									"width": 19.5126953125,
+									"width": 20,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,

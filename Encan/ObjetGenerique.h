@@ -51,9 +51,9 @@ public:
 	std::string getInfo() {
 		return getInfoArt() + getInfoAntiquite() + getInfoService();
 	}
-	std::string getInfoArt() { return  myCarac.typeObjet == Description::ART ? (myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.valeurArt)) : ""; }
-	std::string getInfoAntiquite() { return myCarac.typeObjet == Description::ANTIQUITE ? (myCarac.description + " valeur : " + std::to_string(myCarac.valeur)) : ""; }
-	std::string getInfoService() { return myCarac.typeObjet == Description::SERVICE ? ("tarifs : " + std::to_string(myCarac.tarif) + " xp : " + std::to_string(myCarac.xp)) : ""; }
+	std::string getInfoArt() { return  myCarac.typeObjet == Description::ART ? (myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.prix)) : ""; }
+	std::string getInfoAntiquite() { return myCarac.typeObjet == Description::ANTIQUITE ? (myCarac.description + " valeur : " + std::to_string(myCarac.prix)) : ""; }
+	std::string getInfoService() { return myCarac.typeObjet == Description::SERVICE ? ("tarifs : " + std::to_string(myCarac.prix) + " xp : " + std::to_string(myCarac.xp)) : ""; }
 	ObjetGenerique(CaracAnt myCarac, std::shared_ptr<ObjetEncan> obj);
 	ObjetGenerique(CaracArt myCarac, std::shared_ptr<ObjetEncan> obj);
 	ObjetGenerique(CaracSer myCarac, std::shared_ptr<ObjetEncan> obj);
@@ -63,20 +63,18 @@ private:
 	struct CaracG
 	{
 		Description typeObjet;
+		int prix;
 
 		std::string description;
 		Etat etat;
 		Periode periode;
-		int valeur;
 
 		int renomee;
-		int valeurArt;
 		int volume;
 		TypeArt type;
 		std::string descriptionArt;
 
 		int frais;
-		int tarif;
 		TypeSer type;
 		int xp;
 		std::shared_ptr<ObjetEncan> objEnc;

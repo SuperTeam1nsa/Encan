@@ -14,7 +14,9 @@ BUDGET TEMPS: __TOTAL__ : 7h + 5h bonus
 Exceptions : 1h
 Créer deux classes adaptateurs qui se servent de l'Encan
 	- EncanPourAcheteur 1h
+		- Enchérir
 	- EncanPourVendeur 1h
+		- Mettre aux enchères
 
 Threads 4h 
 	- Se servir de l'ObjetEncan qqpart
@@ -24,7 +26,7 @@ Threads 4h
 	- Vendeurs 2h
 		- Mettre en vente
 		- Se delete
-		- Concevoir l'idée
+		- Appelle une fonction de l'Encan pour savoir si son objet est toujours dans la liste avec en paramètre son Objet.
 
 Faire le log + Compteur 2h
 
@@ -35,3 +37,7 @@ Balancement 3h?
 Vendredi 30/11 : UML
 du 1/12 au 12/12 : Exceptions, Adaptateurs et Threads
 du 13/12 au 16/12 : Débogage + Bonus
+
+Questions à demander :
+	- Threads : mutex qu'est qu'il lock ?
+	- UML correct ?
