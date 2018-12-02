@@ -6,7 +6,7 @@ std::mutex mutex;
 void Acheteurs::acheter() {
 	//std::lock_guard<std::mutex> lock(mutex);
 
-
+	//=> un seul thread essaiera d'acheter à la fois
 	//entrée en zone critique #utilisation de l'encan
 	mutex.lock();
 	bool presente_un_interet = false;

@@ -41,3 +41,11 @@ du 13/12 au 16/12 : Débogage + Bonus
 Questions à demander :
 	- Threads : mutex qu'est qu'il lock ?
 	- UML correct ?
+	
+Threads rqs:
+Thread Encan: se servir du problème des lecteurs/rédacteurs:
+=> Acheteru:  mutex autour du getListeObjet +for || copie de la liste et réalisation de l'enchère
+=> le même mutex est check pour l'écriture dans la liste par un vendeur 
+=> mutex déclaré en statique dans l'encan
+thread().detach(); pour créer des threads anonymes dans le main
+boucle while(1) avec un break quand l'objet est vendu/acheté 
