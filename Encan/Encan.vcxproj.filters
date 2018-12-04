@@ -107,9 +107,6 @@
     <ClCompile Include="GestionnaireTransaction.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Transaction.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Art.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>

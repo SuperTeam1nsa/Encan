@@ -37,7 +37,7 @@ public:
 
 	enum TypeSer
 	{
-		LIVRAISON, VOYAGE, MENAGE, CUISINE, COURS, INCONNU
+		LIVRAISON, VOYAGE, MENAGE, CUISINE, COURS, UNKNOWN
 	};
 	struct CaracSer
 	{
@@ -47,13 +47,6 @@ public:
 		int xp;
 	};
 
-	// juste en exemple
-	std::string getInfo() {
-		return getInfoArt() + getInfoAntiquite() + getInfoService();
-	}
-	std::string getInfoArt() { return  myCarac.typeObjet == Description::ART ? (myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.prix)) : ""; }
-	std::string getInfoAntiquite() { return myCarac.typeObjet == Description::ANTIQUITE ? (myCarac.description + " valeur : " + std::to_string(myCarac.prix)) : ""; }
-	std::string getInfoService() { return myCarac.typeObjet == Description::SERVICE ? ("tarifs : " + std::to_string(myCarac.prix) + " xp : " + std::to_string(myCarac.xp)) : ""; }
 	ObjetGenerique(CaracAnt myCarac, std::shared_ptr<ObjetEncan> obj);
 	ObjetGenerique(CaracArt myCarac, std::shared_ptr<ObjetEncan> obj);
 	ObjetGenerique(CaracSer myCarac, std::shared_ptr<ObjetEncan> obj);
@@ -75,7 +68,7 @@ private:
 		std::string descriptionArt;
 
 		int frais;
-		TypeSer type;
+		TypeSer type_ser;
 		int xp;
 		std::shared_ptr<ObjetEncan> objEnc;
 	};
@@ -85,4 +78,12 @@ private:
 public:
 	CaracG getCaracG() const { return myCarac; }
 	std::shared_ptr<ObjetEncan> getObjEnc() const { return myCarac.objEnc; }
+	// juste en exemple
+	std::string getInfo() const {
+		return getInfoArt() + getInfoAntiquite() + getInfoService();
+	}
+	std::string getInfoArt() const { return  myCarac.typeObjet == Description::ART ? (myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.prix)) : ""; }
+	std::string getInfoAntiquite() const { return myCarac.typeObjet == Description::ANTIQUITE ? (myCarac.description + " valeur : " + std::to_string(myCarac.prix)) : ""; }
+	std::string getInfoService() const { return myCarac.typeObjet == Description::SERVICE ? ("tarifs : " + std::to_string(myCarac.prix) + " xp : " + std::to_string(myCarac.xp)) : ""; }
+
 };

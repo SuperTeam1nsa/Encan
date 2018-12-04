@@ -11,8 +11,8 @@ void Acheteurs::acheter() {
 	//car ajout d'une valeur à la liste des objets pendant qu'on la lit : mal 
 	//acheteurs car on va modifier le prix de l'objet selectionne avec les enchères
 	//parallèlle : 2 writers
-	bool presente_un_interet = false;
-	bool va_acheter = false;
+	bool presente_un_interet;
+	bool va_acheter;
 	int time = 0;
 	ObjetGenerique* achat;
 

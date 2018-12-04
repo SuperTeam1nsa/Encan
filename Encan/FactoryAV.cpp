@@ -9,7 +9,7 @@
 #include <functional>
 
 
-auto FactoryAV::createAcheteurs() {
+Acheteurs* FactoryAV::createAcheteurs() {
 
 	Acheteurs* type[5] = {
 new Acheteurs(500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Luisa") ,
@@ -81,6 +81,6 @@ VendeursAvecAdaptateur* FactoryAV::createVendeursAvecAdaptateur() //Vendeurs<T>*
 template<class T>
 Vendeurs<T>* FactoryAV::createVendeurs()
 {
-	return new Vendeurs<T>(T.callFactory(), T.getNomDuProgrammeursAimantCeTypeDObjet());
+	return new Vendeurs<T>(T::callFactory(), T::getNomDuProgrammeursAimantCeTypeDObjet());
 	//ou des cast pout T, callFactory appel FactoryBetS::create...
 }

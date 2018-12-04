@@ -14,7 +14,7 @@ auto FactoryBetS::createArt()
 		std::make_unique<Art>(60, 200, 20, ObjetGenerique::TypeArt::PEINTURE, "La Joconde", std::make_shared<ObjetEncan>(50, 100, 5, 30)),
 		std::make_unique<Art>(50, 20, 100, ObjetGenerique::TypeArt::SCULPTURE, "La Tour Eiffel", std::make_shared<ObjetEncan>(0, 10, 1, 5)),
 		std::make_unique<Art>(10, 50, 5, ObjetGenerique::TypeArt::LIVRE, "Les Fleurs du Mal", std::make_shared<ObjetEncan>(10, 30, 2, 10))
-			};
+	};
 	return std::move(type[int(floor(5 * rand() / RAND_MAX))]);
 }
 
@@ -54,5 +54,6 @@ std::shared_ptr<ObjetGenerique> FactoryBetS::createBouS()
 	case 2:
 		return (createService().get())->getObjectGenerique();
 		break;
+	default: return (createService().get())->getObjectGenerique();;
 	}
 }

@@ -36,9 +36,25 @@ int main()
 		//#la version avec les pointeurs intelligents reviendrait à en passer un à l'objet => full stupid xD
 		//ok donc une fonction de create vendeur sera appellé souvent qqch comme check() 
 		//mutex only vis à vis des ressources patagées #encan
-		std::thread(FactoryAV::createVendeurs<Art>()->vendre);
-		std::thread(FactoryAV::createVendeursAvecAdaptateur()->vendre);
-		std::thread(FactoryAV::createAcheteurs()->acheter);
+		//std::thread(std::bind((FactoryAV::createVendeurs<Art>())->vendre, std::placeholders::_1)).detach();
+
+		void(Vendeurs<Art>::*ptr)(void*) = &Vendeurs<Art>::vendre;
+		Vendeurs<Art> *a = FactoryAV::createVendeurs<Art>();
+
+		//Vendeurs<Art> az(*a);
+		//(az.*ptr)(nullptr);
+		//void(*b)(void*t) = vendre;
+		//std::thread(&Vendeurs<Art>::vendre).detach()
+		std::thread(ptr, a).detach();
+
+		//le deuxième pointeur est le this vers l'objet qui appelle
+		std::thread(&Vendeurs<Art>::vendre, FactoryAV::createVendeurs<Art>()).detach();
+		//si dans la classe :std::thread spawn() {return std::thread([this] { this->test(); });}
+
+		//std::thread(Vendeurs<Art>::vendre, a).detach();
+		//std::thread(FactoryAV::createVendeursAvecAdaptateur()->vendre);
+
+		//std::thread(FactoryAV::createAcheteurs()->acheter);
 		//wait un delay pour la boucle oo
 	}
 

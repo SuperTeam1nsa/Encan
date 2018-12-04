@@ -3,7 +3,7 @@
 class VendeursAvecAdaptateur
 {
 public:
-	VendeursAvecAdaptateur(std::shared_ptr<ObjetGenerique> objet, std::string nom_vendeur) {
+	VendeursAvecAdaptateur(std::shared_ptr<ObjetGenerique> objet, std::string const& nom_vendeur) {
 		this->objet = objet; nom = nom_vendeur;
 		objet_en_enchere = false;
 	}
@@ -34,7 +34,7 @@ public:
 		}
 		//faire sa vie de thread
 	}
-	std::string getNom() { return nom; }
+	std::string getNom() const { return nom; }
 private:
 	std::shared_ptr<ObjetGenerique> objet;
 	std::string nom;
@@ -55,7 +55,7 @@ public:
 		//T.getPrix(); = NON T est un type pas une instance ! //etc
 
 	}
-	void vendre() {
+	void vendre(void*t) {
 		if (!objet_en_enchere)
 			mettreAuxEnchères();
 		//faire sa vie de thread

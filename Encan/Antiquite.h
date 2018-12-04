@@ -15,11 +15,7 @@ public:
 	static std::unique_ptr<Antiquite> callFactory();
 	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Pierre-Jean l'ancien"; }
 private:
-	Antiquite(std::string description, ObjetGenerique::Etat etat, ObjetGenerique::Periode periode, int valeur, std::shared_ptr<ObjetEncan> obj)
-	{
-		myCarac = { description, etat, periode, valeur };
-		objEnc = obj;
-	}
+
 	//Antiquite(ObjetGenerique::Periode periode, int valeur, ObjetEncan* obj) :Antiquite("Inconnue", ObjetGenerique::NEUF, periode, valeur, obj) {}
 	//Antiquite() :Antiquite("Inconnue", ObjetGenerique::NEUF, ObjetGenerique::INCONNUE, 50) {}
 
@@ -29,5 +25,10 @@ private:
 	friend class FactoryBetS;
 
 	ObjetGenerique::CaracAnt myCarac;
+	Antiquite(std::string description, ObjetGenerique::Etat etat_, ObjetGenerique::Periode periode, int valeur, std::shared_ptr<ObjetEncan> obj)
+	{
+		myCarac = { description, etat_, periode, valeur };
+		objEnc = obj;
+	}
 
 };

@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include <string>
 #include "ObjetEncan.h"
+#include "ObjetGenerique.h"
+
 class Art
 {
 private:
@@ -11,7 +13,7 @@ private:
 	};
 	std::shared_ptr<ObjetEncan> objEnc;
 
-	Art(ObjetGenerique::TypeArt type, ObjetEncan* obj) : Art(1, 100, 10, type, "Inconnu", obj) {}
+	//Art(ObjetGenerique::TypeArt type, ObjetEncan* obj) : Art(1, 100, 10, type, "Inconnu", obj) {}
 	//Art() : Art(1, 100, 10, ObjetGenerique::TypeArt::INCONNU, "Inconnu",new ObjetEncan() {}
 
 	friend class FactoryBetS;
