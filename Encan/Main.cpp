@@ -1,15 +1,7 @@
-﻿// Encan.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
-//
-
-#include "pch.h"
-#include <random>
+﻿#include "pch.h"
 #include <time.h>
-#include <iostream>
 #include <thread>
 #include "Art.h"
-#include "Antiquite.h"
-#include "Service.h"
-#include "Acheteurs.h"
 #include "Vendeurs.h"
 #include "FactoryAV.h"
 #include "Encan.h"
@@ -17,7 +9,7 @@
 
 int main()
 {
-	srand(time(NULL));
+	srand(time(nullptr));
 
 	//int const NB_VENDEURS_INI = 5;
 	//int const NB_ACHETEURS_INI = 5;
@@ -38,8 +30,8 @@ int main()
 		//mutex only vis à vis des ressources patagées #encan
 		//std::thread(std::bind((FactoryAV::createVendeurs<Art>())->vendre, std::placeholders::_1)).detach();
 
-		void(Vendeurs<Art>::*ptr)(void*) = &Vendeurs<Art>::vendre;
-		Vendeurs<Art> *a = FactoryAV::createVendeurs<Art>();
+		void (Vendeurs<Art>::*ptr)(void*) = &Vendeurs<Art>::vendre;
+		Vendeurs<Art>* a = FactoryAV::createVendeurs<Art>();
 
 		//Vendeurs<Art> az(*a);
 		//(az.*ptr)(nullptr);
@@ -64,9 +56,6 @@ int main()
 	//temps de check que les threads sont finis (on aurait utiliser join() sur des threads nommés)
 	std::this_thread::sleep_for(std::chrono::seconds(10));
 	//delete Encan::getInstance(); //ou shared_ptr sur l'instance de l'Encan mais perte de performances :\ 
-
-
-
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage

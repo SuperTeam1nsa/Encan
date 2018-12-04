@@ -1,14 +1,24 @@
 ﻿#pragma once
 #include <string>
 #include "ObjetEncan.h"
+
 enum StructEtat
 {
-	NEUF, USE, BRISE
+	NEUF,
+	USE,
+	BRISE
 };
+
 enum Periode
 {
-	PREHISTOIRE, ROMAINE, MOYEN_AGE, TEMPS_MODERNES, EPOQUE_CONTEMPORAINE, INCONNUE
+	PREHISTOIRE,
+	ROMAINE,
+	MOYEN_AGE,
+	TEMPS_MODERNES,
+	EPOQUE_CONTEMPORAINE,
+	INCONNUE
 };
+
 struct CaracAnt
 {
 	std::string description;
@@ -20,8 +30,12 @@ struct CaracAnt
 
 enum TypeArt
 {
-	LIVRE, PEINTURE, SCULPTURE, INCONNU
+	LIVRE,
+	PEINTURE,
+	SCULPTURE,
+	INCONNU
 };
+
 struct CaracArt
 {
 	int renomee;
@@ -34,8 +48,14 @@ struct CaracArt
 
 enum TypeSer
 {
-	LIVRAISON, VOYAGE, MENAGE, CUISINE, COURS, UNKNOWN
+	LIVRAISON,
+	VOYAGE,
+	MENAGE,
+	CUISINE,
+	COURS,
+	UNKNOWN
 };
+
 struct CaracSer
 {
 	int frais;
@@ -44,6 +64,7 @@ struct CaracSer
 	int xp;
 	std::string nomVendeur;
 };
+
 //ADAPTER
 class ObjetGenerique
 {
@@ -80,13 +101,35 @@ private:
 
 public:
 	CaracG getCaracG() const { return myCarac; }
+
+	std::string getNomVendeur() const
+	{
+		return myCarac.nomVendeur;
+	}
+
 	std::shared_ptr<ObjetEncan> getObjEnc() const { return myCarac.objEnc; }
 	// juste en exemple
-	std::string getInfo() const {
+	std::string getInfo() const
+	{
 		return getInfoArt() + getInfoAntiquite() + getInfoService();
 	}
-	std::string getInfoArt() const { return  myCarac.typeObjet == Description::ART ? (myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.prix)) : ""; }
-	std::string getInfoAntiquite() const { return myCarac.typeObjet == Description::ANTIQUITE ? (myCarac.description + " valeur : " + std::to_string(myCarac.prix)) : ""; }
-	std::string getInfoService() const { return myCarac.typeObjet == Description::SERVICE ? ("tarifs : " + std::to_string(myCarac.prix) + " xp : " + std::to_string(myCarac.xp)) : ""; }
 
+	std::string getInfoArt() const
+	{
+		return myCarac.typeObjet == ART ? (myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.prix)) : "";
+	}
+
+	std::string getInfoAntiquite() const
+	{
+		return myCarac.typeObjet == ANTIQUITE
+			? (myCarac.description + " valeur : " + std::to_string(myCarac.prix))
+			: "";
+	}
+
+	std::string getInfoService() const
+	{
+		return myCarac.typeObjet == SERVICE
+			? ("tarifs : " + std::to_string(myCarac.prix) + " xp : " + std::to_string(myCarac.xp))
+			: "";
+	}
 };

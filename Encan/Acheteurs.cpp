@@ -38,7 +38,7 @@ void Acheteurs::acheter() {
 		}
 		if (va_acheter)
 		{
-			bool a = (Encan::getInstance()).get()->encherir(achat, achat->getObjEnc().get()->getPrixActuel());
+			bool a = (Encan::getInstance()).get()->encherir(achat, achat->getObjEnc().get()->getPrixActuel(), nom);
 			//rq: getPrixActuel actualise aussi dans objEnchere ;) //# doit 
 			//...
 		}

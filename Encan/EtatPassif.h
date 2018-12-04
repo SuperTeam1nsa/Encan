@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include "Etat.h"
 class EtatPassif :public Etat
 {
 public:

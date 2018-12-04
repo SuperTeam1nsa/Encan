@@ -41,7 +41,14 @@ public:
 	{
 		listeObjets.push_back(o);
 	}
-	auto getListeObjet()
+	bool estVendu(ObjetGenerique* obj)
+	{
+		//TODO: chercher dans la liste la présence de l'objet (moins dégeulasse : avec un id)
+		for (auto i : listeObjets)
+			if (i.get() == obj)
+				return true;
+	}
+	auto getListeObjet() const
 	{
 		return listeObjets;
 	}
@@ -49,10 +56,11 @@ public:
 		for (auto i : listeObjets)
 			std::cout << i.get()->getInfo();
 	}
-	bool encherir(ObjetGenerique* obj, int prix, std::string nomAcheteur)
+	bool encherir(ObjetGenerique* objet_generique, int prix, std::string nomAcheteur)
 	{
 		//, std::string nomVendeur contenu dans l'objet
-		obj->getObjEnc()->addEnchere(obj, nomAcheteur);
+		objet_generique->getObjEnc()->addEnchere(new ObjetEnchere(nomAcheteur, objet_generique->getNomVendeur(),
+			prix));
 		//obj->getCaracG().objEnc.get()->;
 		return true;
 	}

@@ -5,7 +5,6 @@
 #include "FactoryAV.h"
 #include "FactoryBetS.h"
 #include <random>
-#include <math.h>
 #include <functional>
 
 

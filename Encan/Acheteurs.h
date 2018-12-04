@@ -1,9 +1,8 @@
 ﻿#pragma once
-#include "ObjetEncan.h"
+
 #include <functional>
 #include "MEF.h"
-#include <thread>
-
+#include "ObjetGenerique.h"
 //#include "Interet.h"
 //en enum #MEF= new EtatPatient etc 
 //enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT, nb };

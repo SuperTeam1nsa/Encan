@@ -2,7 +2,6 @@
 //foncteur évolué /#cycle de vie à gérér => semi foncteur ^^ 
 //#présence d'un constructeur
 #include "ObjetGenerique.h"
-#include <random>
 struct Interet
 {
 	/*private:
@@ -11,7 +10,7 @@ struct Interet
 	public:
 		Interet() { description = Description::ANTIQUITE; prix = 300; }
 		Interet(Description d, int price) :prix(price), description(d) {};*/
-	bool operator()(Description description, int budget, ObjetGenerique& a)//ObjetEncan
+	bool operator()(Description description, int budget, ObjetGenerique& a) const //ObjetEncan
 	{
 
 		/*int val;

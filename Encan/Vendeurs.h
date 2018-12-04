@@ -1,5 +1,5 @@
 ﻿#pragma once
-
+#include "Encan.h"
 template <class T>
 class Vendeurs
 {
@@ -25,7 +25,7 @@ public:
 		{
 			//template de méthode, l'accès en lecture ne doit pas être fait en même temps qu'une modification sur la liste
 			Encan::mutex.lock();
-			vendu = Encan::estVendu(objet);
+			vendu = Encan::getInstance()->estVendu(objet.get()->getObjectGenerique());
 			Encan::mutex.unlock();
 			std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		}

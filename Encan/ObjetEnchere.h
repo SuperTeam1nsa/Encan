@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "ObjetGenerique.h"
+
 class ObjetEnchere
 {
 public:
