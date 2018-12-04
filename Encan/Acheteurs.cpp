@@ -1,37 +1,53 @@
 ﻿#include "pch.h"
 #include "Encan.h"
 #include "Acheteurs.h"
-#include <mutex>
-std::mutex mutex;
+
 void Acheteurs::acheter() {
 	//std::lock_guard<std::mutex> lock(mutex);
 
 	//=> un seul thread essaiera d'acheter à la fois
 	//entrée en zone critique #utilisation de l'encan
-	mutex.lock();
+	//on locke le mutex de l'encan #seul nous allons y avoir accès : pas d'autres acheteurs ni vendeurs #ni vendeurs
+	//car ajout d'une valeur à la liste des objets pendant qu'on la lit : mal 
+	//acheteurs car on va modifier le prix de l'objet selectionne avec les enchères
+	//parallèlle : 2 writers
 	bool presente_un_interet = false;
 	bool va_acheter = false;
+	int time = 0;
 	ObjetGenerique* achat;
-	for (auto& i : (Encan::getInstance()).get()->getListeObjet())
+
+	while (time < 5000)//10 tours
 	{
-		presente_un_interet = interessant(*i);
-		currentEtat = MEF::getInstance().getNewState(currentEtat, presente_un_interet);
-		if (presente_un_interet)
+		presente_un_interet = false;
+		va_acheter = false;
+		Encan::mutex.lock();
+		for (auto& i : (Encan::getInstance()).get()->getListeObjet())
 		{
-			//si l'acheteur a envie d'acheter
-			if (currentEtat->probabilite_achat() > rand() / RAND_MAX)
+			presente_un_interet = interessant(*i);
+			currentEtat = MEF::getInstance().getNewState(currentEtat, presente_un_interet);
+			if (presente_un_interet)
 			{
-				achat = i.get();
-				va_acheter = true;
-				break;
+				//si l'acheteur a envie d'acheter
+				if (currentEtat->probabilite_achat() > rand() / RAND_MAX)
+				{
+					achat = i.get();
+					va_acheter = true;
+					break;
+				}
 			}
 		}
+		if (va_acheter)
+		{
+			bool a = (Encan::getInstance()).get()->encherir(achat, achat->getObjEnc().get()->getPrixActuel());
+			//rq: getPrixActuel actualise aussi dans objEnchere ;) //# doit 
+			//...
+		}
+		//sortie de la zone critique
+		Encan::mutex.unlock();
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		time += 500;
 	}
-	if (va_acheter)
-	{
-		(Encan::getInstance()).get().encherir();
-	}
+	//l'acheteur meurt
+	delete this;
 
-	//sortie de la zone critique
-	mutex.unlock();
 }

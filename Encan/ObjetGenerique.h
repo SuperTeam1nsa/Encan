@@ -84,4 +84,5 @@ private:
 
 public:
 	CaracG getCaracG() const { return myCarac; }
+	std::shared_ptr<ObjetEncan> getObjEnc() const { return myCarac.objEnc; }
 };

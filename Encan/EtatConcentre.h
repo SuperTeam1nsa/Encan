@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "EtatAgressif.h"
 #include "EtatNormal.h"
-class EtatConcentre :public virtual EtatAgressif, EtatNormal
+class EtatConcentre :virtual public EtatAgressif, virtual public EtatNormal
 {
 public:
 	EtatConcentre(int id) :EtatAgressif(id), EtatNormal(id) { this->id = id; }

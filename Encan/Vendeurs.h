@@ -3,7 +3,10 @@
 class VendeursAvecAdaptateur
 {
 public:
-	VendeursAvecAdaptateur(std::shared_ptr<ObjetGenerique> objet, std::string nom_vendeur) { this->objet = objet; nom = nom_vendeur; }
+	VendeursAvecAdaptateur(std::shared_ptr<ObjetGenerique> objet, std::string nom_vendeur) {
+		this->objet = objet; nom = nom_vendeur;
+		objet_en_enchere = false;
+	}
 	~VendeursAvecAdaptateur() {};
 	void mettreAuxEnchères()
 	{
@@ -11,8 +14,24 @@ public:
 
 	}
 	void vendre() {
-		if (!objet_en_enchere)
+		while (!objet_en_enchere)
+		{
+			Encan::mutex.lock();
 			mettreAuxEnchères();
+			objet_en_enchere = true;
+			Encan::mutex.unlock();
+			std::this_thread::sleep_for(std::chrono::milliseconds(20));
+
+		}
+		bool vendu = false;
+		while (!vendu)
+		{
+			//template de méthode, l'accès en lecture ne doit pas être fait en même temps qu'une modification sur la liste
+			Encan::mutex.lock();
+			vendu = Encan::estVendu(objet);
+			Encan::mutex.unlock();
+			std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		}
 		//faire sa vie de thread
 	}
 	std::string getNom() { return nom; }

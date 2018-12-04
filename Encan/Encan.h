@@ -7,6 +7,7 @@
 #include "Affichage_Info.h"
 #include <thread>
 #include <chrono>
+#include <mutex>
 
 
 class Encan
@@ -51,13 +52,14 @@ public:
 	bool encherir(ObjetGenerique* obj, int prix)
 	{
 		obj->getCaracG().objEnc.get()->addEnchere();
-		obj->getCaracG().objEnc.get()->
+		//obj->getCaracG().objEnc.get()->;
+		return true;
 	}
 
 	static int getTemps() { return temps; }
 
 	static void passerTemps();
-
+	static std::mutex mutex;
 private:
 	//static int const nbObjetsMax = 10;
 
@@ -70,7 +72,6 @@ private:
 	//dans un premier temps en shared_ptr mais si perte de performance importante en pointeur nu 
 	//ou bien Meyer's Singleton
 	static std::shared_ptr <Encan> instance;
-
 
 	static int temps;
 };
