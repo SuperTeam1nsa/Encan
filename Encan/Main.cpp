@@ -47,7 +47,10 @@ int main()
 		//std::thread(&Vendeurs<Art>::vendre).detach()
 		std::thread(ptr, a).detach();
 
+		//rq: pointeur simple car delete this en interne
 		//le deuxième pointeur est le this vers l'objet qui appelle
+		//3 = paramètre ou std::bind pour faire propre
+		//std::thread(&Vendeurs<Art>::vendre, 3 , FactoryAV::createVendeurs<Art>()).detach();
 		std::thread(&Vendeurs<Art>::vendre, FactoryAV::createVendeurs<Art>()).detach();
 		//si dans la classe :std::thread spawn() {return std::thread([this] { this->test(); });}
 

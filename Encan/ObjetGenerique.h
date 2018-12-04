@@ -1,51 +1,53 @@
 ﻿#pragma once
 #include <string>
-#include "Encan.h"
+#include "ObjetEncan.h"
+enum StructEtat
+{
+	NEUF, USE, BRISE
+};
+enum Periode
+{
+	PREHISTOIRE, ROMAINE, MOYEN_AGE, TEMPS_MODERNES, EPOQUE_CONTEMPORAINE, INCONNUE
+};
+struct CaracAnt
+{
+	std::string description;
+	StructEtat etat;
+	Periode periode;
+	int valeur;
+	std::string nomVendeur;
+};
 
+enum TypeArt
+{
+	LIVRE, PEINTURE, SCULPTURE, INCONNU
+};
+struct CaracArt
+{
+	int renomee;
+	int valeur;
+	int volume;
+	TypeArt type;
+	std::string description;
+	std::string nomVendeur;
+};
+
+enum TypeSer
+{
+	LIVRAISON, VOYAGE, MENAGE, CUISINE, COURS, UNKNOWN
+};
+struct CaracSer
+{
+	int frais;
+	int tarif;
+	TypeSer type;
+	int xp;
+	std::string nomVendeur;
+};
 //ADAPTER
 class ObjetGenerique
 {
 public:
-	enum Etat
-	{
-		NEUF, USE, BRISE
-	};
-	enum Periode
-	{
-		PREHISTOIRE, ANTIQUITE, MOYEN_AGE, TEMPS_MODERNES, EPOQUE_CONTEMPORAINE, INCONNUE
-	};
-	struct CaracAnt
-	{
-		std::string description;
-		Etat etat;
-		Periode periode;
-		int valeur;
-	};
-
-	enum TypeArt
-	{
-		LIVRE, PEINTURE, SCULPTURE, INCONNU
-	};
-	struct CaracArt
-	{
-		int renomee;
-		int valeur;
-		int volume;
-		TypeArt type;
-		std::string description;
-	};
-
-	enum TypeSer
-	{
-		LIVRAISON, VOYAGE, MENAGE, CUISINE, COURS, UNKNOWN
-	};
-	struct CaracSer
-	{
-		int frais;
-		int tarif;
-		TypeSer type;
-		int xp;
-	};
 
 	ObjetGenerique(CaracAnt myCarac, std::shared_ptr<ObjetEncan> obj);
 	ObjetGenerique(CaracArt myCarac, std::shared_ptr<ObjetEncan> obj);
@@ -57,9 +59,10 @@ private:
 	{
 		Description typeObjet;
 		int prix;
+		std::string nomVendeur;
 
 		std::string description;
-		Etat etat;
+		StructEtat etat;
 		Periode periode;
 
 		int renomee;

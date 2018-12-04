@@ -49,9 +49,10 @@ public:
 		for (auto i : listeObjets)
 			std::cout << i.get()->getInfo();
 	}
-	bool encherir(ObjetGenerique* obj, int prix)
+	bool encherir(ObjetGenerique* obj, int prix, std::string nomAcheteur)
 	{
-		obj->getCaracG().objEnc.get()->addEnchere();
+		//, std::string nomVendeur contenu dans l'objet
+		obj->getObjEnc()->addEnchere(obj, nomAcheteur);
 		//obj->getCaracG().objEnc.get()->;
 		return true;
 	}

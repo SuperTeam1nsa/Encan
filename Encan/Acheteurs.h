@@ -26,7 +26,7 @@ public:
 			interessant = interet;*/
 	}
 	~Acheteurs() {};
-	std::string getNom() { return nom; }
+	std::string getNom() const { return nom; }
 	//return un string, un chifre nevermind ^^
 	void acheter();
 	//if (interessant(object))

@@ -12,10 +12,10 @@ private:
 
 	friend class FactoryBetS;
 	std::shared_ptr<ObjetEncan> objEnc;
-	ObjetGenerique::CaracSer myCarac;
-	Service(int frais, int tarif, ObjetGenerique::TypeSer type, int xp, std::shared_ptr<ObjetEncan> obj)
+	CaracSer myCarac;
+	Service(int frais, int tarif, TypeSer type, int xp, std::string nom_vendeur, std::shared_ptr<ObjetEncan> obj)
 	{
-		myCarac = { frais, tarif, type, xp };
+		myCarac = { frais, tarif, type, xp,nom_vendeur };
 		objEnc = obj;
 	}
 };

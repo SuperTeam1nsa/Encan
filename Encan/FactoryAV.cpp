@@ -59,28 +59,29 @@ std::make_unique<Acheteurs>(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Des
 	//return new Acheteurs(500, (new Interet(Description::ART, 300))->operator(), EtatAcheteur::AGRESSIF);
 	//return new Acheteurs<Art>(500, TypeAcheteur::AGRESSIF);
 }
-
+/*
 VendeursAvecAdaptateur* FactoryAV::createVendeursAvecAdaptateur() //Vendeurs<T>*
 {
 	return new VendeursAvecAdaptateur(FactoryBetS::createBouS(), "No name");
-	/*int alea = round((2 * rand() / RAND_MAX) + 1);
-	//choisi un nom au hasard pour notre venderu
-	switch (alea)
-	{
-	case 1:
-		return new Vendeurs<T>(T.callFactory(), "Martin");
-		break;
-	case 2:
-		return new Vendeurs<T>(T.callFactory(), "Pierre");
-		break;
-	case 3:
-		return new Vendeurs<T>(T.callFactory(), "Jean");
-		break;
-	}*/
-}
+}*/
+/*int alea = round((2 * rand() / RAND_MAX) + 1);
+//choisi un nom au hasard pour notre venderu
+switch (alea)
+{
+case 1:
+	return new Vendeurs<T>(T.callFactory(), "Martin");
+	break;
+case 2:
+	return new Vendeurs<T>(T.callFactory(), "Pierre");
+	break;
+case 3:
+	return new Vendeurs<T>(T.callFactory(), "Jean");
+	break;
+}*/
+
 template<class T>
 Vendeurs<T>* FactoryAV::createVendeurs()
 {
-	return new Vendeurs<T>(T::callFactory(), T::getNomDuProgrammeursAimantCeTypeDObjet());
+	return new Vendeurs<T>(T::callFactory(T::getNomDuProgrammeursAimantCeTypeDObjet()));
 	//ou des cast pout T, callFactory appel FactoryBetS::create...
 }

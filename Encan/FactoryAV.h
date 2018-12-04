@@ -8,7 +8,7 @@ public:
 	//car thread + delete this
 	template <class T>
 	static Vendeurs<T>* createVendeurs();
-	static VendeursAvecAdaptateur* createVendeursAvecAdaptateur();
+	//static VendeursAvecAdaptateur* createVendeursAvecAdaptateur();
 	//static std::shared_ptr<Vendeurs<T>> createVendeurs();
 	//static std::shared_ptr<VendeursAvecAdaptateur> createVendeursAvecAdaptateur();
 };
