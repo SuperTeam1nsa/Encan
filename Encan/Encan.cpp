@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "Encan.h"
 
 void Encan::passerTemps()
@@ -10,9 +10,9 @@ void Encan::passerTemps()
 	}
 }
 
-Encan::Encan() 
+Encan::Encan()
 {
 	temps = 0;
-	std::thread daemon(Encan::passerTemps);
+	std::thread daemon(passerTemps);
 	daemon.detach();
 }

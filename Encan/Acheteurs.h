@@ -3,6 +3,7 @@
 #include <functional>
 #include "MEF.h"
 #include "ObjetGenerique.h"
+
 //#include "Interet.h"
 //en enum #MEF= new EtatPatient etc 
 //enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT, nb };
@@ -15,7 +16,8 @@ class Acheteurs
 {
 public:
 
-	Acheteurs(int budgetAchat, EtatAcheteur t, std::function<bool(ObjetGenerique&)>interet, std::string nom_acheteur) {
+	Acheteurs(int budgetAchat, EtatAcheteur t, std::function<bool(ObjetGenerique&)> interet, std::string nom_acheteur)
+	{
 		budget = budgetAchat;
 		interessant = interet;
 		type = t;
@@ -24,21 +26,24 @@ public:
 		/*if (interet != nullptr)
 			interessant = interet;*/
 	}
-	~Acheteurs() {};
+
+	~Acheteurs()
+	{
+	};
 	std::string getNom() const { return nom; }
 	//return un string, un chifre nevermind ^^
 	void acheter();
 	//if (interessant(object))
-		//return;//end of fonction :p 
+	//return;//end of fonction :p 
 	//if ((*interessant)(object))//etc
-//}//if T::categorie() == objet.categorie() }
-//void setState(EtatAcheteur etat);
+	//}//if T::categorie() == objet.categorie() }
+	//void setState(EtatAcheteur etat);
 private:
 	int budget;
 	EtatAcheteur type;
 	std::function<bool(ObjetGenerique&)> interessant;
 	std::string nom;
-	Etat *currentEtat;
+	Etat* currentEtat;
 	//Interet* interessant;
 	//T interessant; //dans une optique de foncteurs sans constructeurs #maps (ici on ferait que des Acheteurs<interet> a(new Interet(..)) =>useless ou pas
 	// => argument optionnel )
@@ -48,6 +53,7 @@ private:
 	//T type;
 	//type.acheterOuPas(); // ok
 };
+
 //Acheteur<Agressif>();
 /*
 Les états sont dans des

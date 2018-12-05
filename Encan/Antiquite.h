@@ -5,7 +5,9 @@
 class Antiquite
 {
 public:
-	~Antiquite() {}
+	~Antiquite()
+	{
+	}
 
 	std::shared_ptr<ObjetGenerique> getObjectGenerique() { return std::make_shared<ObjetGenerique>(myCarac, objEnc); }
 	static std::unique_ptr<Antiquite> callFactory();
@@ -21,10 +23,11 @@ private:
 	friend class FactoryBetS;
 
 	CaracAnt myCarac;
-	Antiquite(std::string description, StructEtat etat_, Periode periode, int valeur, std::string nom_vendeur, std::shared_ptr<ObjetEncan> obj)
+
+	Antiquite(std::string description, StructEtat etat_, Periode periode, int valeur, std::string nom_vendeur,
+		std::shared_ptr<ObjetEncan> obj)
 	{
 		myCarac = { description, etat_, periode, valeur, nom_vendeur };
 		objEnc = obj;
 	}
-
 };

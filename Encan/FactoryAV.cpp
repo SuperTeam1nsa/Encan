@@ -8,14 +8,14 @@
 #include <functional>
 
 
-Acheteurs* FactoryAV::createAcheteurs() {
-
+Acheteurs* FactoryAV::createAcheteurs()
+{
 	Acheteurs* type[5] = {
-new Acheteurs(500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Luisa") ,
-new Acheteurs(1000, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::SERVICE, 200,std::placeholders::_1),"Madeleine"),
-new Acheteurs(1500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Esperanza"),
-new Acheteurs(100, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Marie"),
-new Acheteurs(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Judith")
+		new Acheteurs(500, AGRESSIF, std::bind(Interet(), ART, 200, std::placeholders::_1), "Luisa"),
+		new Acheteurs(1000, AGRESSIF, std::bind(Interet(), SERVICE, 200, std::placeholders::_1), "Madeleine"),
+		new Acheteurs(1500, AGRESSIF, std::bind(Interet(), ART, 200, std::placeholders::_1), "Esperanza"),
+		new Acheteurs(100, AGRESSIF, std::bind(Interet(), ART, 200, std::placeholders::_1), "Marie"),
+		new Acheteurs(250, AGRESSIF, std::bind(Interet(), ART, 200, std::placeholders::_1), "Judith")
 	};
 	return type[static_cast<int>(5 * rand() - 1 / RAND_MAX)];
 	/*
@@ -58,6 +58,7 @@ std::make_unique<Acheteurs>(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Des
 	//return new Acheteurs(500, (new Interet(Description::ART, 300))->operator(), EtatAcheteur::AGRESSIF);
 	//return new Acheteurs<Art>(500, TypeAcheteur::AGRESSIF);
 }
+
 /*
 VendeursAvecAdaptateur* FactoryAV::createVendeursAvecAdaptateur() //Vendeurs<T>*
 {
@@ -78,7 +79,7 @@ case 3:
 	break;
 }*/
 
-template<class T>
+template <class T>
 Vendeurs<T>* FactoryAV::createVendeurs()
 {
 	return new Vendeurs<T>(T::callFactory(T::getNomDuProgrammeursAimantCeTypeDObjet()));

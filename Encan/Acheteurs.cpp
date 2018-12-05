@@ -2,7 +2,8 @@
 #include "Encan.h"
 #include "Acheteurs.h"
 
-void Acheteurs::acheter() {
+void Acheteurs::acheter()
+{
 	//std::lock_guard<std::mutex> lock(mutex);
 
 	//=> un seul thread essaiera d'acheter à la fois
@@ -16,7 +17,7 @@ void Acheteurs::acheter() {
 	int time = 0;
 	ObjetGenerique* achat;
 
-	while (time < 5000)//10 tours
+	while (time < 5000) //10 tours
 	{
 		presente_un_interet = false;
 		va_acheter = false;
@@ -28,7 +29,7 @@ void Acheteurs::acheter() {
 			if (presente_un_interet)
 			{
 				//si l'acheteur a envie d'acheter
-				if (currentEtat->probabilite_achat() > rand() / RAND_MAX)
+				if (currentEtat->probabiliteAchat() > rand() / RAND_MAX)
 				{
 					achat = i.get();
 					va_acheter = true;
@@ -49,5 +50,4 @@ void Acheteurs::acheter() {
 	}
 	//l'acheteur meurt
 	delete this;
-
 }

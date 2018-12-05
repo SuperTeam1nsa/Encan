@@ -1,14 +1,20 @@
 ﻿#pragma once
 #include "Encan.h"
+
 template <class T>
 class Vendeurs
 {
 public:
-	Vendeurs(std::shared_ptr<T> objet) {
+	Vendeurs(std::shared_ptr<T> objet)
+	{
 		this->objet = objet;
 		objet_en_enchere = false;
 	}
-	~Vendeurs() {};
+
+	~Vendeurs()
+	{
+	};
+
 	void mettreAuxEnchères()
 	{
 		while (!objet_en_enchere)
@@ -18,7 +24,6 @@ public:
 			objet_en_enchere = true;
 			Encan::mutex.unlock();
 			std::this_thread::sleep_for(std::chrono::milliseconds(20));
-
 		}
 		bool vendu = false;
 		while (!vendu)
@@ -30,20 +35,22 @@ public:
 			std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		}
 		//faire sa vie de thread
-
 	}
-	void vendre(void*t) {
+
+	void vendre(void* t)
+	{
 		if (!objet_en_enchere)
 			mettreAuxEnchères();
 		//faire sa vie de thread
 		//voir mutex dans acheteurs.cpp
 	}
+
 	//std::string getNom() { return nom; }
 private:
 	std::shared_ptr<T> objet;
 	bool objet_en_enchere;
-
 };
+
 /*
 class VendeursAvecAdaptateur
 {

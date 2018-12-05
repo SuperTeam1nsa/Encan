@@ -1,13 +1,14 @@
 ﻿#pragma once
 #include <string>
 #include "ObjetGenerique.h"
+
 class Art
 {
 private:
 	Art(int renomee, int valeur, int volume, TypeArt type, std::string description, std::string nom_vendeur,
 		std::shared_ptr<ObjetEncan> obj)
 	{
-		myCarac = { renomee, valeur, volume, type, description,nom_vendeur };
+		myCarac = { renomee, valeur, volume, type, description, nom_vendeur };
 		objEnc = obj;
 	};
 	std::shared_ptr<ObjetEncan> objEnc;
@@ -16,7 +17,9 @@ private:
 
 	CaracArt myCarac;
 public:
-	~Art() { };
+	~Art()
+	{
+	};
 
 	std::shared_ptr<ObjetGenerique> getObjectGenerique() { return std::make_shared<ObjetGenerique>(myCarac, objEnc); }
 	static std::unique_ptr<Art> callFactory();

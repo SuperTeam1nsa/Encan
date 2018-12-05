@@ -1,19 +1,18 @@
 ﻿#pragma once
-//#include "ObjetGenerique.h"
+#include "ObjetGenerique.h"
 #include <list>
-#include "Art.h"
-#include "Antiquite.h"
-#include "Service.h"
 #include "Affichage_Info.h"
 #include <thread>
-#include <chrono>
 #include <mutex>
 
 
 class Encan
 {
 public:
-	~Encan() {}
+	~Encan()
+	{
+	}
+
 	static std::shared_ptr<Encan> getInstance()
 	{
 		if (instance == nullptr)
@@ -22,6 +21,7 @@ public:
 		}
 		return instance;
 	}
+
 	/*void start() {
 		Affichage_Info<Art> affArt;
 		Affichage_Info<Antiquite> affAntiquite;
@@ -41,6 +41,7 @@ public:
 	{
 		listeObjets.push_back(o);
 	}
+
 	bool estVendu(ObjetGenerique* obj)
 	{
 		//TODO: chercher dans la liste la présence de l'objet (moins dégeulasse : avec un id)
@@ -48,15 +49,19 @@ public:
 			if (i.get() == obj)
 				return true;
 	}
+
 	auto getListeObjet() const
 	{
 		return listeObjets;
 	}
-	void affiche_information() {
+
+	void affiche_information()
+	{
 		for (auto i : listeObjets)
 			std::cout << i.get()->getInfo();
 	}
-	bool encherir(ObjetGenerique* objet_generique, int prix, std::string nomAcheteur)
+
+	bool encherir(ObjetGenerique* objet_generique, int prix, std::string nomAcheteur) const
 	{
 		//, std::string nomVendeur contenu dans l'objet
 		objet_generique->getObjEnc()->addEnchere(new ObjetEnchere(nomAcheteur, objet_generique->getNomVendeur(),
@@ -80,7 +85,7 @@ private:
 	Encan();
 	//dans un premier temps en shared_ptr mais si perte de performance importante en pointeur nu 
 	//ou bien Meyer's Singleton
-	static std::shared_ptr <Encan> instance;
+	static std::shared_ptr<Encan> instance;
 
 	static int temps;
 };

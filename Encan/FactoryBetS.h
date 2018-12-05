@@ -6,8 +6,14 @@
 class FactoryBetS
 {
 public:
-	FactoryBetS() {}
-	~FactoryBetS() {}
+	FactoryBetS()
+	{
+	}
+
+	~FactoryBetS()
+	{
+	}
+
 	static std::shared_ptr<ObjetGenerique> createBouS();
 	static std::unique_ptr<Art> createArt();
 	static std::unique_ptr<Antiquite> createAntiquite();

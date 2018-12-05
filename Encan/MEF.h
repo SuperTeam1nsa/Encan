@@ -39,7 +39,7 @@ public:
 	//prixMin contenu dans l'objet Encan
 	Etat* getNewState(Etat* currentEtat, bool interet_objet)
 	{
-		for (auto i : t[currentEtat->getEtatID()])
+		for (auto i : t[currentEtat->getEtatId()])
 			if (i->testTransitionOk(interet_objet))
 				return i->getStateToGo();
 		return currentEtat;
@@ -53,7 +53,7 @@ public:
 				delete j;
 		}
 		t.clear();
-		for (int i = 0; i < nb; i++)
+		for (int i = 0; i < NB; i++)
 			delete etats[i];
 	}
 
@@ -105,7 +105,7 @@ private:
 	EtatAgressif* eA;
 	EtatPassif* eP;
 	EtatConcentre* eC;*/
-	Etat* etats[nb];
+	Etat* etats[NB];
 	//ou un tableau d'Etats
 	//nouvel etat+condition
 	//ou lambada: [](int n,int t) { return n < temps;}//ou fonction //ou foncteurs ModereToEnerve

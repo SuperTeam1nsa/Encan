@@ -1,14 +1,19 @@
 ﻿#pragma once
-class EtatNormal :public virtual Etat
+class EtatNormal : virtual public Etat
 {
 public:
-	EtatNormal(int id) { this->id = id; }
-	float probabilite_achat() { return 0.8f; }
-	int getEtatID() {
+	explicit EtatNormal(int id) { this->id = id; }
+	float probabiliteAchat() override { return 0.8f; }
+
+	int getEtatId() override
+	{
 		return id;
 	}
-	virtual ~EtatNormal() {}
+
+	virtual ~EtatNormal()
+	{
+	}
+
 private:
 	int id;
-
 };
