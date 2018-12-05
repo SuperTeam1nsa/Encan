@@ -9,10 +9,3 @@ void Encan::passerTemps()
 		temps++;
 	}
 }
-
-Encan::Encan()
-{
-	temps = 0;
-	std::thread daemon(passerTemps);
-	daemon.detach();
-}

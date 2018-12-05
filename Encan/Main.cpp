@@ -4,7 +4,6 @@
 #include "Art.h"
 #include "Vendeurs.h"
 #include "FactoryAV.h"
-#include "Encan.h"
 
 
 int main()
@@ -30,7 +29,7 @@ int main()
 		//mutex only vis à vis des ressources patagées #encan
 		//std::thread(std::bind((FactoryAV::createVendeurs<Art>())->vendre, std::placeholders::_1)).detach();
 
-		void (Vendeurs<Art>::*ptr)(void*) = &Vendeurs<Art>::vendre;
+		void (Vendeurs<Art>::*ptr)() = &Vendeurs<Art>::vendre;
 		Vendeurs<Art>* a = FactoryAV::createVendeurs<Art>();
 
 		//Vendeurs<Art> az(*a);

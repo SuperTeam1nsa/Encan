@@ -10,6 +10,6 @@ public:
 	template <class T>
 	void operator()(std::list<std::shared_ptr<ObjetGenerique>>& obj) {
 		for (auto& i : obj)
-			std::cout << T.getInfo(i) << std::endl;
+			std::cout << T::getInfo(i) << std::endl;
 	}
 };

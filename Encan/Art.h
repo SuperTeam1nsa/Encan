@@ -4,7 +4,6 @@
 
 class Art
 {
-private:
 	Art(int renomee, int valeur, int volume, TypeArt type, std::string description, std::string nom_vendeur,
 		std::shared_ptr<ObjetEncan> obj)
 	{
@@ -22,7 +21,7 @@ public:
 	};
 
 	std::shared_ptr<ObjetGenerique> getObjectGenerique() { return std::make_shared<ObjetGenerique>(myCarac, objEnc); }
-	static std::unique_ptr<Art> callFactory();
+	static Art* callFactory();
 
 	//funny fonction pour débuggage savoir le nom du vendeur de l'objet
 	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Rémi l'artiste"; }

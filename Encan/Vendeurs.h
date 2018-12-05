@@ -19,25 +19,25 @@ public:
 	{
 		while (!objet_en_enchere)
 		{
-			Encan::mutex.lock();
+			Encan::getMutex()->lock();
 			mettreAuxEnchères();
 			objet_en_enchere = true;
-			Encan::mutex.unlock();
+			Encan::getMutex()->unlock();
 			std::this_thread::sleep_for(std::chrono::milliseconds(20));
 		}
 		bool vendu = false;
 		while (!vendu)
 		{
 			//template de méthode, l'accès en lecture ne doit pas être fait en même temps qu'une modification sur la liste
-			Encan::mutex.lock();
-			vendu = Encan::getInstance()->estVendu(objet.get()->getObjectGenerique());
-			Encan::mutex.unlock();
+			Encan::getMutex()->lock();
+			vendu = Encan::getInstance()->estVendu(objet.get()->getObjectGenerique().get());
+			Encan::getMutex()->unlock();
 			std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		}
 		//faire sa vie de thread
 	}
 
-	void vendre(void* t)
+	void vendre()
 	{
 		if (!objet_en_enchere)
 			mettreAuxEnchères();
