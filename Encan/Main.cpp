@@ -1,14 +1,12 @@
 ﻿#include "pch.h"
 #include <time.h>
 #include <thread>
-#include "Art.h"
-#include "Vendeurs.h"
 #include "FactoryAV.h"
-
+#include "Art.h"
 
 int main()
 {
-	srand(time(nullptr));
+	srand(static_cast<unsigned int>(time(nullptr)));
 
 	//int const NB_VENDEURS_INI = 5;
 	//int const NB_ACHETEURS_INI = 5;
@@ -29,20 +27,25 @@ int main()
 		//mutex only vis à vis des ressources patagées #encan
 		//std::thread(std::bind((FactoryAV::createVendeurs<Art>())->vendre, std::placeholders::_1)).detach();
 
-		void (Vendeurs<Art>::*ptr)() = &Vendeurs<Art>::vendre;
-		Vendeurs<Art>* a = FactoryAV::createVendeurs<Art>();
+	//	void (Vendeurs<Art>::*ptr)() = &Vendeurs<Art>::vendre;
+//		Vendeurs<Art>* a = FactoryAV::createVendeurs<Art>();
 
 		//Vendeurs<Art> az(*a);
 		//(az.*ptr)(nullptr);
 		//void(*b)(void*t) = vendre;
 		//std::thread(&Vendeurs<Art>::vendre).detach()
-		std::thread(ptr, a).detach();
+//		std::thread(ptr, a).detach();
 
 		//rq: pointeur simple car delete this en interne
 		//le deuxième pointeur est le this vers l'objet qui appelle
 		//3 = paramètre ou std::bind pour faire propre
 		//std::thread(&Vendeurs<Art>::vendre, 3 , FactoryAV::createVendeurs<Art>()).detach();
-		std::thread(&Vendeurs<Art>::vendre, FactoryAV::createVendeurs<Art>()).detach();
+
+
+		Vendeurs<Art>* temp = FactoryAV::createVendeurs<Art>();
+		//std::thread(&Vendeurs<Art>::vendre, temp).detach();
+
+
 		//si dans la classe :std::thread spawn() {return std::thread([this] { this->test(); });}
 
 		//std::thread(Vendeurs<Art>::vendre, a).detach();
@@ -50,11 +53,12 @@ int main()
 
 		//std::thread(FactoryAV::createAcheteurs()->acheter);
 		//wait un delay pour la boucle oo
+		std::this_thread::sleep_for(std::chrono::seconds(10));
 	}
 
 	//temps de check que les threads sont finis (on aurait utiliser join() sur des threads nommés)
-	std::this_thread::sleep_for(std::chrono::seconds(10));
-	//delete Encan::getInstance(); //ou shared_ptr sur l'instance de l'Encan mais perte de performances :\ 
+
+	//delete Encan::getInstance(); //ou shared_ptr sur l'instance de l'Encan mais perte de performances  
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage

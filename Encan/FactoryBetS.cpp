@@ -8,7 +8,7 @@
 
 Art* FactoryBetS::createArt()
 {
-	Art* type[5] = {
+	Art* tab[5] = {
 		new Art(99, 100, 10, LIVRE, "La Bible", Art::getNomDuProgrammeursAimantCeTypeDObjet() + " 1",
 							  std::make_shared<ObjetEncan>(20, 50, 3, 20)),
 		new Art(80, 40, 40, SCULPTURE, "Le Penseur", Art::getNomDuProgrammeursAimantCeTypeDObjet() + " 2",
@@ -22,12 +22,12 @@ Art* FactoryBetS::createArt()
 							  Art::getNomDuProgrammeursAimantCeTypeDObjet() + " 5",
 							  std::make_shared<ObjetEncan>(10, 30, 2, 10))
 	};
-	return std::move(type[int(floor(5 * rand() / RAND_MAX))]);
+	return tab[int(floor(5 * rand() / RAND_MAX))];
 }
 
 Antiquite* FactoryBetS::createAntiquite()
 {
-	Antiquite* type[5] = {
+	Antiquite* tab[5] = {
 		new Antiquite("Peinture Rupestre", NEUF, PREHISTOIRE, 20,
 									Antiquite::getNomDuProgrammeursAimantCeTypeDObjet() + " 1",
 									std::make_shared<ObjetEncan>(0, 10, 1, 5)),
@@ -44,12 +44,12 @@ Antiquite* FactoryBetS::createAntiquite()
 									Antiquite::getNomDuProgrammeursAimantCeTypeDObjet() + " 5",
 									std::make_shared<ObjetEncan>(20, 30, 1, 10))
 	};
-	return std::move(type[int(floor(5 * rand() / RAND_MAX))]);
+	return tab[int(floor(5 * rand() / RAND_MAX))];
 }
 
 Service* FactoryBetS::createService()
 {
-	Service* type[5] = {
+	Service* tab[5] = {
 		new Service(10, 50, LIVRAISON, 100, Service::getNomDuProgrammeursAimantCeTypeDObjet() + " 1",
 								  std::make_shared<ObjetEncan>(20, 30, 1, 10)),
 		new Service(20, 100, VOYAGE, 80, Service::getNomDuProgrammeursAimantCeTypeDObjet() + " 2",
@@ -61,7 +61,7 @@ Service* FactoryBetS::createService()
 		new Service(50, 100, COURS, 20, Service::getNomDuProgrammeursAimantCeTypeDObjet() + " 5",
 								  std::make_shared<ObjetEncan>(50, 80, 3, 20))
 	};
-	return std::move(type[int(floor(5 * rand() / RAND_MAX))]);
+	return tab[int(floor(5 * rand() / RAND_MAX))];
 }
 
 /*

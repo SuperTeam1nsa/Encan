@@ -5,51 +5,28 @@ template <class T>
 class Vendeurs
 {
 public:
-	Vendeurs(std::shared_ptr<T> objet)
+	explicit Vendeurs(T* objet, std::string nom)
 	{
 		this->objet = objet;
-		objet_en_enchere = false;
+		objetEnEnchere = false;
+		this->nom = nom;
 	}
 
 	~Vendeurs()
 	{
 	};
 
-	void mettreAuxEnchères()
-	{
-		while (!objet_en_enchere)
-		{
-			Encan::getMutex()->lock();
-			mettreAuxEnchères();
-			objet_en_enchere = true;
-			Encan::getMutex()->unlock();
-			std::this_thread::sleep_for(std::chrono::milliseconds(20));
-		}
-		bool vendu = false;
-		while (!vendu)
-		{
-			//template de méthode, l'accès en lecture ne doit pas être fait en même temps qu'une modification sur la liste
-			Encan::getMutex()->lock();
-			vendu = Encan::getInstance()->estVendu(objet.get()->getObjectGenerique().get());
-			Encan::getMutex()->unlock();
-			std::this_thread::sleep_for(std::chrono::milliseconds(500));
-		}
-		//faire sa vie de thread
-	}
+	void mettreAuxEncheres();
 
-	void vendre()
-	{
-		if (!objet_en_enchere)
-			mettreAuxEnchères();
-		//faire sa vie de thread
-		//voir mutex dans acheteurs.cpp
-	}
+	void vendre();
 
-	//std::string getNom() { return nom; }
+	std::string getNom() const { return nom; }
 private:
-	std::shared_ptr<T> objet;
-	bool objet_en_enchere;
+	T* objet;
+	bool objetEnEnchere;
+	std::string nom;
 };
+
 
 /*
 class VendeursAvecAdaptateur

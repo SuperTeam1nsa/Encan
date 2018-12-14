@@ -24,5 +24,5 @@ public:
 	static Art* callFactory();
 
 	//funny fonction pour débuggage savoir le nom du vendeur de l'objet
-	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Rémi l'artiste"; }
+	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Remi l'artiste"; }
 };

@@ -21,7 +21,7 @@ void Acheteurs::acheter()
 	{
 		presente_un_interet = false;
 		va_acheter = false;
-		Encan::getMutex()->lock();
+		Encan::getInstance()->getMutex()->lock();
 		for (auto& i : (Encan::getInstance())->getListeObjet())
 		{
 			presente_un_interet = interessant(*i);
@@ -44,7 +44,7 @@ void Acheteurs::acheter()
 			//...
 		}
 		//sortie de la zone critique
-		Encan::getMutex()->unlock();
+		Encan::getInstance()->getMutex()->unlock();
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		time += 500;
 	}

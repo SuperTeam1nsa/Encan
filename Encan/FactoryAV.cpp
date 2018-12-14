@@ -3,10 +3,11 @@
 #include "Vendeurs.h"
 #include "Interet.h"
 #include "FactoryAV.h"
-#include "FactoryBetS.h"
 #include <random>
 #include <functional>
-
+#include "Art.h"
+#include "Antiquite.h"
+#include "Service.h"
 
 Acheteurs* FactoryAV::createAcheteurs()
 {
@@ -82,6 +83,6 @@ case 3:
 template <class T>
 Vendeurs<T>* FactoryAV::createVendeurs()
 {
-	return new Vendeurs<T>(T::callFactory(T::getNomDuProgrammeursAimantCeTypeDObjet()));
+	return new Vendeurs<T>(T::callFactory(), T::getNomDuProgrammeursAimantCeTypeDObjet());
 	//ou des cast pout T, callFactory appel FactoryBetS::create...
 }

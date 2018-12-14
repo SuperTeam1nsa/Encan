@@ -13,16 +13,10 @@ public:
 	{
 		for (auto i : listeObjets)
 			delete i;
+		delete mtx;
 	}
 
-	static Encan* getInstance()
-	{
-		if (instance == nullptr)
-		{
-			instance = new Encan();
-		}
-		return instance;
-	}
+	static Encan* getInstance();
 
 	/*void start() {
 		Affichage_Info<Art> affArt;
@@ -76,10 +70,8 @@ public:
 	static int getTemps() { return temps; }
 
 	static void passerTemps();
-	static std::mutex* getMutex()
+	std::mutex* getMutex() const
 	{
-		if (mtx == nullptr)
-			mtx = new std::mutex();
 		return mtx;
 	}
 private:
@@ -89,15 +81,14 @@ private:
 	//std::list<std::shared_ptr<Acheteurs>> listeAcheteurs;
 	//std::list<std::shared_ptr<Vendeurs>> listeVendeurs;
 
-	static std::mutex* mtx;
+	std::mutex* mtx;
 	Encan() {
-		temps = 0;
+		mtx = new std::mutex();
 		std::thread daemon(passerTemps);
 		daemon.detach();
 	}
 	//dans un premier temps en shared_ptr mais si perte de performance importante en pointeur nu 
 	//ou bien Meyer's Singleton
 	static Encan* instance;
-
 	static int temps;
 };

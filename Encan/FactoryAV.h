@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Acheteurs.h"
-
+#include "Vendeurs.h"
 class FactoryAV
 {
 public:
