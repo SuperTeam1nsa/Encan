@@ -37,6 +37,10 @@ public:
 	{
 		listeObjets.push_back(o);
 	}
+	void removeObjet(ObjetGenerique* o)
+	{
+		listeObjets.remove(o);
+	}
 
 	bool estVendu(ObjetGenerique* obj)
 	{
@@ -67,7 +71,7 @@ public:
 		return true;
 	}
 
-	static int getTemps() { return temps; }
+	static float getTemps() { return temps; }
 
 	static void passerTemps();
 	std::mutex* getMutex() const
@@ -84,11 +88,11 @@ private:
 	std::mutex* mtx;
 	Encan() {
 		mtx = new std::mutex();
-		std::thread daemon(passerTemps);
-		daemon.detach();
+		std::thread(&Encan::passerTemps).detach();
+		//daemon.detach();
 	}
 	//dans un premier temps en shared_ptr mais si perte de performance importante en pointeur nu 
 	//ou bien Meyer's Singleton
 	static Encan* instance;
-	static int temps;
+	static float temps;
 };

@@ -26,6 +26,9 @@ int main()
 		std::thread(&Vendeurs<Service>::vendre, FactoryAV::createVendeurs<Service>()).detach();
 		std::thread(&Vendeurs<Antiquite>::vendre, FactoryAV::createVendeurs<Antiquite>()).detach();
 
+		/*std::thread(&Acheteurs::acheter, FactoryAV::createAcheteurs()).detach();
+		std::thread(&Acheteurs::acheter, FactoryAV::createAcheteurs()).detach();
+		std::thread(&Acheteurs::acheter, FactoryAV::createAcheteurs()).detach();*/
 		//si dans la classe :std::thread spawn() {return std::thread([this] { this->test(); });}
 
 		//std::thread(Vendeurs<Art>::vendre, a).detach();

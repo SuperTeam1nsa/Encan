@@ -6,6 +6,7 @@ class Service
 public:
 	~Service()
 	{
+		delete objGen;
 	}
 
 	ObjetGenerique* getObjectGenerique() const { return objGen; }

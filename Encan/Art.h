@@ -19,6 +19,7 @@ class Art
 public:
 	~Art()
 	{
+		delete objGen;
 	};
 
 	ObjetGenerique* getObjectGenerique() const { return objGen; }

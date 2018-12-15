@@ -1,6 +1,6 @@
 ﻿#include "pch.h"
 #include "Encan.h"
-int Encan::temps = 0;
+float Encan::temps = 0;
 Encan* Encan::instance = nullptr;
 
 Encan* Encan::getInstance()
@@ -15,7 +15,7 @@ void Encan::passerTemps()
 {
 	while (true)
 	{
-		std::this_thread::sleep_for(std::chrono::seconds(1));
-		temps++;
+		std::this_thread::sleep_for(std::chrono::milliseconds(200));
+		temps += 0.2f;
 	}
 }

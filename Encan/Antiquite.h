@@ -7,6 +7,7 @@ class Antiquite
 public:
 	~Antiquite()
 	{
+		delete objGen;
 	}
 
 	ObjetGenerique* getObjectGenerique() const { return objGen; }

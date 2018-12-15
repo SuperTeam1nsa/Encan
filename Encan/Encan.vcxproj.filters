@@ -57,9 +57,6 @@
     <ClInclude Include="FactoryBetS.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="transition.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Compteur.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -81,6 +78,9 @@
     <ClInclude Include="MEF.h">
       <Filter>Fichiers d%27en-tête\MEF</Filter>
     </ClInclude>
+    <ClInclude Include="transition.h">
+      <Filter>Fichiers d%27en-tête\MEF</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -99,9 +99,6 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="FactoryBetS.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="GestionnaireTransaction.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Art.cpp">
