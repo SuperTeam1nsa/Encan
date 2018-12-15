@@ -29,24 +29,19 @@ public:
 		bool vendu = false;
 		while (!vendu)
 		{
-			printf("attend la vente \n");
+			printf("\t Le vendeur %s attend la vente \n", objet->getObjectGenerique()->getNomVendeur().c_str());
 			//template de méthode, l'accès en lecture ne doit pas être fait en même temps qu'une modification sur la liste
 			Encan::getInstance()->getMutex()->lock();
 			vendu = Encan::getInstance()->estVendu(objet->getObjectGenerique());
 			Encan::getInstance()->getMutex()->unlock();
-			std::this_thread::sleep_for(std::chrono::milliseconds(500));
+			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		}
 	}
 
 	void vendre()
 	{
-		if (!objetEnEnchere)
-		{
-			printf("LLLLLLLLLLLLAAAAAAAAAAAAA \n");
-			mettreAuxEncheres();
-		}
-		//faire sa vie de thread
-		//voir mutex dans acheteurs.cpp
+		printf("Nouveau vendeur: %s \n", objet->getObjectGenerique()->getNomVendeur().c_str());
+		mettreAuxEncheres();
 
 	}
 

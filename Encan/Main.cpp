@@ -23,7 +23,8 @@ int main()
 	{
 
 		std::thread(&Vendeurs<Art>::vendre, FactoryAV::createVendeurs<Art>()).detach();
-
+		std::thread(&Vendeurs<Service>::vendre, FactoryAV::createVendeurs<Service>()).detach();
+		std::thread(&Vendeurs<Antiquite>::vendre, FactoryAV::createVendeurs<Antiquite>()).detach();
 
 		//si dans la classe :std::thread spawn() {return std::thread([this] { this->test(); });}
 
@@ -31,7 +32,9 @@ int main()
 		//std::thread(FactoryAV::createVendeursAvecAdaptateur()->vendre);
 
 		//std::thread(FactoryAV::createAcheteurs()->acheter);
-		//wait un delay pour la boucle oo
+		//wait un delay pour la boucle 00
+		//pour eq: 2s avant respawn, les ventes devraient se faire environ dans ce délai pour éviter un nombre de 
+		//vendeurs/ acheteurs déséquilibré ( qui ferait tendre le plus long vers +00)
 		std::this_thread::sleep_for(std::chrono::seconds(1));
 	}
 

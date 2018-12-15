@@ -9,9 +9,9 @@ public:
 	{
 	}
 
-	ObjetGenerique* getObjectGenerique() const { return new ObjetGenerique(myCarac, objEnc); }
+	ObjetGenerique* getObjectGenerique() const { return objGen; }
 	static Antiquite* callFactory();
-	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Pierre-Jean l'ancien"; }
+	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Pierre-Jean l'antiquaire"; }
 	friend class FactoryBetS;
 private:
 
@@ -21,7 +21,7 @@ private:
 	//std::string Description[5] = { "Sculpture d'homme", "Armure rupestre", "Instrument de musique", "Coffre magique", "Inconnue" };
 
 	std::shared_ptr<ObjetEncan> objEnc;
-
+	ObjetGenerique* objGen;
 	CaracAnt myCarac;
 
 	Antiquite(std::string description, StructEtat etat_, Periode periode, int valeur, std::string nom_vendeur,
@@ -29,5 +29,6 @@ private:
 	{
 		myCarac = { description, etat_, periode, valeur, nom_vendeur };
 		objEnc = obj;
+		objGen = new ObjetGenerique(myCarac, objEnc);
 	}
 };

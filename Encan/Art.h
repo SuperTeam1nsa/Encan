@@ -9,9 +9,10 @@ class Art
 	{
 		myCarac = { renomee, valeur, volume, type, description, nom_vendeur };
 		objEnc = obj;
+		objGen = new ObjetGenerique(myCarac, objEnc);
 	};
 	std::shared_ptr<ObjetEncan> objEnc;
-
+	ObjetGenerique* objGen;
 	friend class FactoryBetS;
 
 	CaracArt myCarac;
@@ -20,7 +21,7 @@ public:
 	{
 	};
 
-	ObjetGenerique* getObjectGenerique() const { return new ObjetGenerique(myCarac, objEnc); }
+	ObjetGenerique* getObjectGenerique() const { return objGen; }
 	static Art* callFactory();
 
 	//funny fonction pour débuggage savoir le nom du vendeur de l'objet

@@ -8,18 +8,20 @@ public:
 	{
 	}
 
-	ObjetGenerique* getObjectGenerique() const { return new ObjetGenerique(myCarac, objEnc); }
+	ObjetGenerique* getObjectGenerique() const { return objGen; }
 	static Service* callFactory();
-	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Bah on est que 2...."; }
+	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Societe de Service Anonyme"; }
 private:
 
 	friend class FactoryBetS;
 	std::shared_ptr<ObjetEncan> objEnc;
 	CaracSer myCarac;
+	ObjetGenerique* objGen;
 
 	Service(int frais, int tarif, TypeSer type, int xp, std::string nom_vendeur, std::shared_ptr<ObjetEncan> obj)
 	{
 		myCarac = { frais, tarif, type, xp, nom_vendeur };
 		objEnc = obj;
+		objGen = new ObjetGenerique(myCarac, objEnc);
 	}
 };

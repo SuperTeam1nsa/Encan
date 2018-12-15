@@ -40,11 +40,11 @@ public:
 
 	bool estVendu(ObjetGenerique* obj)
 	{
-		//TODO: chercher dans la liste la présence de l'objet (moins dégeulasse : avec un id)
+		// chercher dans la liste la non-présence de l'objet (moins dégeulasse : avec un id)
 		for (auto i : listeObjets)
 			if (i == obj)
-				return true;
-		return false;
+				return false;
+		return true;
 	}
 
 	auto getListeObjet() const
