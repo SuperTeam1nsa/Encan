@@ -8,7 +8,7 @@ public:
 	{
 	}
 
-	std::shared_ptr<ObjetGenerique> getObjectGenerique() { return std::make_shared<ObjetGenerique>(myCarac, objEnc); }
+	ObjetGenerique* getObjectGenerique() const { return new ObjetGenerique(myCarac, objEnc); }
 	static Service* callFactory();
 	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Bah on est que 2...."; }
 private:

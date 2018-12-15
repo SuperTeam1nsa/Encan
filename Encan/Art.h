@@ -20,7 +20,7 @@ public:
 	{
 	};
 
-	std::shared_ptr<ObjetGenerique> getObjectGenerique() { return std::make_shared<ObjetGenerique>(myCarac, objEnc); }
+	ObjetGenerique* getObjectGenerique() const { return new ObjetGenerique(myCarac, objEnc); }
 	static Art* callFactory();
 
 	//funny fonction pour débuggage savoir le nom du vendeur de l'objet
