@@ -5,9 +5,7 @@
 #include "FactoryAV.h"
 #include <random>
 #include <functional>
-#include "Art.h"
-#include "Antiquite.h"
-#include "Service.h"
+#include "ObjetEncan.h"
 
 Acheteurs* FactoryAV::createAcheteurs()
 {
@@ -19,10 +17,11 @@ Acheteurs* FactoryAV::createAcheteurs()
 		new Acheteurs(250, AGRESSIF, std::bind(Interet(), ART, 200, std::placeholders::_1), "Judith")
 	};
 	return type[static_cast<int>(5 * rand() - 1 / RAND_MAX)];
-	/*
-	std::unique_ptr<Acheteurs> type[5] = {
-		 std::make_unique<Acheteurs>(500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Luisa"),
-		 std::make_unique<Acheteurs>(1000, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::SERVICE, 200,std::placeholders::_1),"Madeleine"),
+}
+/*
+std::unique_ptr<Acheteurs> type[5] = {
+	 std::make_unique<Acheteurs>(500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Luisa"),
+	 std::make_unique<Acheteurs>(1000, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::SERVICE, 200,std::placeholders::_1),"Madeleine"),
 std::make_unique<Acheteurs>(1500, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Esperanza"),
 std::make_unique<Acheteurs>(100, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Marie"),
 std::make_unique<Acheteurs>(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Description::ART, 200,std::placeholders::_1),"Judith"),
@@ -58,7 +57,7 @@ std::make_unique<Acheteurs>(250, EtatAcheteur::AGRESSIF, std::bind(Interet(),Des
 	//return new Acheteurs(500, std::ref(*(new Interet(Description::ART, 300))), EtatAcheteur::AGRESSIF);
 	//return new Acheteurs(500, (new Interet(Description::ART, 300))->operator(), EtatAcheteur::AGRESSIF);
 	//return new Acheteurs<Art>(500, TypeAcheteur::AGRESSIF);
-}
+
 
 /*
 VendeursAvecAdaptateur* FactoryAV::createVendeursAvecAdaptateur() //Vendeurs<T>*
@@ -79,10 +78,3 @@ case 3:
 	return new Vendeurs<T>(T.callFactory(), "Jean");
 	break;
 }*/
-
-template <class T>
-Vendeurs<T>* FactoryAV::createVendeurs()
-{
-	return new Vendeurs<T>(T::callFactory(), T::getNomDuProgrammeursAimantCeTypeDObjet());
-	//ou des cast pout T, callFactory appel FactoryBetS::create...
-}

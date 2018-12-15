@@ -2,6 +2,7 @@
 #include <time.h>
 #include <thread>
 #include "FactoryAV.h"
+#include "FactoryBetS.h"
 #include "Art.h"
 
 int main()
@@ -42,8 +43,9 @@ int main()
 		//std::thread(&Vendeurs<Art>::vendre, 3 , FactoryAV::createVendeurs<Art>()).detach();
 
 
-		Vendeurs<Art>* temp = FactoryAV::createVendeurs<Art>();
-		//std::thread(&Vendeurs<Art>::vendre, temp).detach();
+		//Vendeurs<Art> temp(Art::callFactory(), Art::getNomDuProgrammeursAimantCeTypeDObjet());
+		//Vendeurs<Art> temp1(*FactoryAV::createVendeurs<Art>());
+		std::thread(&Vendeurs<Art>::vendre, FactoryAV::createVendeurs<Art>()).detach();
 
 
 		//si dans la classe :std::thread spawn() {return std::thread([this] { this->test(); });}
