@@ -1,33 +1,43 @@
 ﻿#pragma once
 #include <list>
 #include "ObjetEnchere.h"
+
 enum Description
 {
-	ART, ANTIQUITE, SERVICE
+	ART,
+	ANTIQUITE,
+	SERVICE
 };
 
 //contenu dans les objets
 class ObjetEncan
 {
 public:
-	ObjetEncan(int prixIni, int prixMin, int minNbEnchere, int maxNbEnchere) {
+	ObjetEncan(int prixIni, int prixMin, int minNbEnchere, int maxNbEnchere)
+	{
 		this->prixIni = prixIni;
 		prixActuel = prixIni;
 		this->prixMin = prixMin;
 		this->minNbEnchere = minNbEnchere;
 		this->maxNbEnchere = maxNbEnchere;
-
 	}
-	void addEnchere(ObjetEnchere obj) {
+
+	void addEnchere(ObjetEnchere* obj)
+	{
 		encheres.push_back(obj);
 	}
+
 	// T* obj) { objet = obj; };
-	~ObjetEncan() {
+	~ObjetEncan()
+	{
+		for (auto i : encheres)
+			delete i;
 		encheres.clear();
 	}
-	int getPrixActuel() { return prixActuel; }
+
+	int getPrixActuel() const { return prixActuel; }
 	//T* getObjet() { return objet; }
-//:
+	//:
 	//T* objet; //art, antiquite, services etc
 private:
 	int prixIni;
@@ -35,5 +45,5 @@ private:
 	int prixActuel;
 	int minNbEnchere;
 	int maxNbEnchere;
-	std::list<ObjetEnchere> encheres;
+	std::list<ObjetEnchere*> encheres;
 };

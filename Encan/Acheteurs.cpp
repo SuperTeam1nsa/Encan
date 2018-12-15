@@ -2,7 +2,8 @@
 #include "Encan.h"
 #include "Acheteurs.h"
 
-void Acheteurs::acheter() {
+void Acheteurs::acheter()
+{
 	//std::lock_guard<std::mutex> lock(mutex);
 
 	//=> un seul thread essaiera d'acheter à la fois
@@ -14,23 +15,23 @@ void Acheteurs::acheter() {
 	bool presente_un_interet;
 	bool va_acheter;
 	int time = 0;
-	ObjetGenerique* achat;
+	ObjetGenerique* achat = nullptr;
 
-	while (time < 5000)//10 tours
+	while (time < 5000) //10 tours
 	{
 		presente_un_interet = false;
 		va_acheter = false;
-		Encan::mutex.lock();
-		for (auto& i : (Encan::getInstance()).get()->getListeObjet())
+		Encan::getInstance()->getMutex()->lock();
+		for (auto& i : (Encan::getInstance())->getListeObjet())
 		{
 			presente_un_interet = interessant(*i);
 			currentEtat = MEF::getInstance().getNewState(currentEtat, presente_un_interet);
 			if (presente_un_interet)
 			{
 				//si l'acheteur a envie d'acheter
-				if (currentEtat->probabilite_achat() > rand() / RAND_MAX)
+				if (currentEtat->probabiliteAchat() > rand() / RAND_MAX)
 				{
-					achat = i.get();
+					achat = i;
 					va_acheter = true;
 					break;
 				}
@@ -38,16 +39,15 @@ void Acheteurs::acheter() {
 		}
 		if (va_acheter)
 		{
-			bool a = (Encan::getInstance()).get()->encherir(achat, achat->getObjEnc().get()->getPrixActuel());
+			bool a = (Encan::getInstance())->encherir(achat, achat->getObjEnc().get()->getPrixActuel(), nom);
 			//rq: getPrixActuel actualise aussi dans objEnchere ;) //# doit 
 			//...
 		}
 		//sortie de la zone critique
-		Encan::mutex.unlock();
+		Encan::getInstance()->getMutex()->unlock();
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		time += 500;
 	}
 	//l'acheteur meurt
 	delete this;
-
 }

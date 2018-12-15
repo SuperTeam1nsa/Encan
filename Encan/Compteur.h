@@ -1,10 +1,10 @@
-#pragma once
+﻿#pragma once
 
 class Compteur
 {
 public:
-	Compteur() { Compteur::ajouterConstructeur(); }
-	~Compteur() { Compteur::ajouterDestructeur(); }
+	Compteur() { ajouterConstructeur(); }
+	~Compteur() { ajouterDestructeur(); }
 
 	void static ajouterConstructeur() { constructeur++; }
 	void static ajouterDestructeur() { destructeur++; }

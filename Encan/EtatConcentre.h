@@ -1,16 +1,26 @@
 ﻿#pragma once
 #include "EtatAgressif.h"
 #include "EtatNormal.h"
-class EtatConcentre :virtual public EtatAgressif, virtual public EtatNormal
+
+class EtatConcentre : public EtatAgressif, public EtatNormal
 {
 public:
-	EtatConcentre(int id) :EtatAgressif(id), EtatNormal(id) { this->id = id; }
-	float probabilite_achat() { return (EtatAgressif::probabilite_achat() + EtatNormal::probabilite_achat()) / 2; };
-	int getEtatID() {
+	explicit EtatConcentre(int id) : EtatAgressif(id), EtatNormal(id) { this->id = id; }
+
+	float probabiliteAchat() override
+	{
+		return (EtatAgressif::probabiliteAchat() + EtatNormal::probabiliteAchat()) / 2;
+	};
+
+	int getEtatId() override
+	{
 		return id;
 	}
-	virtual ~EtatConcentre() {}
+
+	virtual ~EtatConcentre()
+	{
+	}
+
 private:
 	int id;
-
 };

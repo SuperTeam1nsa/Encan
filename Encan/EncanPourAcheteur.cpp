@@ -11,7 +11,7 @@ EncanPourAcheteur::~EncanPourAcheteur()
 {
 }
 
-void EncanPourAcheteur::encherir(Acheteurs acheteur, ObjetGenerique* objet)
+void EncanPourAcheteur::encherir(Acheteurs & acheteur, ObjetGenerique & objet)
 {
-	Encan::encherir(objet, 10, acheteur.getNom());
+	Encan::getInstance()->encherir(objet, 10, acheteur.getNom())
 }

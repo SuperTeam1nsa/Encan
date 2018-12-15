@@ -2,7 +2,7 @@
 //foncteur évolué /#cycle de vie à gérér => semi foncteur ^^ 
 //#présence d'un constructeur
 #include "ObjetGenerique.h"
-#include <random>
+
 struct Interet
 {
 	/*private:
@@ -11,9 +11,8 @@ struct Interet
 	public:
 		Interet() { description = Description::ANTIQUITE; prix = 300; }
 		Interet(Description d, int price) :prix(price), description(d) {};*/
-	bool operator()(Description description, int budget, ObjetGenerique& a)//ObjetEncan
+	bool operator()(Description description, int budget, ObjetGenerique& a) const //ObjetEncan
 	{
-
 		/*int val;
 		switch (description)
 		{
@@ -26,10 +25,9 @@ struct Interet
 		}*/
 		//if (a.getCaracG().objEnc.get()->getPrixActuel()<= budget)
 
-			//interesse = (prix / val) * 0.9 < ((RAND_MAX + rand()) / (2*RAND_MAX));*/
+		//interesse = (prix / val) * 0.9 < ((RAND_MAX + rand()) / (2*RAND_MAX));*/
 
 		return (description == a.getCaracG().typeObjet) && (a.getCaracG().objEnc.get()->getPrixActuel() <= budget);
 		//return description == a.getDescription() || prix <= a.getPrice();
 	}
-
 };

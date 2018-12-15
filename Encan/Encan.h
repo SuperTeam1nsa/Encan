@@ -1,27 +1,23 @@
 ﻿#pragma once
-//#include "ObjetGenerique.h"
 #include <list>
-#include "Art.h"
-#include "Antiquite.h"
-#include "Service.h"
-#include "Affichage_Info.h"
+#include "ObjetGenerique.h"
+#include <iostream>
 #include <thread>
-#include <chrono>
 #include <mutex>
 
 
 class Encan
 {
 public:
-	~Encan() {}
-	static std::shared_ptr<Encan> getInstance()
+	~Encan()
 	{
-		if (instance == nullptr)
-		{
-			instance = std::make_shared<Encan>();
-		}
-		return instance;
+		for (auto i : listeObjets)
+			delete i;
+		delete mtx;
 	}
+
+	static Encan* getInstance();
+
 	/*void start() {
 		Affichage_Info<Art> affArt;
 		Affichage_Info<Antiquite> affAntiquite;
@@ -37,42 +33,66 @@ public:
 		affAntiquite(listeObjets);
 		affService(listeObjets);
 	}*/
-	void pushObjet(std::shared_ptr<ObjetGenerique> o)
+	void pushObjet(ObjetGenerique* o)
 	{
 		listeObjets.push_back(o);
 	}
-	auto getListeObjet()
+	void removeObjet(ObjetGenerique* o)
+	{
+		listeObjets.remove(o);
+	}
+
+	bool estVendu(ObjetGenerique* obj)
+	{
+		// chercher dans la liste la non-présence de l'objet (moins dégeulasse : avec un id)
+		for (auto i : listeObjets)
+			if (i == obj)
+				return false;
+		return true;
+	}
+
+	auto getListeObjet() const
 	{
 		return listeObjets;
 	}
-	void affiche_information() {
+
+	void afficheInformation()
+	{
 		for (auto i : listeObjets)
-			std::cout << i.get()->getInfo();
+			std::cout << i->getInfo();
 	}
-	bool encherir(ObjetGenerique* obj, int prix, std::string nomAcheteur)
+
+	bool encherir(ObjetGenerique* objet_generique, int prix, std::string nomAcheteur) const
 	{
 		//, std::string nomVendeur contenu dans l'objet
-		obj->getObjEnc()->addEnchere(obj, nomAcheteur);
+		objet_generique->getObjEnc()->addEnchere(new ObjetEnchere(nomAcheteur, objet_generique->getNomVendeur(),
+			prix));
 		//obj->getCaracG().objEnc.get()->;
 		return true;
 	}
 
-	static int getTemps() { return temps; }
+	static float getTemps() { return temps; }
 
 	static void passerTemps();
-	static std::mutex mutex;
+	std::mutex* getMutex() const
+	{
+		return mtx;
+	}
 private:
 	//static int const nbObjetsMax = 10;
 
-	std::list<std::shared_ptr<ObjetGenerique>> listeObjets;
+	std::list<ObjetGenerique*> listeObjets;
 	//std::list<std::shared_ptr<Acheteurs>> listeAcheteurs;
 	//std::list<std::shared_ptr<Vendeurs>> listeVendeurs;
 
-
-	Encan();
+	std::mutex* mtx;
+	Encan() {
+		mtx = new std::mutex();
+		std::thread(&Encan::passerTemps).detach();
+		//daemon.detach();
+	}
 	//dans un premier temps en shared_ptr mais si perte de performance importante en pointeur nu 
 	//ou bien Meyer's Singleton
-	static std::shared_ptr <Encan> instance;
-
-	static int temps;
+	static Encan* instance;
+	static float temps;
 };
