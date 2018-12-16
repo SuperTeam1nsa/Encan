@@ -1,6 +1,11 @@
 ﻿#pragma once
 #include <string>
+#include <iostream>
 #include "ObjetEncan.h"
+
+#include "Art.h"
+#include "Antiquite.h"
+#include "Service.h"
 
 enum StructEtat
 {
@@ -109,6 +114,26 @@ public:
 
 	std::shared_ptr<ObjetEncan> getObjEnc() const { return myCarac.objEnc; }
 	// juste en exemple
+	std::string getInfo(Art art) const
+	{
+		myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.prix);
+	}
+
+	std::string getInfo(Antiquite antiquite) const
+	{
+		myCarac.description + " valeur : " + std::to_string(myCarac.prix);
+	}
+
+	std::string getInfo(Service service) const
+	{
+		"tarifs : " + std::to_string(myCarac.prix) + " xp : " + std::to_string(myCarac.xp);
+	}
+
+	std::ostream &operator<<(ObjetGenerique obj)
+	{
+		std::cout << getInfo() << std::endl;
+	}
+
 	std::string getInfo() const
 	{
 		return getInfoArt() + getInfoAntiquite() + getInfoService();
@@ -122,14 +147,12 @@ public:
 	std::string getInfoAntiquite() const
 	{
 		return myCarac.typeObjet == ANTIQUITE
-			? (myCarac.description + " valeur : " + std::to_string(myCarac.prix))
-			: "";
+			? (myCarac.description + " valeur : " + std::to_string(myCarac.prix)) : "";
 	}
 
 	std::string getInfoService() const
 	{
 		return myCarac.typeObjet == SERVICE
-			? ("tarifs : " + std::to_string(myCarac.prix) + " xp : " + std::to_string(myCarac.xp))
-			: "";
+			? ("tarifs : " + std::to_string(myCarac.prix) + " xp : " + std::to_string(myCarac.xp)) : "";
 	}
 };
