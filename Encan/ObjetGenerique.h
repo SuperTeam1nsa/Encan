@@ -108,28 +108,38 @@ public:
 	}
 
 	std::shared_ptr<ObjetEncan> getObjEnc() const { return myCarac.objEnc; }
-	// juste en exemple
+
+	std::ostream& operator<<(std::ostream& o) const
+	{
+		return o << getInfo(true);
+	}
 	std::string getInfo() const
 	{
 		return getInfoArt() + getInfoAntiquite() + getInfoService();
 	}
+	std::string getInfo(bool avecSautDeLigne) const
+	{
+		if (avecSautDeLigne)
+			return "\n " + getInfoArt() + getInfoAntiquite() + getInfoService();
+		return getInfo();
+	}
 
 	std::string getInfoArt() const
 	{
-		return myCarac.typeObjet == ART ? (myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.prix)) : "";
+		return myCarac.typeObjet == ART ? ("Art : " + myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.prix)) : "";
 	}
 
 	std::string getInfoAntiquite() const
 	{
 		return myCarac.typeObjet == ANTIQUITE
-			? (myCarac.description + " valeur : " + std::to_string(myCarac.prix))
+			? ("Antiquite : " + myCarac.description + " valeur : " + std::to_string(myCarac.prix))
 			: "";
 	}
 
 	std::string getInfoService() const
 	{
 		return myCarac.typeObjet == SERVICE
-			? ("tarifs : " + std::to_string(myCarac.prix) + " xp : " + std::to_string(myCarac.xp))
+			? ("Service : tarifs : " + std::to_string(myCarac.prix) + " xp : " + std::to_string(myCarac.xp))
 			: "";
 	}
 };

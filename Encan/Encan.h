@@ -39,11 +39,7 @@ public:
 		return listeObjets;
 	}
 
-	void afficheInformation()
-	{
-		for (auto i : listeObjets)
-			std::cout << i->getInfo();
-	}
+	void afficheInformation();
 
 	bool encherir(ObjetGenerique* objet_generique, int prix, std::string nomAcheteur) const override;
 

@@ -29,7 +29,7 @@ public:
 		}
 		bool vendu = false;
 		float temps_ini = Temps::getTemps();
-		while (!vendu && (Temps::getTemps() - temps_ini) < 5)
+		while (!vendu && (Temps::getTemps() - temps_ini) < 7)
 		{
 
 			printf("\n \t Le vendeur %s attend la vente", objet->getObjectGenerique()->getNomVendeur().c_str());
