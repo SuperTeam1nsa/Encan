@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include "Encan.h"
+#include "Temps.h"
 float Encan::temps = 0;
 Encan* Encan::instance = nullptr;
 
@@ -11,11 +12,21 @@ Encan* Encan::getInstance()
 	}
 	return instance;
 }
-void Encan::passerTemps()
+bool Encan::encherir(ObjetGenerique* objet_generique, int prix, std::string nomAcheteur) const
 {
-	while (true)
-	{
-		std::this_thread::sleep_for(std::chrono::milliseconds(200));
-		temps += 0.2f;
-	}
+	// std::string nomVendeur contenu dans l'objet
+	ObjetEncan* aux = objet_generique->getObjEnc().get();
+	aux->addEnchere(new ObjetEnchere(nomAcheteur, objet_generique->getNomVendeur(),
+		prix));
+	if (aux->getPrixActuel() > aux->getPrixMin() && aux->getNbEnchere() > aux->getMinNbEnchere()
+		&& (Temps::getTemps() - aux->getTempsIni()) > 2)
+		return true;
+	return false;
+}
+
+Encan::Encan()
+{
+	mtx = new std::mutex();
+	std::thread(&Temps::passerTemps).detach();
+	//daemon.detach();
 }

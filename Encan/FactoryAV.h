@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "Acheteurs.h"
 #include "Vendeurs.h"
+#include "Encan.h"
+
 class FactoryAV
 {
 public:
@@ -13,7 +15,7 @@ public:
 	template <class T>
 	static Vendeurs<T>* createVendeurs()
 	{
-		return new Vendeurs<T>(T::callFactory(" " + std::to_string(++idVendeur)), T::getNomDuProgrammeursAimantCeTypeDObjet());
+		return new Vendeurs<T>(T::callFactory(" " + std::to_string(++idVendeur)), T::getNomDuProgrammeursAimantCeTypeDObjet(), Encan::getInstance());
 		//ou des cast pout T, callFactory appel FactoryBetS::create...
 	}
 private:

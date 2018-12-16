@@ -1,15 +1,16 @@
 ﻿#pragma once
-#include "Encan.h"
-
+#include "EncanPourVendeur.h"
+#include "Temps.h"
 template <class T>
 class Vendeurs
 {
 public:
-	explicit Vendeurs(T* objet, std::string nom)
+	explicit Vendeurs(T* objet, std::string nom, EncanPourVendeur* enc)
 	{
 		this->objet = objet;
 		objetEnEnchere = false;
 		this->nom = nom;
+		encanV = enc;
 	}
 
 	~Vendeurs()
@@ -20,36 +21,34 @@ public:
 	{
 		while (!objetEnEnchere)
 		{
-			Encan::getInstance()->getMutex()->lock();
-			Encan::getInstance()->pushObjet(objet->getObjectGenerique());
+			encanV->getMutex()->lock();
+			encanV->pushObjet(objet->getObjectGenerique());
 			objetEnEnchere = true;
-			Encan::getInstance()->getMutex()->unlock();
+			encanV->getMutex()->unlock();
 			std::this_thread::sleep_for(std::chrono::milliseconds(20));
 		}
 		bool vendu = false;
-		float temps_ini = Encan::getTemps();
-		while (!vendu && (Encan::getTemps() - temps_ini) < 5)
+		float temps_ini = Temps::getTemps();
+		while (!vendu && (Temps::getTemps() - temps_ini) < 5)
 		{
-			//printf("\n Temps ini: %f et temps actuel : %f ", temps_ini, Encan::getTemps());
+
 			printf("\n \t Le vendeur %s attend la vente", objet->getObjectGenerique()->getNomVendeur().c_str());
-			//template de méthode, l'accès en lecture ne doit pas être fait en même temps qu'une modification sur la liste
-			Encan::getInstance()->getMutex()->lock();
-			vendu = Encan::getInstance()->estVendu(objet->getObjectGenerique());
-			Encan::getInstance()->getMutex()->unlock();
+			//l'accès en lecture ne doit pas être fait en même temps qu'une modification sur la liste
+			encanV->getMutex()->lock();
+			vendu = encanV->estVendu(objet->getObjectGenerique());
+			encanV->getMutex()->unlock();
 			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		}
-		//printf("\n \n OUT ! \n ");
+
 		printf("\n \t \t Le vendeur %s s'en va !", objet->getObjectGenerique()->getNomVendeur().c_str());
 		bool ok = false;
 		while (!ok)
 		{
-			Encan::getInstance()->getMutex()->lock();
-			//si l'objet n'a pas été vendu
-			//if (!Encan::getInstance()->estVendu(objet->getObjectGenerique()))
-			Encan::getInstance()->removeObjet(objet->getObjectGenerique());
+			encanV->getMutex()->lock();
+			encanV->removeObjet(objet->getObjectGenerique());
 			delete objet;
 			ok = true;
-			Encan::getInstance()->getMutex()->unlock();
+			encanV->getMutex()->unlock();
 		}
 		//le vendeur se suicide
 		delete this;
@@ -68,6 +67,7 @@ private:
 	T* objet;
 	bool objetEnEnchere;
 	std::string nom;
+	EncanPourVendeur* encanV;
 };
 
 

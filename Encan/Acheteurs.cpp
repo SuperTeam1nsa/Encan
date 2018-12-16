@@ -24,8 +24,8 @@ void Acheteurs::acheter()
 		presente_un_interet = false;
 		pasDHumeur = false;
 		enchere = false;
-		Encan::getInstance()->getMutex()->lock();
-		for (auto& i : (Encan::getInstance())->getListeObjet())
+		encanA->getMutex()->lock();
+		for (auto& i : encanA->getListeObjet())
 		{
 			presente_un_interet = interessant(*i);
 			currentEtat = MEF::getInstance().getNewState(currentEtat, presente_un_interet);
@@ -36,7 +36,7 @@ void Acheteurs::acheter()
 				{
 					achat = i;
 					enchere = true;
-					achatRealise = (Encan::getInstance())->encherir(achat, achat->getObjEnc().get()->getPrixActuel() + 20, nom);
+					achatRealise = encanA->encherir(achat, achat->getObjEnc().get()->getPrixActuel() + 20, nom);
 					if (achatRealise)
 						break;
 					//rq: getPrixActuel actualise aussi dans objEnchere ;) //# doit
@@ -47,7 +47,7 @@ void Acheteurs::acheter()
 		}
 		tours++;
 		//sortie de la zone critique
-		Encan::getInstance()->getMutex()->unlock();
+		encanA->getMutex()->unlock();
 		//IO en dehors de la zone critique #long
 		if (enchere)
 			printf(" \n \t \t \t \t %s fait une enchere sur l'objet de %s ", nom.c_str(), achat->getNomVendeur().c_str());
