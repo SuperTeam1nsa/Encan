@@ -9,7 +9,7 @@ public:
 	{
 		return id;
 	}
-
+	std::string description() override { return "Etat Agressif"; }
 	virtual ~EtatAgressif()
 	{
 	};

@@ -7,10 +7,10 @@ struct Interet
 {
 	/*private:
 		Description description;  //ou avec des strings
-		int prix;
-	public:
-		Interet() { description = Description::ANTIQUITE; prix = 300; }
-		Interet(Description d, int price) :prix(price), description(d) {};*/
+		int prix;*/
+public:
+	Interet() {} /*{ description = Description::ANTIQUITE; prix = 300; }
+	Interet(Description d, int price) :prix(price), description(d) {};*/
 	bool operator()(Description description, int budget, ObjetGenerique& a) const //ObjetEncan
 	{
 		/*int val;

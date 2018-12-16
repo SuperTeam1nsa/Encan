@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "EncanPourVendeur.h"
 
 
@@ -13,5 +13,5 @@ EncanPourVendeur::~EncanPourVendeur()
 
 void EncanPourVendeur::vendre(ObjetGenerique objet)
 {
-	Encan::getInstance()->pushObjet(objet);
+	//Encan::getInstance()->pushObjet(objet);
 }

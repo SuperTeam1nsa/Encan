@@ -81,6 +81,12 @@
     <ClInclude Include="transition.h">
       <Filter>Fichiers d%27en-tête\MEF</Filter>
     </ClInclude>
+    <ClInclude Include="EncanPourAcheteur.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="EncanPourVendeur.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

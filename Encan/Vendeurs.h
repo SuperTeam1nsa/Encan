@@ -31,7 +31,7 @@ public:
 		while (!vendu && (Encan::getTemps() - temps_ini) < 2)
 		{
 			//printf("\n Temps ini: %f et temps actuel : %f ", temps_ini, Encan::getTemps());
-			printf("\t Le vendeur %s attend la vente \n", objet->getObjectGenerique()->getNomVendeur().c_str());
+			printf("\n \t Le vendeur %s attend la vente", objet->getObjectGenerique()->getNomVendeur().c_str());
 			//template de méthode, l'accès en lecture ne doit pas être fait en même temps qu'une modification sur la liste
 			Encan::getInstance()->getMutex()->lock();
 			vendu = Encan::getInstance()->estVendu(objet->getObjectGenerique());
@@ -39,7 +39,7 @@ public:
 			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		}
 		//printf("\n \n OUT ! \n ");
-		printf("\t \t Le vendeur %s s'en va ! :( \n", objet->getObjectGenerique()->getNomVendeur().c_str());
+		printf("\n \t \t Le vendeur %s s'en va !", objet->getObjectGenerique()->getNomVendeur().c_str());
 		bool ok = false;
 		while (!ok)
 		{
@@ -60,7 +60,7 @@ public:
 
 	void vendre()
 	{
-		printf("Nouveau vendeur: %s \n", objet->getObjectGenerique()->getNomVendeur().c_str());
+		printf("\n Nouveau vendeur: %s ", objet->getObjectGenerique()->getNomVendeur().c_str());
 		mettreAuxEncheres();
 
 	}

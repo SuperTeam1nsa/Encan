@@ -18,19 +18,7 @@ public:
 
 	Acheteurs(int budgetAchat, EtatAcheteur t, std::function<bool(ObjetGenerique&)> interet, std::string nom_acheteur)
 	{
-		try
-		{
-			if (budget < 0)
-				throw std::string("Budget negatif !");
-			else
-				budget = budgetAchat;
-
-		}
-		catch (std::string const& chaine)
-		{
-			std::cerr << chaine << std::endl;
-		}
-		
+		budget = budgetAchat;
 		interessant = interet;
 		type = t;
 		nom = nom_acheteur;

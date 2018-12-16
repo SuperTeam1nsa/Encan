@@ -16,7 +16,7 @@ public:
 	{
 		return id;
 	}
-
+	std::string description() override { return "Etat Concentre"; }
 	virtual ~EtatConcentre()
 	{
 	}

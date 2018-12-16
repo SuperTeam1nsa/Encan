@@ -13,14 +13,17 @@ void Acheteurs::acheter()
 	//acheteurs car on va modifier le prix de l'objet selectionne avec les enchères
 	//parallèlle : 2 writers
 	bool presente_un_interet;
-	bool va_acheter;
+	bool achatRealise = false;
+	bool enchere;
+	bool pasDHumeur = false;
 	int time = 0;
 	ObjetGenerique* achat = nullptr;
-
+	printf("\n \t \t \t \t Un nouvel Acheteur est arrive: %s", nom.c_str());
 	while (time < 5000) //10 tours
 	{
 		presente_un_interet = false;
-		va_acheter = false;
+		pasDHumeur = false;
+		enchere = false;
 		Encan::getInstance()->getMutex()->lock();
 		for (auto& i : (Encan::getInstance())->getListeObjet())
 		{
@@ -32,22 +35,31 @@ void Acheteurs::acheter()
 				if (currentEtat->probabiliteAchat() > rand() / RAND_MAX)
 				{
 					achat = i;
-					va_acheter = true;
-					break;
+					enchere = true;
+					if (achatRealise = (Encan::getInstance())->encherir(achat, achat->getObjEnc().get()->getPrixActuel(), nom))
+						break;
+					//rq: getPrixActuel actualise aussi dans objEnchere ;) //# doit
 				}
+				else
+					pasDHumeur = true;
 			}
 		}
-		if (va_acheter)
-		{
-			bool a = (Encan::getInstance())->encherir(achat, achat->getObjEnc().get()->getPrixActuel(), nom);
-			//rq: getPrixActuel actualise aussi dans objEnchere ;) //# doit 
-			//...
-		}
+
 		//sortie de la zone critique
 		Encan::getInstance()->getMutex()->unlock();
+		//IO en dehors de la zone critique #long
+		if (enchere)
+			printf(" \n \t \t \t \t %s fait une enchère sur l'objet de %s ", nom.c_str(), achat->getNomVendeur().c_str());
+		if (pasDHumeur)
+			printf("\n \t \t \t \t %s serait interresse mais elle n'est pas d'humeur a acheter quelque chose, etat : %s",
+				nom.c_str(), currentEtat->description().c_str());
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		time += 500;
 	}
+	if (achatRealise)
+		printf("\n \t \t \t \t %s a achete l'objet de %s et s'en va !", nom.c_str(), achat->getNomVendeur().c_str());
+	else
+		printf("\n \t \t \t \t %s n'a rien achete mais s'en va !", nom.c_str());
 	//l'acheteur meurt
-	delete this;
+	//delete this;
 }
