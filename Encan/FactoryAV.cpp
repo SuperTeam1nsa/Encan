@@ -6,16 +6,18 @@
 #include <random>
 #include <functional>
 #include "ObjetEncan.h"
-
+unsigned long FactoryAV::idAcheteur = 0;
+unsigned long FactoryAV::idVendeur = 0;
 Acheteurs* FactoryAV::createAcheteurs()
 {
 	Acheteurs* tab[5] = {
-		new Acheteurs(500, AGRESSIF, std::bind(Interet(), ART, 200, std::placeholders::_1), "Luisa"),
-		new Acheteurs(1000, AGRESSIF, std::bind(Interet(), SERVICE, 200, std::placeholders::_1), "Madeleine"),
-		new Acheteurs(1500, AGRESSIF, std::bind(Interet(), ART, 200, std::placeholders::_1), "Esperanza"),
-		new Acheteurs(100, AGRESSIF, std::bind(Interet(), ART, 200, std::placeholders::_1), "Marie"),
-		new Acheteurs(250, AGRESSIF, std::bind(Interet(), ART, 200, std::placeholders::_1), "Judith")
+		new Acheteurs(NORMAL, std::bind(Interet(), ART, 500, std::placeholders::_1), "Joconde " + std::to_string(idAcheteur)),
+		new Acheteurs(AGRESSIF, std::bind(Interet(), SERVICE, 1000, std::placeholders::_1), "Sylvie " + std::to_string(idAcheteur)),
+		new Acheteurs(NORMAL, std::bind(Interet(), ANTIQUITE, 1500, std::placeholders::_1), "Cleopatre " + std::to_string(idAcheteur)),
+		new Acheteurs(CONCENTRE, std::bind(Interet(), ANTIQUITE, 100, std::placeholders::_1), "Aphrodite " + std::to_string(idAcheteur)),
+		new Acheteurs(NORMAL, std::bind(Interet(), ART, 250, std::placeholders::_1), "Mona Lisa " + std::to_string(idAcheteur))
 	};
+	idAcheteur++;
 	return tab[static_cast<int>(5 * (rand() - 1) / RAND_MAX)];
 }
 /*

@@ -2,15 +2,14 @@
 //foncteur évolué /#cycle de vie à gérér => semi foncteur ^^ 
 //#présence d'un constructeur
 #include "ObjetGenerique.h"
-
-struct Interet
+//struct
+class Interet
 {
-	/*private:
-		Description description;  //ou avec des strings
-		int prix;*/
 public:
-	Interet() {} /*{ description = Description::ANTIQUITE; prix = 300; }
-	Interet(Description d, int price) :prix(price), description(d) {};*/
+
+
+	//RQ: si encheres pas constantes on aurait rajouter un paramètre valeur_enchères pour avoir la valeur de
+	//l'enchere (en place_holder) 
 	bool operator()(Description description, int budget, ObjetGenerique& a) const //ObjetEncan
 	{
 		/*int val;
@@ -27,7 +26,8 @@ public:
 
 		//interesse = (prix / val) * 0.9 < ((RAND_MAX + rand()) / (2*RAND_MAX));*/
 
-		return (description == a.getCaracG().typeObjet) && (a.getCaracG().objEnc.get()->getPrixActuel() <= budget);
+		//encheres constantes de 20
+		return (description == a.getCaracG().typeObjet) && (a.getCaracG().objEnc.get()->getPrixActuel() <= budget - 20);
 		//return description == a.getDescription() || prix <= a.getPrice();
 	}
 };

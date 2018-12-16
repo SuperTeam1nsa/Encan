@@ -16,10 +16,10 @@ void Acheteurs::acheter()
 	bool achatRealise = false;
 	bool enchere;
 	bool pasDHumeur = false;
-	int time = 0;
+	int tours = 0;
 	ObjetGenerique* achat = nullptr;
-	printf("\n \t \t \t \t Un nouvel Acheteur est arrive: %s", nom.c_str());
-	while (time < 5000) //10 tours
+	printf("\n Un nouvel Acheteur est arrive: %s", nom.c_str());
+	while (tours < 5 && !achatRealise) //5 enchères max
 	{
 		presente_un_interet = false;
 		pasDHumeur = false;
@@ -36,7 +36,8 @@ void Acheteurs::acheter()
 				{
 					achat = i;
 					enchere = true;
-					if (achatRealise = (Encan::getInstance())->encherir(achat, achat->getObjEnc().get()->getPrixActuel(), nom))
+					achatRealise = (Encan::getInstance())->encherir(achat, achat->getObjEnc().get()->getPrixActuel() + 20, nom);
+					if (achatRealise)
 						break;
 					//rq: getPrixActuel actualise aussi dans objEnchere ;) //# doit
 				}
@@ -44,22 +45,22 @@ void Acheteurs::acheter()
 					pasDHumeur = true;
 			}
 		}
-
+		tours++;
 		//sortie de la zone critique
 		Encan::getInstance()->getMutex()->unlock();
 		//IO en dehors de la zone critique #long
 		if (enchere)
-			printf(" \n \t \t \t \t %s fait une enchère sur l'objet de %s ", nom.c_str(), achat->getNomVendeur().c_str());
+			printf(" \n \t \t \t \t %s fait une enchere sur l'objet de %s ", nom.c_str(), achat->getNomVendeur().c_str());
 		if (pasDHumeur)
 			printf("\n \t \t \t \t %s serait interresse mais elle n'est pas d'humeur a acheter quelque chose, etat : %s",
 				nom.c_str(), currentEtat->description().c_str());
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
-		time += 500;
+
 	}
 	if (achatRealise)
-		printf("\n \t \t \t \t %s a achete l'objet de %s et s'en va !", nom.c_str(), achat->getNomVendeur().c_str());
+		printf("\n \t \t \t \t \t %s a achete l'objet de %s et s'en va !", nom.c_str(), achat->getNomVendeur().c_str());
 	else
-		printf("\n \t \t \t \t %s n'a rien achete mais s'en va !", nom.c_str());
+		printf("\n \t \t \t \t \t %s n'a rien achete mais s'en va !", nom.c_str());
 	//l'acheteur meurt
-	//delete this;
+	delete this;
 }

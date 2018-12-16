@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "FactoryBetS.h"
 
-Antiquite* Antiquite::callFactory()
+Antiquite* Antiquite::callFactory(std::string id)
 {
-	return FactoryBetS::createAntiquite();
+	return FactoryBetS::createAntiquite(id);
 }

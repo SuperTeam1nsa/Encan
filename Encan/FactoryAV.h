@@ -13,9 +13,12 @@ public:
 	template <class T>
 	static Vendeurs<T>* createVendeurs()
 	{
-		return new Vendeurs<T>(T::callFactory(), T::getNomDuProgrammeursAimantCeTypeDObjet());
+		return new Vendeurs<T>(T::callFactory(" " + std::to_string(++idVendeur)), T::getNomDuProgrammeursAimantCeTypeDObjet());
 		//ou des cast pout T, callFactory appel FactoryBetS::create...
 	}
+private:
+	static unsigned long idVendeur;
+	static unsigned long idAcheteur;
 	//static VendeursAvecAdaptateur* createVendeursAvecAdaptateur();
 	//static std::shared_ptr<Vendeurs<T>> createVendeurs();
 	//static std::shared_ptr<VendeursAvecAdaptateur> createVendeursAvecAdaptateur();

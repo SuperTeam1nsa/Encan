@@ -11,7 +11,7 @@ public:
 	}
 
 	ObjetGenerique* getObjectGenerique() const { return objGen; }
-	static Antiquite* callFactory();
+	static Antiquite* callFactory(std::string id);
 	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Pierre-Jean l'antiquaire"; }
 	friend class FactoryBetS;
 private:

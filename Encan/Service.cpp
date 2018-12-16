@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "FactoryBetS.h"
 
-Service* Service::callFactory()
+Service* Service::callFactory(std::string id)
 {
-	return FactoryBetS::createService();
+	return FactoryBetS::createService(id);
 }

@@ -10,7 +10,7 @@ public:
 		this->nomVendeur = nomVendeur;
 		this->prix = prix;
 	}
-
+	int getPrix()const { return prix; }
 	~ObjetEnchere()
 	{
 	}

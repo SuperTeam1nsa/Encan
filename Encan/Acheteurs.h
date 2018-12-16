@@ -4,21 +4,12 @@
 #include "MEF.h"
 #include "ObjetGenerique.h"
 
-//#include "Interet.h"
-//en enum #MEF= new EtatPatient etc 
-//enum EtatAcheteur { AGRESSIF, MODERE, PATIENT, RAPIDE, LENT, nb };
-
-//on part sur un template #plus lisible
-//typedef enum ObjetInteresse{ ART, ANTIQUITE,};
-
-//template <class T>
 class Acheteurs
 {
 public:
 
-	Acheteurs(int budgetAchat, EtatAcheteur t, std::function<bool(ObjetGenerique&)> interet, std::string nom_acheteur)
+	Acheteurs(EtatAcheteur t, std::function<bool(ObjetGenerique&)> interet, std::string nom_acheteur)
 	{
-		budget = budgetAchat;
 		interessant = interet;
 		type = t;
 		nom = nom_acheteur;
@@ -39,7 +30,6 @@ public:
 	//}//if T::categorie() == objet.categorie() }
 	//void setState(EtatAcheteur etat);
 private:
-	int budget;
 	EtatAcheteur type;
 	std::function<bool(ObjetGenerique&)> interessant;
 	std::string nom;

@@ -184,6 +184,7 @@
     <ClCompile Include="FactoryBetS.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="FactoryAV.cpp" />
+    <ClCompile Include="ObjetEncan.cpp" />
     <ClCompile Include="ObjetGenerique.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

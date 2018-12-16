@@ -38,7 +38,7 @@ int main()
 		//wait un delay pour la boucle 00
 		//pour eq: 2s avant respawn, les ventes devraient se faire environ dans ce délai pour éviter un nombre de 
 		//vendeurs/ acheteurs déséquilibré ( qui ferait tendre le plus long vers +00)
-		std::this_thread::sleep_for(std::chrono::seconds(1));
+		std::this_thread::sleep_for(std::chrono::seconds(10));
 	}
 
 	//temps de check que les threads sont finis (on aurait utiliser join() sur des threads nommés)

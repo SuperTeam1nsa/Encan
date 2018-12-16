@@ -23,7 +23,7 @@ public:
 	};
 
 	ObjetGenerique* getObjectGenerique() const { return objGen; }
-	static Art* callFactory();
+	static Art* callFactory(std::string id);
 
 	//funny fonction pour débuggage savoir le nom du vendeur de l'objet
 	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Remi l'artiste"; }

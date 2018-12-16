@@ -64,11 +64,14 @@ public:
 
 	bool encherir(ObjetGenerique* objet_generique, int prix, std::string nomAcheteur) const
 	{
-		//, std::string nomVendeur contenu dans l'objet
-		objet_generique->getObjEnc()->addEnchere(new ObjetEnchere(nomAcheteur, objet_generique->getNomVendeur(),
+		// std::string nomVendeur contenu dans l'objet
+		ObjetEncan* aux = objet_generique->getObjEnc().get();
+		aux->addEnchere(new ObjetEnchere(nomAcheteur, objet_generique->getNomVendeur(),
 			prix));
-		//obj->getCaracG().objEnc.get()->;
-		return true;
+		if (aux->getPrixActuel() > aux->getPrixMin() && aux->getNbEnchere() > aux->getMinNbEnchere()
+			&& (getTemps() - aux->getTempsIni()) > 2)
+			return true;
+		return false;
 	}
 
 	static float getTemps() { return temps; }

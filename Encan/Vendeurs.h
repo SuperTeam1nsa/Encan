@@ -28,7 +28,7 @@ public:
 		}
 		bool vendu = false;
 		float temps_ini = Encan::getTemps();
-		while (!vendu && (Encan::getTemps() - temps_ini) < 2)
+		while (!vendu && (Encan::getTemps() - temps_ini) < 5)
 		{
 			//printf("\n Temps ini: %f et temps actuel : %f ", temps_ini, Encan::getTemps());
 			printf("\n \t Le vendeur %s attend la vente", objet->getObjectGenerique()->getNomVendeur().c_str());
@@ -45,11 +45,9 @@ public:
 		{
 			Encan::getInstance()->getMutex()->lock();
 			//si l'objet n'a pas été vendu
-			if (!Encan::getInstance()->estVendu(objet->getObjectGenerique()))
-			{
-				Encan::getInstance()->removeObjet(objet->getObjectGenerique());
-				delete objet;
-			}
+			//if (!Encan::getInstance()->estVendu(objet->getObjectGenerique()))
+			Encan::getInstance()->removeObjet(objet->getObjectGenerique());
+			delete objet;
 			ok = true;
 			Encan::getInstance()->getMutex()->unlock();
 		}

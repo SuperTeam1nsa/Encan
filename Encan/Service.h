@@ -10,7 +10,7 @@ public:
 	}
 
 	ObjetGenerique* getObjectGenerique() const { return objGen; }
-	static Service* callFactory();
+	static Service* callFactory(std::string id);
 	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Societe de Service Anonyme"; }
 private:
 
