@@ -24,6 +24,7 @@ int main()
 	for (int i = 0; i < 100; i++)
 	{
 
+
 		std::thread(&Vendeurs<Art>::vendre, FactoryAV::createVendeurs<Art>()).detach();
 		std::thread(&Vendeurs<Service>::vendre, FactoryAV::createVendeurs<Service>()).detach();
 		std::thread(&Vendeurs<Antiquite>::vendre, FactoryAV::createVendeurs<Antiquite>()).detach();
