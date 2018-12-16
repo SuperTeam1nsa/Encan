@@ -13,7 +13,7 @@ class Art
 	};
 	std::shared_ptr<ObjetEncan> objEnc;
 	ObjetGenerique* objGen;
-	friend class FactoryBetS;
+	friend class FactoryArt;
 
 	CaracArt myCarac;
 public:

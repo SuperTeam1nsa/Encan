@@ -14,7 +14,7 @@ public:
 	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Societe de Service Anonyme"; }
 private:
 
-	friend class FactoryBetS;
+	friend class FactoryService;
 	std::shared_ptr<ObjetEncan> objEnc;
 	CaracSer myCarac;
 	ObjetGenerique* objGen;

@@ -2,7 +2,9 @@
 #include <time.h>
 #include <thread>
 #include "FactoryAV.h"
-#include "FactoryBetS.h"
+#include "FactoryArt.h"
+#include "FactoryAntiquite.h"
+#include "FactoryService.h"
 #include "Art.h"
 
 int main()
