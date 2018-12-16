@@ -1,6 +1,6 @@
 ﻿#include "pch.h"
 #include "ObjetEncan.h"
-#include "Encan.h"
+#include "Temps.h"
 
 ObjetEncan::ObjetEncan(int prixIni, int prixMin, int minNbEnchere, int maxNbEnchere)
 {
@@ -9,5 +9,5 @@ ObjetEncan::ObjetEncan(int prixIni, int prixMin, int minNbEnchere, int maxNbEnch
 	this->prixMin = prixMin;
 	this->minNbEnchere = minNbEnchere;
 	this->maxNbEnchere = maxNbEnchere;
-	tempsInitial = Encan::getTemps();
+	tempsInitial = Temps::getTemps();
 }

@@ -3,19 +3,19 @@
 #include <functional>
 #include "MEF.h"
 #include "ObjetGenerique.h"
+#include  "EncanPourAcheteur.h"
 
 class Acheteurs
 {
 public:
 
-	Acheteurs(EtatAcheteur t, std::function<bool(ObjetGenerique&)> interet, std::string nom_acheteur)
+	Acheteurs(EtatAcheteur t, std::function<bool(ObjetGenerique&)> interet, std::string nom_acheteur, EncanPourAcheteur*enc)
 	{
 		interessant = interet;
 		type = t;
 		nom = nom_acheteur;
 		currentEtat = MEF::getInstance().getEtatInitial();
-		/*if (interet != nullptr)
-			interessant = interet;*/
+		encanA = enc;
 	}
 
 	~Acheteurs()
@@ -31,6 +31,7 @@ public:
 	//void setState(EtatAcheteur etat);
 private:
 	EtatAcheteur type;
+	EncanPourAcheteur* encanA;
 	std::function<bool(ObjetGenerique&)> interessant;
 	std::string nom;
 	Etat* currentEtat;

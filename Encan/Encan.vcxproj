@@ -172,6 +172,7 @@
     <ClInclude Include="ObjetGenerique.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Service.h" />
+    <ClInclude Include="Temps.h" />
     <ClInclude Include="transition.h" />
     <ClInclude Include="Vendeurs.h" />
   </ItemGroup>
@@ -193,6 +194,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Service.cpp" />
+    <ClCompile Include="Temps.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
