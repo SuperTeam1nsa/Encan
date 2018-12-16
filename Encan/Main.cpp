@@ -1,9 +1,11 @@
 ﻿#include "pch.h"
 #include <time.h>
 #include <thread>
-#include "FactoryAV.h"
-#include "FactoryBetS.h"
+#include "Service.h"
+#include "Antiquite.h"
 #include "Art.h"
+#include "FactoryAcheteurs.h"
+#include "FactoryVendeurs.h"
 
 int main()
 {
@@ -14,13 +16,13 @@ int main()
 	{
 
 
-		std::thread(&Vendeurs<Art>::vendre, FactoryAV::createVendeurs<Art>()).detach();
-		std::thread(&Vendeurs<Service>::vendre, FactoryAV::createVendeurs<Service>()).detach();
-		std::thread(&Vendeurs<Antiquite>::vendre, FactoryAV::createVendeurs<Antiquite>()).detach();
+		std::thread(&Vendeurs<Art>::vendre, FactoryVendeurs::createVendeurs<Art>()).detach();
+		std::thread(&Vendeurs<Service>::vendre, FactoryVendeurs::createVendeurs<Service>()).detach();
+		std::thread(&Vendeurs<Antiquite>::vendre, FactoryVendeurs::createVendeurs<Antiquite>()).detach();
 
-		std::thread(&Acheteurs::acheter, FactoryAV::createAcheteurs()).detach();
-		/*std::thread(&Acheteurs::acheter, FactoryAV::createAcheteurs()).detach();
-		std::thread(&Acheteurs::acheter, FactoryAV::createAcheteurs()).detach();*/
+		std::thread(&Acheteurs::acheter, FactoryAcheteurs::createAcheteurs()).detach();
+		std::thread(&Acheteurs::acheter, FactoryAcheteurs::createAcheteurs()).detach();
+		std::thread(&Acheteurs::acheter, FactoryAcheteurs::createAcheteurs()).detach();
 
 		//wait un delay pour la boucle 00
 		//avant respawn, les ventes devraient se faire environ dans ce délai pour éviter un nombre de 

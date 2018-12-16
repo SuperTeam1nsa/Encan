@@ -13,7 +13,7 @@ public:
 	ObjetGenerique* getObjectGenerique() const { return objGen; }
 	static Antiquite* callFactory(std::string id);
 	static std::string getNomDuProgrammeursAimantCeTypeDObjet() { return "Pierre-Jean l'antiquaire"; }
-	friend class FactoryBetS;
+	friend class FactoryBien;
 private:
 
 	//Antiquite(ObjetGenerique::Periode periode, int valeur, ObjetEncan* obj) :Antiquite("Inconnue", ObjetGenerique::NEUF, periode, valeur, obj) {}
