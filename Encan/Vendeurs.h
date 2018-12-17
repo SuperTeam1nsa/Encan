@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "EncanPourVendeur.h"
 #include "Temps.h"
+
 template <class T>
 class Vendeurs
 {
@@ -31,7 +32,6 @@ public:
 		float temps_ini = Temps::getTemps();
 		while (!vendu && (Temps::getTemps() - temps_ini) < 7)
 		{
-
 			printf("\n \t Le vendeur %s attend la vente", objet->getObjectGenerique()->getNomVendeur().c_str());
 			//l'accès en lecture ne doit pas être fait en même temps qu'une modification sur la liste
 			encanV->getMutex()->lock();
@@ -53,14 +53,12 @@ public:
 		}
 		//le vendeur se suicide
 		delete this;
-
 	}
 
 	void vendre()
 	{
 		printf("\n Nouveau vendeur: %s ", objet->getObjectGenerique()->getNomVendeur().c_str());
 		mettreAuxEncheres();
-
 	}
 
 	std::string getNom() const { return nom; }

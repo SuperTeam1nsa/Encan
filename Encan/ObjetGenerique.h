@@ -111,10 +111,12 @@ public:
 	{
 		return o << getInfo(true);
 	}
+
 	std::string getInfo() const
 	{
 		return getInfoArt() + getInfoAntiquite() + getInfoService();
 	}
+
 	std::string getInfo(bool avecSautDeLigne) const
 	{
 		if (avecSautDeLigne)
@@ -124,7 +126,9 @@ public:
 
 	std::string getInfoArt() const
 	{
-		return myCarac.typeObjet == ART ? ("Art : " + myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.prix)) : "";
+		return myCarac.typeObjet == ART
+			? ("Art : " + myCarac.descriptionArt + " valeur : " + std::to_string(myCarac.prix))
+			: "";
 	}
 
 	std::string getInfoAntiquite() const

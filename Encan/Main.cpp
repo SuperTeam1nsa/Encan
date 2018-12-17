@@ -14,8 +14,6 @@ int main()
 	//ou while(true) si on veut une boucle infinie
 	for (int i = 0; i < 100; i++)
 	{
-
-
 		std::thread(&Vendeurs<Art>::vendre, FactoryVendeurs::createVendeurs<Art>()).detach();
 		std::thread(&Vendeurs<Service>::vendre, FactoryVendeurs::createVendeurs<Service>()).detach();
 		std::thread(&Vendeurs<Antiquite>::vendre, FactoryVendeurs::createVendeurs<Antiquite>()).detach();
@@ -39,17 +37,17 @@ int main()
 //	void (Vendeurs<Art>::*ptr)(int) = &Vendeurs<Art>::vendre;
 //		Vendeurs<Art>* a = FactoryAV::createVendeurs<Art>();
 
-		//Vendeurs<Art> az(*a);
-		//(az.*ptr)(nullptr);
-		//void(*b)(void*t) = vendre;
-		//std::thread(&Vendeurs<Art>::vendre).detach()
+//Vendeurs<Art> az(*a);
+//(az.*ptr)(nullptr);
+//void(*b)(void*t) = vendre;
+//std::thread(&Vendeurs<Art>::vendre).detach()
 //		std::thread(ptr, a).detach();
 
-		//rq: pointeur simple car delete this en interne
-		//le deuxième pointeur est le this vers l'objet qui appelle
-		//3 = paramètre ou std::bind pour faire propre
-		//std::thread(&Vendeurs<Art>::vendre, 3 , FactoryAV::createVendeurs<Art>()).detach();
+//rq: pointeur simple car delete this en interne
+//le deuxième pointeur est le this vers l'objet qui appelle
+//3 = paramètre ou std::bind pour faire propre
+//std::thread(&Vendeurs<Art>::vendre, 3 , FactoryAV::createVendeurs<Art>()).detach();
 
 
-		//Vendeurs<Art> temp(Art::callFactory(), Art::getNomDuProgrammeursAimantCeTypeDObjet());
-		//Vendeurs<Art> temp1(*FactoryAV::createVendeurs<Art>());*/
+//Vendeurs<Art> temp(Art::callFactory(), Art::getNomDuProgrammeursAimantCeTypeDObjet());
+//Vendeurs<Art> temp1(*FactoryAV::createVendeurs<Art>());*/

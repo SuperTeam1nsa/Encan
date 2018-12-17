@@ -9,15 +9,17 @@ public:
 	//ou en template aussi les acheteurs= NON #foncteurs et not need anyway
 	static Acheteurs* createAcheteurs();
 	//car thread + delete this
-/*	template <class T>
-	static Vendeurs<T>* createVendeurs();*/
+	/*	template <class T>
+		static Vendeurs<T>* createVendeurs();*/
 
 	template <class T>
 	static Vendeurs<T>* createVendeurs()
 	{
-		return new Vendeurs<T>(T::callFactory(" " + std::to_string(++idVendeur)), T::getNomDuProgrammeursAimantCeTypeDObjet(), Encan::getInstance());
+		return new Vendeurs<T>(T::callFactory(" " + std::to_string(++idVendeur)),
+			T::getNomDuProgrammeursAimantCeTypeDObjet(), Encan::getInstance());
 		//ou des cast pout T, callFactory appel FactoryBetS::create...
 	}
+
 private:
 	static unsigned long idVendeur;
 	static unsigned long idAcheteur;
@@ -25,6 +27,7 @@ private:
 	//static std::shared_ptr<Vendeurs<T>> createVendeurs();
 	//static std::shared_ptr<VendeursAvecAdaptateur> createVendeursAvecAdaptateur();
 };
+
 //rq sur inline, et template en static :
 /*
  https://stackoverflow.com/questions/488959/how-do-you-create-a-static-template-member-function-that-performs-actions-on-a-t

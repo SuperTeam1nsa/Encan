@@ -9,7 +9,8 @@ class Acheteurs
 {
 public:
 
-	Acheteurs(EtatAcheteur t, std::function<bool(ObjetGenerique&)> interet, std::string nom_acheteur, EncanPourAcheteur*enc)
+	Acheteurs(EtatAcheteur t, std::function<bool(ObjetGenerique&)> interet, std::string nom_acheteur,
+		EncanPourAcheteur* enc)
 	{
 		interessant = interet;
 		type = t;

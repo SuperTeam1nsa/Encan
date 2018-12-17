@@ -12,6 +12,7 @@ Encan* Encan::getInstance()
 	}
 	return instance;
 }
+
 bool Encan::encherir(ObjetGenerique* objet_generique, int prix, std::string nomAcheteur) const
 {
 	// std::string nomVendeur contenu dans l'objet
@@ -23,6 +24,7 @@ bool Encan::encherir(ObjetGenerique* objet_generique, int prix, std::string nomA
 		return true;
 	return false;
 }
+
 void Encan::afficheInformation()
 {
 	//activation des exceptions sur l'affichage
@@ -30,7 +32,8 @@ void Encan::afficheInformation()
 	while (true)
 	{
 		std::cout << "\n Debut de l'affichage des objets de l'Encan: ";
-		try {
+		try
+		{
 			if (listeObjets.size() == 0)
 				throw 0.0;
 			for (auto i : listeObjets)
@@ -54,6 +57,7 @@ void Encan::afficheInformation()
 		std::this_thread::sleep_for(std::chrono::seconds(5));
 	}
 }
+
 Encan::Encan()
 {
 	mtx = new std::mutex();

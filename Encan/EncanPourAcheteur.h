@@ -5,8 +5,13 @@
 class EncanPourAcheteur
 {
 public:
-	EncanPourAcheteur() {}
-	virtual ~EncanPourAcheteur() {}
+	EncanPourAcheteur()
+	{
+	}
+
+	virtual ~EncanPourAcheteur()
+	{
+	}
 
 	virtual bool encherir(ObjetGenerique* objet_generique, int prix, std::string nomAcheteur) const = 0;
 	virtual std::list<ObjetGenerique*> getListeObjet() const = 0;

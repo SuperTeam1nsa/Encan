@@ -5,7 +5,13 @@
 class FactoryService
 {
 public:
-	FactoryService() {}
-	~FactoryService() {}
+	FactoryService()
+	{
+	}
+
+	~FactoryService()
+	{
+	}
+
 	static Service* createService(std::string id);
 };

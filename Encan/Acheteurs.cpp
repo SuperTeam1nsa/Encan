@@ -53,12 +53,13 @@ void Acheteurs::acheter()
 		encanA->getMutex()->unlock();
 		//IO en dehors de la zone critique #long
 		if (enchere)
-			printf(" \n \t \t \t \t %s fait une enchere sur l'objet de %s ", nom.c_str(), achat->getNomVendeur().c_str());
+			printf(" \n \t \t \t \t %s fait une enchere sur l'objet de %s ", nom.c_str(),
+				achat->getNomVendeur().c_str());
 		if (pasDHumeur)
-			printf("\n \t \t \t \t %s serait interresse mais elle n'est pas d'humeur a acheter quelque chose, etat : %s",
+			printf(
+				"\n \t \t \t \t %s serait interresse mais elle n'est pas d'humeur a acheter quelque chose, etat : %s",
 				nom.c_str(), currentEtat->description().c_str());
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
-
 	}
 	if (achatRealise)
 		printf("\n \t \t \t \t \t %s a achete l'objet de %s et s'en va !", nom.c_str(), achat->getNomVendeur().c_str());

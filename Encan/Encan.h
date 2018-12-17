@@ -5,7 +5,7 @@
 #include "EncanPourVendeur.h"
 
 
-class Encan :public EncanPourAcheteur, public EncanPourVendeur
+class Encan : public EncanPourAcheteur, public EncanPourVendeur
 {
 public:
 	~Encan()
@@ -16,10 +16,12 @@ public:
 	}
 
 	static Encan* getInstance();
+
 	void pushObjet(ObjetGenerique* o) override
 	{
 		listeObjets.push_back(o);
 	}
+
 	void removeObjet(ObjetGenerique* o) override
 	{
 		listeObjets.remove(o);
@@ -48,6 +50,7 @@ public:
 	{
 		return mtx;
 	}
+
 private:
 
 	std::list<ObjetGenerique*> listeObjets;

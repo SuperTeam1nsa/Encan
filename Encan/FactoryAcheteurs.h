@@ -4,8 +4,14 @@
 class FactoryAcheteurs
 {
 public:
-	FactoryAcheteurs() {}
-	~FactoryAcheteurs() {}
+	FactoryAcheteurs()
+	{
+	}
+
+	~FactoryAcheteurs()
+	{
+	}
+
 	static Acheteurs* createAcheteurs();
 private:
 	static unsigned long idAcheteur;

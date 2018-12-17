@@ -2,6 +2,7 @@
 //foncteur évolué /#cycle de vie à gérér => semi foncteur ^^ 
 //#présence d'un constructeur
 #include "ObjetGenerique.h"
+
 //struct
 class Interet
 {

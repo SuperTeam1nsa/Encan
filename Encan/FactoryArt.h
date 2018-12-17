@@ -5,7 +5,13 @@
 class FactoryArt
 {
 public:
-	FactoryArt() {}
-	~FactoryArt() {}
+	FactoryArt()
+	{
+	}
+
+	~FactoryArt()
+	{
+	}
+
 	static Art* createArt(std::string id);
 };

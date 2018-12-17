@@ -5,7 +5,13 @@
 class FactoryBien
 {
 public:
-	FactoryBien() {}
-	~FactoryBien() {}
+	FactoryBien()
+	{
+	}
+
+	~FactoryBien()
+	{
+	}
+
 	static Antiquite* createAntiquite(std::string id);
 };

@@ -4,8 +4,14 @@
 class Temps
 {
 public:
-	Temps() {}
-	~Temps() {}
+	Temps()
+	{
+	}
+
+	~Temps()
+	{
+	}
+
 	static float getTemps() { return temps; }
 
 	static void passerTemps()
@@ -16,6 +22,7 @@ public:
 			temps += 0.2f;
 		}
 	}
+
 private:
 	static float temps;
 };
