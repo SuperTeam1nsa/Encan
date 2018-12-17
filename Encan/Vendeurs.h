@@ -45,6 +45,7 @@ public:
 		while (!ok)
 		{
 			encanV->getMutex()->lock();
+			//remove de list n'a pas de problème si l'objet a déjà ete remove => pas de check de ventes ou pas
 			encanV->removeObjet(objet->getObjectGenerique());
 			delete objet;
 			ok = true;

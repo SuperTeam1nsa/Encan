@@ -21,7 +21,6 @@ private:
 
 	//std::string Description[5] = { "Sculpture d'homme", "Armure rupestre", "Instrument de musique", "Coffre magique", "Inconnue" };
 
-	std::shared_ptr<ObjetEncan> objEnc;
 	ObjetGenerique* objGen;
 	CaracAnt myCarac;
 
@@ -29,7 +28,6 @@ private:
 		std::shared_ptr<ObjetEncan> obj)
 	{
 		myCarac = { description, etat_, periode, valeur, nom_vendeur };
-		objEnc = obj;
-		objGen = new ObjetGenerique(myCarac, objEnc);
+		objGen = new ObjetGenerique(myCarac, obj);
 	}
 };

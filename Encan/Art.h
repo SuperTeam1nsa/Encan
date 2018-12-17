@@ -8,10 +8,8 @@ class Art
 		std::shared_ptr<ObjetEncan> obj)
 	{
 		myCarac = { renomee, valeur, volume, type, description, nom_vendeur };
-		objEnc = obj;
-		objGen = new ObjetGenerique(myCarac, objEnc);
+		objGen = new ObjetGenerique(myCarac, obj);
 	};
-	std::shared_ptr<ObjetEncan> objEnc;
 	ObjetGenerique* objGen;
 	friend class FactoryArt;
 

@@ -15,14 +15,12 @@ public:
 private:
 
 	friend class FactoryService;
-	std::shared_ptr<ObjetEncan> objEnc;
 	CaracSer myCarac;
 	ObjetGenerique* objGen;
 
 	Service(int frais, int tarif, TypeSer type, int xp, std::string nom_vendeur, std::shared_ptr<ObjetEncan> obj)
 	{
 		myCarac = { frais, tarif, type, xp, nom_vendeur };
-		objEnc = obj;
-		objGen = new ObjetGenerique(myCarac, objEnc);
+		objGen = new ObjetGenerique(myCarac, obj);
 	}
 };

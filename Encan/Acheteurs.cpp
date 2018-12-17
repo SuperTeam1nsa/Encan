@@ -38,7 +38,10 @@ void Acheteurs::acheter()
 					enchere = true;
 					achatRealise = encanA->encherir(achat, achat->getObjEnc().get()->getPrixActuel() + 20, nom);
 					if (achatRealise)
+					{
+						encanA->removeObjet(achat);
 						break;
+					}
 					//rq: getPrixActuel actualise aussi dans objEnchere ;) //# doit
 				}
 				else
