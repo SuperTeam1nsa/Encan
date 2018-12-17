@@ -12,3 +12,11 @@
 /Encan/Debug/Encan.obj
 /Encan/Debug/Encan.log
 /Encan/Debug
+/Encan/x64/Debug/Encan.tlog/CL.command.1.tlog
+/Encan/x64/Debug/Encan.tlog/CL.read.1.tlog
+*.tlog
+*.obj
+*.log
+*.pch
+*.idb
+*.pdb
